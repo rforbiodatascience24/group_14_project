@@ -12,9 +12,11 @@ Load libraries
 library("readr")
 ```
 
-Load data
+Load data and save for later use
 
 ```{r}
+#First load the raw data taking care of missing values
 data <- read_tsv("data/_raw/raw_data.tsv", na = c("", "NA", "N/A"))
+#Then save it to the data folder for later use
+write_tsv(data, "data/01_dat_load.tsv")
 ```
-
