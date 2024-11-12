@@ -21,5 +21,16 @@ data <- read_tsv("data/01_dat_load.tsv")
 Clean up data
 
 ```{r}
-#test 
+#removing all columns, which only include missing values
+#also removing one of the two identical columns
+clean_data <- data |> 
+  select(where(~ !all(is.na(.)))) |> 
+  select(-"Site of Resection or Biopsy")
+
+#VI KAN OVERVEJE OM VI SKAL HAVE "Atlas Name" OG "Days To Birth" MED, DA DE HAR SAMME VÆRDIER FOR ALLE PATIENTER
+```
+
+```{r}
+#Then save it to the data folder for later use
+write_tsv(clean_data, "data/02_dat_clean.tsv")
 ```

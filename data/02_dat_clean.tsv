@@ -1,0 +1,61 @@
+HTAN Participant ID	Atlas Name	Age at Diagnosis (years)	Primary Diagnosis	Tissue or Organ of Origin	Morphology	Tumor Grade	Progression or Recurrence	Last Known Disease Status	Days to Last Known Disease Status	Ethnicity	Gender	Race	Days to Birth	Cause of Death	Year of Death	Treatment or Therapy
+HTA1_262	HTAN HTAPP	54	Lobular and ductal carcinoma	Upper-outer quadrant of breast	8522/3	G2	Yes - Progression or Recurrence	With tumor	3965	not hispanic or latino	female	white	0	Cancer Related	2020	Yes
+HTA1_254	HTAN HTAPP	75	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	Tumor free	906	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_309	HTAN HTAPP	57	Lobular and ductal carcinoma	Upper-outer quadrant of breast	8522/3	G2	Yes - Progression or Recurrence	With tumor	1861	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_313	HTAN HTAPP	40	Adenocarcinoma NOS	Upper-outer quadrant of breast	8140/3	G2	Yes - Progression or Recurrence	With tumor	1475	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_321	HTAN HTAPP	32	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	1335	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_364	HTAN HTAPP	55	Ductal carcinoma NOS	Upper-inner quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	1862	not hispanic or latino	female	asian	0	Not Applicable	Not Applicable	Yes
+HTA1_382	HTAN HTAPP	46	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	2879	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_414	HTAN HTAPP	60	Lobular and ductal carcinoma	Upper-inner quadrant of breast	8522/3	G2	Yes - Progression or Recurrence	With tumor	2825	not hispanic or latino	female	white	0	Cancer Related	2020	Yes
+HTA1_423	HTAN HTAPP	64	Lobular adenocarcinoma	Breast NOS	8520/3	G2	Yes - Progression or Recurrence	With tumor	1806	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_425	HTAN HTAPP	30	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	201	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_562	HTAN HTAPP	38	Ductal carcinoma NOS	Breast NOS	8500/3	G2	Yes - Progression or Recurrence	With tumor	4642	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_586	HTAN HTAPP	44	Intraductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	8659	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_611	HTAN HTAPP	50	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	2530	hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_627	HTAN HTAPP	36	Ductal carcinoma NOS	Breast NOS	8500/3	G2	Yes - Progression or Recurrence	With tumor	1651	not hispanic or latino	female	unknown	0	Not Applicable	Not Applicable	Yes
+HTA1_649	HTAN HTAPP	54	Adenocarcinoma NOS	Breast NOS	8140/3	G1	Yes - Progression or Recurrence	With tumor	7939	not hispanic or latino	female	white	0	Cancer Related	2020	Yes
+HTA1_662	HTAN HTAPP	43	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	3813	not hispanic or latino	female	white	0	Cancer Related	2020	Yes
+HTA1_735	HTAN HTAPP	55	Ductal carcinoma NOS	Upper-outer quadrant of breast	8523/3	G2	Yes - Progression or Recurrence	With tumor	5251	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_745	HTAN HTAPP	38	Ductal carcinoma NOS	Upper-inner quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	1515	not hispanic or latino	female	asian	0	Not Applicable	Not Applicable	Yes
+HTA1_759	HTAN HTAPP	28	Ductal carcinoma NOS	Overlapping lesion of breast	8501/2	unknown	No	With tumor	10087	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_783	HTAN HTAPP	52	Ductal carcinoma NOS	Lower-inner quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	3174	not hispanic or latino	female	asian	0	Not Applicable	Not Applicable	Yes
+HTA1_812	HTAN HTAPP	38	Ductal carcinoma NOS	Breast NOS	8500/3	unknown	Yes - Progression or Recurrence	With tumor	1773	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_851	HTAN HTAPP	53	Lobular and ductal carcinoma	Upper-outer quadrant of breast	8520/3	G1	Yes - Progression or Recurrence	With tumor	1637	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_853	HTAN HTAPP	57	Intraductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	2335	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_908	HTAN HTAPP	58	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	2667	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_917	HTAN HTAPP	54	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	884	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_982	HTAN HTAPP	41	Lobular and ductal carcinoma	Breast NOS	8522/3	unknown	Yes - Progression or Recurrence	With tumor	2256	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_983	HTAN HTAPP	35	Ductal carcinoma NOS	Breast NOS	8500/3	G2	Yes - Progression or Recurrence	With tumor	1695	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_211	HTAN HTAPP	43	Intraductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	882	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_213	HTAN HTAPP	54	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	666	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_223	HTAN HTAPP	62	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	2791	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_225	HTAN HTAPP	54	Ductal carcinoma NOS	Upper-outer quadrant of breast	8523/3	G2	Yes - Progression or Recurrence	With tumor	1622	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_226	HTAN HTAPP	43	Carcinoma NOS	Breast NOS	8010/3	unknown	Yes - Progression or Recurrence	With tumor	11204	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_231	HTAN HTAPP	50	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	3426	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_232	HTAN HTAPP	40	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	4659	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_514	HTAN HTAPP	27	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	509	not hispanic or latino	female	white	0	Cancer Related	2016	Yes
+HTA1_516	HTAN HTAPP	39	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	1457	not hispanic or latino	female	black or african american	0	Cancer Related	2018	Yes
+HTA1_519	HTAN HTAPP	50	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	unknown	Yes - Progression or Recurrence	With tumor	1483	not hispanic or latino	female	black or african american	0	Cancer Related	2018	Yes
+HTA1_521	HTAN HTAPP	60	Lobular and ductal carcinoma	Breast NOS	8522/3	unknown	No	With tumor	214	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_525	HTAN HTAPP	57	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	3264	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_589	HTAN HTAPP	42	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	2037	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_752	HTAN HTAPP	41	Ductal carcinoma NOS	Lower-inner quadrant of breast	8500/3	G1	Yes - Progression or Recurrence	With tumor	5132	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_806	HTAN HTAPP	28	Lobular carcinoma NOS	Upper-outer quadrant of breast	8520/3	G1	Yes - Progression or Recurrence	With tumor	1262	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_814	HTAN HTAPP	44	Ductal carcinoma NOS	Breast NOS	8500/3	unknown	Yes - Progression or Recurrence	With tumor	1389	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_835	HTAN HTAPP	51	Carcinoma NOS	Breast NOS	8010/3	unknown	Yes - Progression or Recurrence	With tumor	2052	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_861	HTAN HTAPP	57	Lobular and ductal carcinoma	Breast NOS	8520/3	G2	No	With tumor	2821	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_862	HTAN HTAPP	50	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	1522	not hispanic or latino	female	white	0	Cancer Related	2020	Yes
+HTA1_870	HTAN HTAPP	46	Ductal carcinoma NOS	Upper-outer quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	5404	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_873	HTAN HTAPP	54	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	G3	No	Tumor free	1272	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_878	HTAN HTAPP	37	Ductal carcinoma NOS	Breast NOS	8500/3	G2	Yes - Progression or Recurrence	With tumor	1132	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_880	HTAN HTAPP	63	Lobular carcinoma NOS	Breast NOS	8520/3	G2	Yes - Progression or Recurrence	With tumor	1057	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_887	HTAN HTAPP	49	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	1162	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_889	HTAN HTAPP	51	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	3828	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_890	HTAN HTAPP	35	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	2136	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_895	HTAN HTAPP	44	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	unknown	Yes - Progression or Recurrence	With tumor	7938	not hispanic or latino	female	black or african american	0	Not Applicable	Not Applicable	Yes
+HTA1_944	HTAN HTAPP	46	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	2421	not hispanic or latino	female	white	0	Cancer Related	2016	Yes
+HTA1_947	HTAN HTAPP	42	Lobular and ductal carcinoma	Overlapping lesion of breast	8522/3	G2	Yes - Progression or Recurrence	With tumor	3947	not hispanic or latino	female	white	0	Cancer Related	2017	Yes
+HTA1_963	HTAN HTAPP	42	Ductal carcinoma NOS	Breast NOS	8500/3	G3	Yes - Progression or Recurrence	With tumor	3479	not hispanic or latino	female	white	0	Cancer Related	2018	Yes
+HTA1_997	HTAN HTAPP	32	Ductal carcinoma NOS	Breast NOS	8500/3	unknown	Yes - Progression or Recurrence	With tumor	8852	not hispanic or latino	female	white	0	Cancer Related	2019	Yes
+HTA1_330	HTAN HTAPP	29	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	G2	Yes - Progression or Recurrence	With tumor	2783	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
+HTA1_988	HTAN HTAPP	35	Ductal carcinoma NOS	Overlapping lesion of breast	8500/3	G3	Yes - Progression or Recurrence	With tumor	1579	not hispanic or latino	female	black or african american	0	Not Applicable	Not Applicable	Yes
