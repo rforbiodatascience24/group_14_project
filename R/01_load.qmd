@@ -1,0 +1,16 @@
+---
+title: "01_load"
+format: html
+editor: visual
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r Load Libraries}
+library("readr")
+```
+
+```{r Load Data}
+data <- read_tsv("data/_raw/raw_data.tsv")
+```
+
