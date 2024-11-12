@@ -18,10 +18,10 @@ Load:
 Done
 
 Clean data:
-  Include: HTAN Participant ID, Age at Diagnosis (years), Primary Diagnosis, 	Site of Resection or Biopsy OR Tissue or Organ of Origin, Tumor grade, Last Known Disease Status, Days to Last Known Disease Status, Race, Caurse of death, Year of Death
-  Maybe include: Morphology, Progression or Recurrence
+  //Include: HTAN Participant ID, Age at Diagnosis (years), Primary Diagnosis, 	Site of Resection or Biopsy OR Tissue or Organ of Origin, Tumor grade, Last Known Disease Status, Days to Last Known Disease Status, Race, Caurse of death, Year of Death
+  //Maybe include: Morphology, Progression or Recurrence
 
-Make model:
-Comparing by p-val which parameters are signifigant
+//Make model:
+//Comparing by p-val which parameters are signifigant
 
 Plots:
