@@ -6,10 +6,15 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r Load Libraries}
+Load libraries
+
+```{r}
 library("readr")
 ```
 
-```{r Load Data}
-data <- read_tsv("data/_raw/raw_data.tsv")
+Load data
+
+```{r}
+data <- read_tsv("data/_raw/raw_data.tsv", na = c("", "NA", "N/A"))
 ```
+
