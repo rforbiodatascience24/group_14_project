@@ -1,18 +1,19 @@
 ---
 title: "01_load"
-format: html
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
 editor: visual
-editor_options: 
-  chunk_output_type: console
 ---
 
-Load libraries
+### Load libraries
 
 ```{r}
 library("readr")
 ```
 
-Load data and save for later use
+### Load data and save for later use
 
 ```{r}
 #First load the raw data taking care of missing values

@@ -1,4 +1,4 @@
-HTAN Participant ID	Atlas Name	Age at Diagnosis (years)	Primary Diagnosis	Tissue or Organ of Origin	Morphology	Tumor Grade	Progression or Recurrence	Last Known Disease Status	Days to Last Known Disease Status	Ethnicity	Gender	Race	Days to Birth	Cause of Death	Year of Death	Treatment or Therapy
+ID	Atlas Name	age_at_diagnosis	primary_diagnosis	organ_of_origin	morphology	tumor_grade	progressioin	disease_status	days_to_last_status	ethnicity	gender	race	Days to Birth	cause_of_death	year_of_death	treatment
 HTA1_262	HTAN HTAPP	54	Lobular and ductal carcinoma	Upper-outer quadrant of breast	8522/3	G2	Yes - Progression or Recurrence	With tumor	3965	not hispanic or latino	female	white	0	Cancer Related	2020	Yes
 HTA1_254	HTAN HTAPP	75	Ductal carcinoma NOS	Lower-outer quadrant of breast	8500/3	G3	Yes - Progression or Recurrence	Tumor free	906	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes
 HTA1_309	HTAN HTAPP	57	Lobular and ductal carcinoma	Upper-outer quadrant of breast	8522/3	G2	Yes - Progression or Recurrence	With tumor	1861	not hispanic or latino	female	white	0	Not Applicable	Not Applicable	Yes

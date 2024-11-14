@@ -1,0 +1,35 @@
+---
+title: "04_describe"
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+### Load packages
+
+```{r}
+library(tidyverse)
+```
+
+### Load data
+
+```{r}
+data <- read_tsv("data/02_dat_clean.tsv")
+```
+
+### Basic info
+
+```{r}
+nrow(data)
+ncol(data)
+```
+
+### Making plots describing the data
+
+```{r}
+data |> 
+  ggplot(aes(x = )) +
+  geom_bar()
+```
