@@ -29,8 +29,9 @@ clean_data <- data |>
   select(-"Site of Resection or Biopsy")
 
 #VI KAN OVERVEJE OM VI SKAL HAVE "Atlas Name" OG "Days To Birth" MED, DA DE HAR SAMME VÆRDIER FOR ALLE PATIENTER
+#VI SKAL OGSÅ TALE OM ETNICITET OG RACE...
 
-#Clean up cetegory names:
+#Clean up category names to match snake_case naming:
 clean_data <- clean_data |> 
   rename(ID = `HTAN Participant ID`, 
          age_at_diagnosis = `Age at Diagnosis (years)`,
@@ -50,7 +51,7 @@ clean_data <- clean_data |>
          )
 ```
 
-### Save data for later ude
+### Save data for later use
 
 ```{r}
 #Then save it to the data folder for later use

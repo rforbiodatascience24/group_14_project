@@ -22,14 +22,79 @@ data <- read_tsv("data/02_dat_clean.tsv")
 ### Basic info
 
 ```{r}
-nrow(data)
 ncol(data)
+nrow(data)
 ```
+
+There are 17 columns, which means 17 variables
+
+There are 60 rows, which mean 60 observations (60 patients in this case)
 
 ### Making plots describing the data
 
+Plot showing the distribution of age at diagnosis
+
 ```{r}
 data |> 
-  ggplot(aes(x = )) +
-  geom_bar()
+  mutate(binned_age = cut(age_at_diagnosis, 
+                          breaks = seq(20, 80, 
+                                       by = 5))) |> 
+  count(binned_age) |> 
+  ggplot(mapping = aes(x = binned_age, 
+                       y = n)) + 
+  geom_bar(stat = "identity", 
+           position = "dodge") + 
+  theme_minimal() + 
+  labs(title = "Distribution of age at diagnosis",
+       x = "Age at diagnosis",
+       y = "Count")
+```
+
+Plot showing the distribution of tumor grades
+
+```{r}
+data |> 
+  count(tumor_grade) |> 
+  ggplot(mapping = aes(x = tumor_grade, 
+                       y = n)) + 
+  geom_bar(stat = "identity", 
+           position = "dodge") + 
+  theme_minimal() + 
+  labs(title = "Distribution of tumor grade in dataset",
+       x = "Tumor grade",
+       y = "Count")
+```
+
+Plot showing the primary diagnosis
+
+```{r}
+data |> 
+  count(primary_diagnosis) |> 
+  ggplot(mapping = aes(x = primary_diagnosis, 
+                       y = n)) + 
+  geom_bar(stat = "identity", 
+           position = "dodge") + 
+  theme_minimal() + 
+  labs(title = "Distribution of primary diagnosis",
+       x = "Primary diagnosis",
+       y = "Count") + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1))
+```
+
+Distribution of organ of origin
+
+```{r}
+data |> 
+  count(organ_of_origin) |> 
+  ggplot(mapping = aes(x = organ_of_origin, 
+                       y = n)) + 
+  geom_bar(stat = "identity", 
+           position = "dodge") + 
+  theme_minimal() + 
+  labs(title = "Distribution of organ of origin",
+       x = "Organ of origin",
+       y = "Count") + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   hjust = 1))
 ```
