@@ -1,26 +1,75 @@
 ---
 title: "Analysis 1"
-format: html
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
 editor: visual
 ---
 
-## Quarto
-
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+## Load packages
 
 ```{r}
-1 + 1
+library(tidyverse)
 ```
 
-You can add options to executable code like this
+### Load data
 
 ```{r}
-#| echo: false
-2 * 2
+data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Statistics
+
+#### OVCAR3
+
+```{r}
+data_test <- data |> 
+  mutate(model_object = map(
+    .x = data,
+    .f = ~lm(formula = OVCAR3_MOCK ~ OVCAR3_KO,
+             data = .x)))
+```
+
+Stat
+
+```{r}
+gravier_clean_aug_long_nested <- gravier_clean_aug_long_nested |> 
+  mutate(model_object_tidy = map(
+    .x = model_object,
+    .f = ~tidy(.x, conf.int = TRUE,
+               conf.level = 0.95)))
+```
+
+#### SKOV3
+
+### Volcano plots
+
+#### OVCAR3
+
+```{r}
+OVCAR3_estimates |> 
+  mutate(lbl = case_when(significant == "yes" ~ gene,
+                           significant == "no" ~ "")) |> 
+  ggplot(mapping = aes(x = estimate,
+                       y = -log10(p.value),
+                       colour = significant,
+                       label = lbl)) +
+  geom_point(size = 1,
+             alpha = 0.5) +
+  geom_text_repel(size = 4,
+                  max.overlaps = 20) +
+  geom_hline(yintercept = 0) +
+  theme_minimal(base_size = 9) +
+  theme(plot.title = element_text(hjust = 1),
+        plot.subtitle = element_text(hjust = 1),
+        legend.position = "none") +
+  labs(
+    x = "Estimates",
+    y = "-log10(p)",
+    title = "Genes Associated with Early Metastasis in Small Node-Negative Breast Carcinoma",
+    subtitle = "Genes highlighted in turquoise were significant after multiple testing correction",
+    caption = "Data from DOI: 10.1002/gcc.20820")
+```
+
+#### SKOV3
