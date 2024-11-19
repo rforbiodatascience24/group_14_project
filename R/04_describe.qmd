@@ -25,3 +25,56 @@ data <- read_tsv("data/03_dat_aug.tsv")
 ncol(data)
 nrow(data)
 ```
+
+There are 28040 observations (genes)
+
+There are 9 variables
+
+### Upregulated/downregulated genes
+
+```{r}
+data |> count(DEG_OVCAR3)
+data |> count(DEG_SKOV3)
+```
+
+For OVCAR3 there are 9.834 downregulated genes, 2.568 neutral genes and 15.638 upregulated genes
+
+For SKOV3 there are 18.945 downregulated genes, 5.115 neutral genes and 3.980 upregulated
+
+```{r}
+data |> 
+  pivot_longer(
+    cols = c(DEG_OVCAR3, DEG_SKOV3), 
+    names_to = "cell_line", 
+    values_to = "expression_level"
+  ) |> 
+  mutate(cell_line = case_when(cell_line == "DEG_OVCAR3" ~ "OVCAR3",
+                               cell_line == "DEG_SKOV3" ~ "SKOV3")
+         ) |> 
+  select(gene, cell_line, expression_level) |> 
+  count(expression_level, cell_line)
+  ggplot(mapping = aes(x = expression_level, y = n, fill = cell_line)) +
+  geom_bar()
+  
+#ggplot(mapping = aes(x = Cohort, y = n, fill = Gender))
+```
+
+### Overlapping genes
+
+```{r}
+#upregulated genes for both cell lines
+data |> 
+  filter(DEG_OVCAR3 == "Upregulated" &
+         DEG_SKOV3 == "Upregulated") |>
+  count()
+
+#downregulated genes for both cell lines
+data |> 
+  filter(DEG_OVCAR3 == "Downregulated" &
+         DEG_SKOV3 == "Downregulated") |>
+  count()
+```
+
+There are 2.197 genes, which are upregulated for both cell lines
+
+There are 8.116 genes, which are downregulated for both cell lines
