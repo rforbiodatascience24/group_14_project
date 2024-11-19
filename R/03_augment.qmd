@@ -30,6 +30,17 @@ aug_data <- data |>
   )
 ```
 
+### Upregulated vs downregulated
+
+```{r}
+aug_data_ <- aug_data |> 
+  mutate(DEG_SKOV3 = case_when(log2FC_SKOV > 0 ~ "Upregulated",
+                       log2FC_SKOV < 0 ~ "Downregulated",
+                       log2FC_SKOV == 0 ~ "Neutral"
+                       )
+  )
+```
+
 ### Save data for later use
 
 ```{r}
