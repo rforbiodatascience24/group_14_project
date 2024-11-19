@@ -27,22 +27,26 @@ data <- read_tsv("data/02_dat_clean.tsv")
 aug_data <- data |> 
   mutate(log2FC_OVCAR3 = log2( (OVCAR3_KO+1) / (OVCAR3_MOCK+1) ),
          log2FC_SKOV3 = log2( (SKOV3_KO+1) / (SKOV3_MOCK+1))
-  )
+         ) |> 
+  relocate(log2FC_OVCAR3, .after = OVCAR3_KO) |> 
+  relocate(log2FC_SKOV3, .after = SKOV3_KO)
 ```
 
 ### Upregulated vs downregulated
 
 ```{r}
-aug_data_ <- aug_data |> 
-  mutate(DEG_SKOV3 = case_when(log2FC_SKOV3 > 0 ~ "Upregulated",
-                       log2FC_SKOV3 < 0 ~ "Downregulated",
-                       log2FC_SKOV3 == 0 ~ "Neutral"
-                       ),
-         DEG_OVCAR3 = case_when(log2FC_OVCAR3 > 0 ~ "Upregulated",
+aug_data <- aug_data |> 
+  mutate(DEG_OVCAR3 = case_when(log2FC_OVCAR3 > 0 ~ "Upregulated",
                        log2FC_OVCAR3 < 0 ~ "Downregulated",
                        log2FC_OVCAR3 == 0 ~ "Neutral"
+                       ),
+         DEG_SKOV3 = case_when(log2FC_SKOV3 > 0 ~ "Upregulated",
+                       log2FC_SKOV3 < 0 ~ "Downregulated",
+                       log2FC_SKOV3 == 0 ~ "Neutral"
                        )
-  )
+  ) |> 
+  relocate(DEG_OVCAR3, .after = log2FC_OVCAR3) |> 
+  relocate(DEG_SKOV3, .after = log2FC_SKOV3)
 ```
 
 ### Save data for later use

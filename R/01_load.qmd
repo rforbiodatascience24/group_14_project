@@ -32,12 +32,12 @@ SKOV3_MOCK <- SKOV3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
 ```
 
 ```{r}
-data <- left_join(OVCAR3_KO, 
-                  OVCAR3_MOCK, 
+data <- left_join(OVCAR3_MOCK,
+                  OVCAR3_KO, 
                   by = join_by(`Gene Symbol`)) |> 
-  left_join(SKOV3_KO, 
-            by = join_by(`Gene Symbol`)) |> 
   left_join(SKOV3_MOCK, 
+            by = join_by(`Gene Symbol`)) |> 
+  left_join(SKOV3_KO, 
             by = join_by(`Gene Symbol`)) |> 
   rename(gene = `Gene Symbol`)
 ```
