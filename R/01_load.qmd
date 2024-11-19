@@ -24,12 +24,37 @@ OVCAR3_MOCK <- read_tsv("data/_raw/GSM8331623_OVCAR3_MOCK.txt", na = c("", "NA",
 OVCAR3_KO <- read_tsv("data/_raw/GSM8331625_OVCAR_KO.txt", na = c("", "NA", "N/A")) 
 ```
 
+### Removing duplicates
+
 ```{r}
-OVCAR3_KO <- OVCAR3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
-OVCAR3_MOCK <- OVCAR3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
-SKOV3_KO <- SKOV3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
-SKOV3_MOCK <- SKOV3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
+OVCAR3_KO <- OVCAR3_KO |> 
+  group_by(`Gene Symbol`) |> 
+  filter(n() == 1) |> 
+  ungroup()
+
+OVCAR3_MOCK <- OVCAR3_MOCK |>
+  group_by(`Gene Symbol`) |>
+  filter(n() == 1) |>
+  ungroup()
+
+SKOV3_KO <- SKOV3_KO |>
+  group_by(`Gene Symbol`) |>
+  filter(n() == 1) |>
+  ungroup()
+
+SKOV3_MOCK <- SKOV3_MOCK |>
+  group_by(`Gene Symbol`) |>
+  filter(n() == 1) |>
+  ungroup()
+
+
+# OVCAR3_KO <- OVCAR3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
+# OVCAR3_MOCK <- OVCAR3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
+# SKOV3_KO <- SKOV3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
+# SKOV3_MOCK <- SKOV3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
 ```
+
+### Joining data
 
 ```{r}
 data <- left_join(OVCAR3_MOCK,
@@ -41,6 +66,8 @@ data <- left_join(OVCAR3_MOCK,
             by = join_by(`Gene Symbol`)) |> 
   rename(gene = `Gene Symbol`)
 ```
+
+### Saving in data folder
 
 ```{r}
 write_tsv(data, "data/01_dat_load.tsv")
