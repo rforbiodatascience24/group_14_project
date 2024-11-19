@@ -8,20 +8,28 @@ Chrysillis Polhaus (ChrysillisPolhaus), cjmp/s153664 \
 Lise Lotte Eriksen (Zyanis), 154123
 
 ## Data Retrieval
-The project is based on data from the Human Tumor Atlas Network (HTAN) and describes clinicopathological features of breast cancer metastases. \
-The data can be retrieved from the HTAN website: https://humantumoratlas.org/publications/hta1_2024_pdf_johanna-klughammer?tab=overview. \
-The original publication on the dataset can be found via this DOI: https://doi.org/10.1038/s41591-024-03215-z \
-Download tsv from HTAN website and name the file: "raw_data.tsv"
+The project is based on data from Next-generation mRNA sequencing of ovarian cancer cell lines SKOV3 and OVCAR3 with knock out of HERV-K env. \
+The data can be retrieved from NCBI Gene Expression Omnibus (GEO) website using the accession GSE269969: https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE269969 \
+The data was published in the study: Ko EJ et. Al., "Transcriptome analysis of the effect of HERV-K env gene knockout in ovarian cancer cell lines", Genes Genomics, 2024 Sep 13, doi: 10.1007/s13258-024-01544-4 
 
 ## Overview 
 Load:
 Done
 
 Clean data: \
-  Include: HTAN Participant ID, Age at Diagnosis (years), Primary Diagnosis, 	Site of Resection or Biopsy OR Tissue or Organ of Origin, Tumor grade, Last Known Disease Status, Days to Last Known Disease Status, Race, Caurse of death, Year of Death. \
-  Maybe include: Morphology, Progression or Recurrence.
 
-Make model: \
-Comparing by p-val which parameters are signifigant.
+Augment: \
+Kolonne til om op eller nedreguleret
 
-Plots:
+Describe: \
+Hvor mange er op og hvor mange er ned \
+Hvor mange coloner er der \
+
+Analysis: \
+1. Comparing by p-val: - hvor mange har signifigant forskel \
+2. Compare the cell lines OVCAR and SKOV
+3. Vulcano plot: \
+4. PCA: \
+
+
+
