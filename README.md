@@ -34,6 +34,6 @@ Analysis: \
    
 5. Heat map med sammenligning XXX
    
-7. 05_Analysis_1: Correlationplot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK) XXXX
+7. Correlationplot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK) XXXX
    
 9. Venn diagram - ggVenn diagram pakke
