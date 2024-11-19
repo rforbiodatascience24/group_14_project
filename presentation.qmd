@@ -1,0 +1,34 @@
+---
+title: "Group 14"
+subtitle: "Final project"
+format: revealjs
+editor: visual
+author:
+- name: "Julie Brockhoff, s204519"
+- name: "CecilieKejlberg Leth, s204564"
+- name: "Amalie Drud Nielsen, s204560"
+- name: "Chrysillis Hellemann Polhaus, s153664"
+- name: "Lise Lotte Eriksen, s154123"
+#vi kan uploade dtu logo
+---
+
+## Introduction
+
+-   52402 genes when removing -\> 28589
+
+## Materials and methods
+
+When you click the **Render** button a document will be generated that includes:
+
+-   Content authored with markdown
+-   Output from executable code
+
+## Results
+
+When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
+```
+
+## Discussion
