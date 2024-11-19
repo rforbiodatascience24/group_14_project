@@ -10,14 +10,38 @@ editor: visual
 ### Load libraries
 
 ```{r}
-library("readr")
+library(tidyverse)
+library(readr)
 ```
 
 ### Load data and save for later use
 
 ```{r}
-#First load the raw data taking care of missing values
-data <- read_tsv("data/_raw/raw_data.tsv", na = c("", "NA", "N/A"))
-#Then save it to the data folder for later use
+#First load the raw data taking care of missing values 
+SKOV_MOCK <- read_tsv("data/_raw/GSM8331622_SKOV_MOCK.txt", na = c("", "NA", "N/A")) 
+SKOV_KO <- read_tsv("data/_raw/GSM8331624_SKOV_KO.txt", na = c("", "NA", "N/A")) 
+OVCAR3_MOCK <- read_tsv("data/_raw/GSM8331623_OVCAR3_MOCK.txt", na = c("", "NA", "N/A")) 
+OVCAR3_KO <- read_tsv("data/_raw/GSM8331625_OVCAR_KO.txt", na = c("", "NA", "N/A")) 
+```
+
+```{r}
+OVCAR3_KO <- OVCAR3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
+OVCAR3_MOCK <- OVCAR3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
+SKOV_KO <- SKOV_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
+SKOV_MOCK <- SKOV_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
+```
+
+```{r}
+data <- left_join(OVCAR3_KO, 
+                  OVCAR3_MOCK, 
+                  by = join_by(`Gene Symbol`)) |> 
+  left_join(SKOV_KO, 
+            by = join_by(`Gene Symbol`)) |> 
+  left_join(SKOV_MOCK, 
+            by = join_by(`Gene Symbol`)) |> 
+  rename(gene = `Gene Symbol`)
+```
+
+```{r}
 write_tsv(data, "data/01_dat_load.tsv")
 ```

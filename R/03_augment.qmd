@@ -8,3 +8,31 @@ editor: visual
 ---
 
 ### Adding variables
+
+### Load packages
+
+```{r}
+library(tidyverse)
+```
+
+### Load data
+
+```{r}
+data <- read_tsv("data/02_dat_clean.tsv")
+```
+
+### Log2FC
+
+```{r}
+aug_data <- data |> 
+  mutate(log2FC_OVCAR3 = log2( (OVCAR_KO+1) / (OVCAR3_MOCK+1) ),
+         log2FC_SKOV = log2( (SKOV_KO+1) / (SKOV_MOCK+1))
+  )
+```
+
+### Save data for later use
+
+```{r}
+#Then save it to the data folder for later use 
+write_tsv(aug_data, "data/03_dat_aug.tsv")
+```

@@ -22,33 +22,8 @@ data <- read_tsv("data/01_dat_load.tsv")
 ### Clean up data
 
 ```{r}
-#removing all columns, which only include missing values
-#also removing one of the two identical columns
 clean_data <- data |> 
-  select(where(~ !all(is.na(.)))) |> 
-  select(-"Site of Resection or Biopsy")
-
-#VI KAN OVERVEJE OM VI SKAL HAVE "Atlas Name" OG "Days To Birth" MED, DA DE HAR SAMME VÆRDIER FOR ALLE PATIENTER
-#VI SKAL OGSÅ TALE OM ETNICITET OG RACE...
-
-#Clean up category names to match snake_case naming:
-clean_data <- clean_data |> 
-  rename(ID = `HTAN Participant ID`, 
-         age_at_diagnosis = `Age at Diagnosis (years)`,
-         primary_diagnosis = `Primary Diagnosis`,
-         organ_of_origin = `Tissue or Organ of Origin`,
-         morphology = Morphology,
-         tumor_grade = `Tumor Grade`,
-         progressioin = `Progression or Recurrence`,
-         disease_status = `Last Known Disease Status`,
-         days_to_last_status = `Days to Last Known Disease Status`,
-         ethnicity = Ethnicity,
-         gender = Gender,
-         race = Race,
-         cause_of_death = `Cause of Death`,
-         year_of_death = `Year of Death`,
-         treatment = `Treatment or Therapy`
-         )
+  filter(rowSums(across(where(is.numeric))) > 0)
 ```
 
 ### Save data for later use
