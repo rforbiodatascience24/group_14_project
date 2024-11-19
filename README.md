@@ -28,8 +28,12 @@ Hvor mange er op og hvor mange er ned :)
 Hvor mange coloner er der :)
 
 Analysis: \ 
-2. PCA: Up regulated vs down regulated  med P værdier - måske (Baseline knock out. En lang liste med alle gener, så står de to gange)  \ 
-3. Lav bedre versioner af plotsene i artiklerne \ 
-4. Heat map med sammenligning XXX \ 
-6. Co rrelation plot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK) XXXX \ 
-7. Venn diagram - ggVenn diagram pakke \ 
+2. PCA: Up regulated vs down regulated  med P værdier - måske (Baseline knock out. En lang liste med alle gener, så står de to gange) \
+
+3. Lav bedre versioner af plotsene i artiklerne
+   
+5. Heat map med sammenligning XXX
+   
+7. Correlationplot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK) XXXX
+   
+9. Venn diagram - ggVenn diagram pakke
