@@ -44,19 +44,34 @@ For SKOV3 there are 18.945 downregulated genes, 5.115 neutral genes and 3.980 up
 ```{r}
 data |> 
   pivot_longer(
-    cols = c(DEG_OVCAR3, DEG_SKOV3), 
+    cols = c(DEG_OVCAR3, 
+             DEG_SKOV3), 
     names_to = "cell_line", 
     values_to = "expression_level"
   ) |> 
   mutate(cell_line = case_when(cell_line == "DEG_OVCAR3" ~ "OVCAR3",
                                cell_line == "DEG_SKOV3" ~ "SKOV3")
          ) |> 
-  select(gene, cell_line, expression_level) |> 
-  count(expression_level, cell_line)
-  ggplot(mapping = aes(x = expression_level, y = n, fill = cell_line)) +
-  geom_bar()
-  
-#ggplot(mapping = aes(x = Cohort, y = n, fill = Gender))
+  select(gene, 
+         cell_line, 
+         expression_level) |> 
+  count(expression_level, 
+        cell_line) |> 
+  ggplot(mapping = aes(x = expression_level, 
+                       y = n, 
+                       fill = cell_line)) +
+  geom_bar(stat = "identity", 
+           position = "dodge") +
+  geom_text(mapping = aes(label = n), 
+            position = position_dodge(width = 0.9),
+            vjust = 1.5) +
+  theme_minimal() + 
+  theme(legend.position = "bottom") +
+  labs(x = "Expression level",
+       y = "Count",
+       title = "Distribution of DEGs in the two cell lines",
+       fill = "Cell line")
+
 ```
 
 ### Overlapping genes
