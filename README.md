@@ -27,11 +27,11 @@ Describe:
 Hvor mange er op og hvor mange er ned 
 Hvor mange coloner er der 
 
-Analysis: \
-1. Comparing by p-val: - hvor mange har signifigant forskel \
+Analysis: 
+1. Comparing by p-val: - hvor mange har signifigant forskel 
 2. Compare the cell lines OVCAR and SKOV
-3. Vulcano plot: \
-4. PCA: \
+3. Vulcano plot: 
+4. PCA: 
 
 
 
