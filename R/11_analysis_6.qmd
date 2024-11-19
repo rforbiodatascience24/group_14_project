@@ -1,0 +1,63 @@
+---
+title: "11_analysis_6"
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+---
+
+### Loading packages 
+
+```{r}
+library(tidyverse)
+library(clusterProfiler)
+library(biomaRt)
+```
+
+### Load data
+
+```{r}
+data <- read_tsv("../data/03_dat_aug.tsv")
+```
+
+### Change gene names into geneID for the future annotation
+
+```{r}
+#connect to ensembl to fetch IDs
+mart <- useMart("ensembl", dataset = "hsapiens_gene_ensembl") 
+
+gene_info <- getBM(
+  attributes = c("external_gene_name", "entrezgene_id"),  
+  filters = "external_gene_name",
+  values = data |>  
+  pull(gene), 
+  mart = mart)
+
+#Join the data and rearrange the new ID column after the old column. 
+data_with_ID <- data |> 
+  left_join(gene_info, by = c("gene" = "external_gene_name")) |>
+  relocate(entrezgene_id, .after = gene)
+  
+#save the geneIDs seperate:
+geneIDs <- data_with_ID |> 
+  rename(geneIDs = entrezgene_id) |>  
+  pull(geneIDs) 
+
+geneIDs <- geneIDs |> 
+  na.omit(geneIDs)
+```
+
+Kegg enrichment
+
+```{r}
+kegg_analysis <- kegg_enrichment <- enrichKEGG(gene = geneIDs, 
+                                               organism = "hsa", 
+                                               pAdjustMethod = "BH", minGSSize = 10,
+                                               maxGSSize = 500, qvalueCutoff = 0.05)
+
+dotplot(kegg_analysis, 
+        color = "p.adjust", 
+        showCategory = 10, #Can be changed depending on how many categories we want 
+        size = "Count")
+```
