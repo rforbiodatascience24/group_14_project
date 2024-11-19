@@ -13,6 +13,7 @@ editor: visual
 library(tidyverse)
 library(clusterProfiler)
 library(biomaRt)
+library(enrichplot)
 ```
 
 ### Load data
@@ -48,7 +49,7 @@ geneIDs <- geneIDs |>
   na.omit(geneIDs)
 ```
 
-Kegg enrichment
+### Kegg enrichment
 
 ```{r}
 kegg_analysis <- kegg_enrichment <- enrichKEGG(gene = geneIDs, 
@@ -60,4 +61,10 @@ dotplot(kegg_analysis,
         color = "p.adjust", 
         showCategory = 10, #Can be changed depending on how many categories we want 
         size = "Count")
+
+
+barplot(kegg_analysis,
+        color = "p.adjust",
+        showCategory = 10,
+        order = TRUE)
 ```
