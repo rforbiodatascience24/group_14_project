@@ -28,10 +28,10 @@ Hvor mange er op og hvor mange er ned :)
 Hvor mange coloner er der :)
 
 Analysis: 
-1. Comparing by p-val: - hvor mange har signifigant forskel 
-2. Compare the cell lines OVCAR and SKOV
-3. Vulcano plot: 
-4. PCA: 
-
-
-
+1. Comparing by p-val: - hvor mange har signifigant forskel + Kolone med p værdi/ om det er signifigant
+2. PCA:
+3. Lav bedre versioner af plotsene i artiklerne
+4. Heat map med sammenligning
+5. Figure fra artikel
+6. Correlation plot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK)
+7. Venn diagram
