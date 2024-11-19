@@ -6,16 +6,19 @@ editor_options:
 ---
 
 ### Load Packages
+
 ```{r}
 library(tidyverse)
 ```
 
 ### Load data
+
 ```{r}
 data <- read_tsv("data/03_dat_aug.tsv")
 ```
 
 ### Heatmap
+
 ```{r}
 #jeg har samplet 70 random gener - jeg ved ikke hvordan det giver mening at filtrere generne
 data |>
@@ -44,3 +47,4 @@ data |>
         axis.title.y = element_text(size = 16),
         axis.text.y = element_text(size = 12)) +
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
+```
