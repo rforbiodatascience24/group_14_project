@@ -1,0 +1,54 @@
+---
+title: "Scatterplot"
+format: html
+editor: visual
+---
+
+### Load packages
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+### Load data
+
+```{r}
+data <- read_tsv("data/03_dat_aug.tsv")
+```
+
+### Scatterplot of Knock out OVCAR3 genes vs Mock OVCAR3 genes
+
+```{r}
+ggplot(data = data,
+       mapping = aes(x = OVCAR3_KO,
+                     y = OVCAR3_MOCK,
+                     color = DEG_OVCAR3)) +
+  geom_point() +
+  geom_smooth(method = "lm")+ #If trendline is wanted
+  labs(title = "Scatterplot of correlation between Knock out OVCAR3 genes and Mock OVCAR3 genes",
+       x = "Expression level of Knock out OVCAR3", 
+       y = "Expression level of Mock OVCAR3", 
+       caption = "Data from Ko EJ et. Al",
+       color = "Differentially expressed genes") +
+  theme(legend.position = "right")
+
+```
+
+### Scatterplot of Knock out SKOV3 genes vs Mock SKOV3 genes
+
+```{r}
+ggplot(data = data,
+       mapping = aes(x = SKOV3_KO,
+                     y = SKOV3_MOCK,
+                     color = DEG_SKOV3)) +
+  geom_point() +
+  geom_smooth(method = "lm")+ #If trendline is wanted mangler R^2 værdi
+  labs(title = "Scatterplot of correlation between Knock out SKOV3 genes and Mock SKOV3 genes",
+       x = "Expression level of Knock out SKOV3", 
+       y = "Expression level of Mock SKOV3", 
+       caption = "Data from Ko EJ et. Al",
+       color = "Differentially expressed genes") +
+  theme(legend.position = "right")
+
+```
