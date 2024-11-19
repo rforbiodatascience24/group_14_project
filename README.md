@@ -18,14 +18,14 @@ Ko EJ et. Al, "Transcriptome analysis of the effect of HERV-K env gene knockout 
 Load:
 Done
 
-Clean data: \
+Clean data: 
 
-Augment: \
+Augment: 
 Kolonne til om op eller nedreguleret
 
-Describe: \
-Hvor mange er op og hvor mange er ned \
-Hvor mange coloner er der \
+Describe: 
+Hvor mange er op og hvor mange er ned 
+Hvor mange coloner er der 
 
 Analysis: \
 1. Comparing by p-val: - hvor mange har signifigant forskel \
