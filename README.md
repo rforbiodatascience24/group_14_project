@@ -37,3 +37,6 @@ Analysis: \
 7. Correlationplot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK) XXXX
    
 9. Venn diagram - ggVenn diagram pakke
+
+##SPG: 
+- 
