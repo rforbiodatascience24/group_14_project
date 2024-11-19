@@ -23,7 +23,10 @@ data <- read_tsv("data/01_dat_load.tsv")
 
 ```{r}
 clean_data <- data |> 
-  filter(rowSums(across(where(is.numeric))) > 0)
+  filter(rowSums(across(where(is.numeric))) > 0) |> 
+  rename(OVCAR3_KO = "OVCAR_KO",
+         SKOV3_KO = "SKOV_KO",
+         SKOV3_MOCK = "SKOV_MOCK")
 ```
 
 ### Save data for later use
