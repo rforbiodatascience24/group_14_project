@@ -1,15 +1,17 @@
 ---
-title: "Group 14"
-subtitle: "Final project"
-format: revealjs
+title: "<span style = 'font-size: 100px;'>Group 14</span>"
+subtitle: "<span style = 'font-size: 60px;'>Final project 14</span>"
+format:
+  revealjs:
+    theme: moon
 editor: visual
 author:
-- name: "Julie Brockhoff, s204519"
-- name: "CecilieKejlberg Leth, s204564"
-- name: "Amalie Drud Nielsen, s204560"
-- name: "Chrysillis Hellemann Polhaus, s153664"
-- name: "Lise Lotte Eriksen, s154123"
-#vi kan uploade dtu logo
+- "<div style = 'text-align: center; font-size: 20px; color: gray'>Julie Brockhoff, s204519</span>"
+- "<div style = 'text-align: center; font-size: 20px; color: gray'>Cecilie Kejlberg Leth, s204564</span>"
+- "<div style = 'text-align: center; font-size: 20px; color: gray'>Amalie Drud Nielsen, s204560</span>"
+- "<div style = 'text-align: center; font-size: 20px; color: gray'>Chrysillis Hellemann Polhaus, s153664</span>"
+- "<div style = 'text-align: center; font-size: 20px; color: gray'>Lise Lotte Eriksen, s154123</span>"
+
 ---
 
 ## Introduction
