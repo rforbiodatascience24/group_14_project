@@ -13,6 +13,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(broom)
 ```
 
 ### Load data
@@ -35,26 +36,7 @@ mock_or_ko <- data |>
                names_pattern = "(.*)_(.*)" )
 ```
 
-### Alm scatter plot over de to
-
-To show the nicest version of the plot, some rows are removed
-
-```{r}
-mock_or_ko |> 
-  ggplot(mapping = aes(x = OVCAR3, y = SKOV3, color = MOCK_or_KO)) +
-  geom_point() + 
-  geom_smooth(method = lm,
-              se = FALSE) +
-  labs(title = "Gene expression in the two cell lines for MOCK and KO",
-       color = "MOCK or KO") +
-  theme_minimal() +
-  scale_x_continuous(limits = c(0,200000)) +
-  scale_y_continuous(limits = c(0,200000))
-```
-
-### Correlation for the regression
-
-Though some points are removed in the plot above, all values are a part of the models beneath. Therefore the models beneath are not equal to the regressions above.
+### Correlation between KO and MOCK
 
 ```{r}
 model_KO <- mock_or_ko |> 
@@ -68,21 +50,60 @@ model_MOCK <- mock_or_ko |>
 model_KO
 model_MOCK
 
-mock_or_ko |> cor.test(SKOV3, OVCAR3, method = "spearman")
+rho_KO <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(OVCAR3,
+         SKOV3) |> 
+  cor(method = "spearman")
+
+rho_MOCK <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(OVCAR3,
+         SKOV3) |> 
+  cor(method = "spearman")
+
+rho_KO
+rho_MOCK
 ```
 
+### Scatter plot between KO and MOCK
+
+To show the nicest version of the plot, some rows are removed
+
 ```{r}
-model_OVCAR3 <- mock_or_ko |> 
-  lm(formula = OVCAR3 ~ MOCK_or_KO)
-
-model_SKOV3 <- mock_or_ko |> 
-  lm(formula = SKOV3 ~ MOCK_or_KO)
-
-model_OVCAR3
-model_SKOV3
+mock_or_ko |> 
+  ggplot(mapping = aes(x = OVCAR3, y = SKOV3, color = MOCK_or_KO)) +
+  geom_point() + 
+  geom_smooth(method = lm,
+              se = FALSE) +
+  labs(title = "Gene expression in the two cell lines for MOCK and KO",
+       color = "MOCK or KO") +
+  theme_minimal() +
+  scale_x_continuous(limits = c(0,730000)) +
+  scale_y_continuous(limits = c(0,730000))
 ```
 
+### Statistics: t test and p-values
+
 ```{r}
-broom::tidy(t.test(model_OVCAR3, model_SKOV3)) |> 
+KO_OVCAR3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(OVCAR3)
+MOCK_OVCAR3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(OVCAR3)
+
+broom::tidy(t.test(KO_OVCAR3, MOCK_OVCAR3), paired = TRUE)|> 
+  pull(p.value)
+
+
+KO_SKOV3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(SKOV3)
+MOCK_SKOV3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(SKOV3)
+
+broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|> 
   pull(p.value)
 ```
