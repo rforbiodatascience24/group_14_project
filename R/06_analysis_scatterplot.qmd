@@ -1,6 +1,9 @@
 ---
-title: "Scatterplot"
-format: html
+title: "06_analysis_scatterplot"
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
 editor: visual
 ---
 
@@ -9,7 +12,7 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(ggplot2)
-library("patchwork")
+library(patchwork)
 ```
 
 ### Load data
@@ -18,14 +21,18 @@ library("patchwork")
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Scatterplot of KO OVCAR3 genes vs Mock OVCAR3 genes
+### Regression models for up- and down-regulated OVCAR3 DEGs
+
+Two separate regression models are made for either the up-regulated DEGs and the down-regulated DEGs.
 
 ```{r}
+#Regression model for upregulated
 Equation_OVCAR3_UP <- data |>
   select(OVCAR3_MOCK, OVCAR3_KO, DEG_OVCAR3) |>
   filter(DEG_OVCAR3 == "Upregulated") |>
   lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
 
+#Regression model for downregulated
 Equation_OVCAR3_DOWN <- data |>
   select(OVCAR3_MOCK, OVCAR3_KO, DEG_OVCAR3) |>
   filter(DEG_OVCAR3 == "Downregulated") |>
@@ -35,13 +42,16 @@ summary(Equation_OVCAR3_UP)
 summary(Equation_OVCAR3_DOWN)
 ```
 
+### Scatterplot of OVCAR3 KO vs MOCK DEGs 
+
 ```{r}
-correlation_plot_OVCAR3 <- ggplot(data = data,
-       mapping = aes(x = OVCAR3_KO,
-                     y = OVCAR3_MOCK,
-                     color = DEG_OVCAR3)) +
-  geom_point() +
-  geom_smooth(method = "lm")+
+correlation_plot_OVCAR3 <- data |>  
+  ggplot(mapping = aes(x = OVCAR3_KO,
+                       y = OVCAR3_MOCK,
+                       color = DEG_OVCAR3)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              linewidth = 0.5) +
   annotate("text",
     x = 110000, y = 1.31e+05, size = 3.5,
     label = "y = 1.63 + 155.93") +
@@ -54,23 +64,29 @@ correlation_plot_OVCAR3 <- ggplot(data = data,
   annotate("text",
     x = 2.55e+5, y = 0.25e+05, size = 3.5,
     label = "R^2 = 0.769") +
-  labs(title = "Correlation between KO and Mock OVCAR3 genes",
-       x = "Expression level of KO OVCAR3", 
-       y = "Expression level of Mock OVCAR3", 
+  labs(title = "Correlation between DEGs at baseline and DEGs HERV-K KO in OVCAR3",
+       x = "OVCAR3 KO", 
+       y = "OVCAR3 baseline", 
        caption = "Data from Ko EJ et. Al",
        color = "Differentially expressed genes") +
-  theme_minimal() +
-  theme(legend.position = "right")
+  theme_minimal() 
+
+correlation_plot_OVCAR3
+
 ```
 
-### 'Scatterplot of KO SKOV3 genes vs Mock SKOV3 genes
+### Regression models for up- and down-regulated SKOV3 DEGs
+
+Two separate regression models are made for either the up-regulated DEGs and the down-regulated DEGs.
 
 ```{r}
+#Regression model for upregulated
 Equation_SKOV3_UP <- data |>
   select(SKOV3_MOCK, SKOV3_KO, DEG_SKOV3) |>
   filter(DEG_SKOV3 == "Upregulated") |>
   lm(formula = SKOV3_MOCK ~ SKOV3_KO)
 
+#Regression model for downregulated
 Equation_SKOV3_DOWN <- data |>
   select(SKOV3_MOCK, SKOV3_KO, DEG_SKOV3) |>
   filter(DEG_SKOV3 == "Downregulated") |>
@@ -80,13 +96,16 @@ summary(Equation_SKOV3_UP)
 summary(Equation_SKOV3_DOWN)
 ```
 
+### Scatterplot of SKOV3 KO vs MOCK DEGs
+
 ```{r}
-correlation_plot_SKOV3 <- ggplot(data = data,
-       mapping = aes(x = SKOV3_KO,
+correlation_plot_SKOV3 <- data |> 
+  ggplot(mapping = aes(x = SKOV3_KO,
                      y = SKOV3_MOCK,
                      color = DEG_SKOV3)) +
-  geom_point() +
-  geom_smooth(method = "lm")+
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              linewidth = 0.5) +
   annotate("text",
     x = 50000, y = 1.31e+05, size = 3.5,
     label = "y = 1.50 - 24.06") +
@@ -99,13 +118,14 @@ correlation_plot_SKOV3 <- ggplot(data = data,
   annotate("text",
     x = 100000, y = 0.25e+05, size = 3.5,
     label = "R^2 = 0.996") +
-  labs(title = "Correlation between KO and Mock SKOV3 genes",
-       x = "Expression level of KO SKOV3", 
-       y = "Expression level of Mock SKOV3", 
+  labs(title = "Correlation between DEGs at baseline and DEGs HERV-K KO in SKOV3",
+       x = "SKOV3 KO", 
+       y = "SKOV3 baseline", 
        caption = "Data from Ko EJ et. Al",
        color = "Differentially expressed genes") +
-  theme_minimal() +
-  theme(legend.position = "right")
+  theme_minimal() 
+
+correlation_plot_SKOV3
 
 ```
 
