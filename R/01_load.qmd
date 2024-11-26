@@ -20,10 +20,10 @@ The data is loaded as tibbles from four different files, each containing a colum
 
 ```{r}
 #First load the raw data taking care of missing values 
-SKOV3_MOCK <- read_tsv("data/_raw/GSM8331622_SKOV_MOCK.txt", na = c("", "NA", "N/A")) 
-SKOV3_KO <- read_tsv("data/_raw/GSM8331624_SKOV_KO.txt", na = c("", "NA", "N/A")) 
-OVCAR3_MOCK <- read_tsv("data/_raw/GSM8331623_OVCAR3_MOCK.txt", na = c("", "NA", "N/A")) 
-OVCAR3_KO <- read_tsv("data/_raw/GSM8331625_OVCAR_KO.txt", na = c("", "NA", "N/A")) 
+SKOV3_MOCK <- read_tsv("../data/_raw/GSM8331622_SKOV_MOCK.txt", na = c("", "NA", "N/A")) 
+SKOV3_KO <- read_tsv("../data/_raw/GSM8331624_SKOV_KO.txt", na = c("", "NA", "N/A")) 
+OVCAR3_MOCK <- read_tsv("../data/_raw/GSM8331623_OVCAR3_MOCK.txt", na = c("", "NA", "N/A")) 
+OVCAR3_KO <- read_tsv("../data/_raw/GSM8331625_OVCAR_KO.txt", na = c("", "NA", "N/A")) 
 ```
 
 ### Removing duplicates
@@ -70,5 +70,5 @@ data <- left_join(OVCAR3_MOCK,
 ### Saving in data folder
 
 ```{r}
-write_tsv(data, "data/01_dat_load.tsv")
+write_tsv(data, "../data/01_dat_load.tsv")
 ```
