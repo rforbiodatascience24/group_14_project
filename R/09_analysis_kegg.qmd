@@ -11,6 +11,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(ggplot2)
 library(biomaRt)
 library(clusterProfiler)
 library(enrichplot)
@@ -35,7 +36,7 @@ gene_info <- getBM(
   pull(gene), 
   mart = mart)
 
-#Join the data and rearrange the new ID column after the old column. 
+#Join the data and rearrange the new ID column after the old column.
 data_with_ID <- data |> 
   left_join(gene_info, by = c("gene" = "external_gene_name")) |>
   relocate(entrezgene_id, .after = gene)
@@ -80,22 +81,24 @@ geneIDs_OVCAR3_downregulated <- data_OVCAR3_downregulated |>
 
 ```
 
-### Kegg enrichment for all upregulated genes in OVCAR3
+### KEGG enrichment for all up-regulated genes in OVCAR3
 
 ```{r}
-kegg_analysis_OVCAR3_upregulated <- enrichKEGG(gene = geneIDs_OVCAR3_upregulated, 
-                                               organism = "hsa", 
-                                               pAdjustMethod = "BH", minGSSize = 10,
-                                               maxGSSize = 500, qvalueCutoff = 0.05)
+kegg_analysis_OVCAR3_upregulated <- enrichKEGG(gene = geneIDs_OVCAR3_upregulated,
+                                               organism = "hsa",
+                                               pAdjustMethod = "BH",
+                                               minGSSize = 10,
+                                               maxGSSize = 500,
+                                               qvalueCutoff = 0.05)
 
-kegg_results <- as_tibble(kegg_analysis_OVCAR3_upregulated)
+kegg_results_OVCAR3_upregulated <- as_tibble(kegg_analysis_OVCAR3_upregulated)
 
-kegg_results |> 
-  slice_min(order_by = p.adjust, n = 10) |>               
-  mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>   
-  ggplot(aes(x = Count, y = Description)) +                
-  geom_point(aes(size = Count, color = p.adjust)) +        
-  scale_color_gradient(low = "red", high = "blue", name = "p.adjust") +  
+plot_kegg_OVCAR3_upregulated <- kegg_results_OVCAR3_upregulated |> 
+  slice_min(order_by = p.adjust, n = 10) |> 
+  mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>
+  ggplot(aes(x = Count, y = Description)) + 
+  geom_point(aes(size = Count, color = p.adjust)) + 
+  scale_color_gradient(low = "red", high = "blue", name = "p.adjust") + 
   labs(
     title = "KEGG Pathway Enrichment Analysis for upregulated genes in OVCAR3",
     x = "Gene Count",
@@ -105,19 +108,23 @@ kegg_results |>
     axis.text.y = element_text(size = 10, color = "black"),
     plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
 
+plot_kegg_OVCAR3_upregulated
+
 ```
 
-### Kegg enrichment for all downregulated genes in OVCAR3
+### KEGG enrichment for all down-regulated genes in OVCAR3
 
 ```{r}
-kegg_analysis_OVCAR3_downregulated <- enrichKEGG(gene = geneIDs_OVCAR3_downregulated, 
-                                               organism = "hsa", 
-                                               pAdjustMethod = "BH", minGSSize = 10,
-                                               maxGSSize = 500, qvalueCutoff = 0.05)
+kegg_analysis_OVCAR3_downregulated <- enrichKEGG(gene = geneIDs_OVCAR3_downregulated,
+                                                 organism = "hsa", 
+                                                 pAdjustMethod = "BH",
+                                                 minGSSize = 10,
+                                                 maxGSSize = 500,
+                                                 qvalueCutoff = 0.05)
 
-kegg_results <- as_tibble(kegg_analysis_OVCAR3_downregulated)
+kegg_results_OVCAR3_downregulated <- as_tibble(kegg_analysis_OVCAR3_downregulated)
 
-kegg_results |> 
+plot_kegg_OVCAR3_downregulated <- kegg_results_OVCAR3_downregulated |> 
   slice_min(order_by = p.adjust, n = 10) |>               
   mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>   
   ggplot(aes(x = Count, y = Description)) +                
@@ -131,6 +138,8 @@ kegg_results |>
   theme(
     axis.text.y = element_text(size = 10, color = "black"),
     plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
+
+plot_kegg_OVCAR3_downregulated
 
 ```
 
@@ -185,4 +194,8 @@ kegg_results |>
   theme(
     axis.text.y = element_text(size = 10, color = "black"),
     plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
+```
+
+```{r}
+
 ```
