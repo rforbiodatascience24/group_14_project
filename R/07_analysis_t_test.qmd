@@ -36,26 +36,7 @@ mock_or_ko <- data |>
                names_pattern = "(.*)_(.*)" )
 ```
 
-### Alm scatter plot over de to
-
-To show the nicest version of the plot, some rows are removed
-
-```{r}
-mock_or_ko |> 
-  ggplot(mapping = aes(x = OVCAR3, y = SKOV3, color = MOCK_or_KO)) +
-  geom_point() + 
-  geom_smooth(method = lm,
-              se = FALSE) +
-  labs(title = "Gene expression in the two cell lines for MOCK and KO",
-       color = "MOCK or KO") +
-  theme_minimal() +
-  scale_x_continuous(limits = c(0,730000)) +
-  scale_y_continuous(limits = c(0,730000))
-```
-
-### Correlation for the regression
-
-Though some points are removed in the plot above, all values are a part of the models beneath. Therefore the models beneath are not equal to the regressions above.
+### Correlation between KO and MOCK
 
 ```{r}
 model_KO <- mock_or_ko |> 
@@ -84,6 +65,25 @@ rho_MOCK <- mock_or_ko |>
 rho_KO
 rho_MOCK
 ```
+
+### Scatter plot between KO and MOCK
+
+To show the nicest version of the plot, some rows are removed
+
+```{r}
+mock_or_ko |> 
+  ggplot(mapping = aes(x = OVCAR3, y = SKOV3, color = MOCK_or_KO)) +
+  geom_point() + 
+  geom_smooth(method = lm,
+              se = FALSE) +
+  labs(title = "Gene expression in the two cell lines for MOCK and KO",
+       color = "MOCK or KO") +
+  theme_minimal() +
+  scale_x_continuous(limits = c(0,730000)) +
+  scale_y_continuous(limits = c(0,730000))
+```
+
+### Statistics: t test and p-values
 
 ```{r}
 KO_OVCAR3 <- mock_or_ko |> 
