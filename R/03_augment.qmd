@@ -7,8 +7,6 @@ format:
 editor: visual
 ---
 
-### Adding variables
-
 ### Load packages
 
 ```{r}
@@ -23,6 +21,8 @@ data <- read_tsv("data/02_dat_clean.tsv")
 
 ### Log2FC
 
+The log2 fold change (log2FC) is calculated for each of the cell lines (OVCAR3 and SKOV3) to find assess the affect of KO.
+
 ```{r}
 aug_data <- data |> 
   mutate(log2FC_OVCAR3 = log2( (OVCAR3_KO+1) / (OVCAR3_MOCK+1) ),
@@ -32,7 +32,9 @@ aug_data <- data |>
   relocate(log2FC_SKOV3, .after = SKOV3_KO)
 ```
 
-### Upregulated vs downregulated
+### Upregulated vs. downregulated
+
+Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that identifies whether each gene is up- or downregulated in each cell line based on the log2FC.
 
 ```{r}
 aug_data <- aug_data |> 
