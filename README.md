@@ -13,30 +13,3 @@ The data can be retrieved from NCBI Gene Expression Omnibus (GEO) website using 
 \
 The data was published in the study: \
 Ko EJ et. Al, "Transcriptome analysis of the effect of HERV-K env gene knockout in ovarian cancer cell lines", Genes Genomics, 2024 Sep 13, doi: 10.1007/s13258-024-01544-4 
-
-## Overview 
-Load:
-Done
-
-Clean data: 
-
-Augment: \ 
-Kolonne til op eller nedreguleret :)
-
-Describe: \ 
-Hvor mange er op og hvor mange er ned :)
-Hvor mange coloner er der :)
-
-Analysis: \ 
-2. PCA: Up regulated vs down regulated  med P værdier - måske (Baseline knock out. En lang liste med alle gener, så står de to gange) \
-
-3. Lav bedre versioner af plotsene i artiklerne
-   
-5. Heat map med sammenligning XXX
-   
-7. Correlationplot/ Scatterplot (OVCAR_KO vs. OVCAR_MOCK) XXXX
-   
-9. Venn diagram - ggVenn diagram pakke
-
-##SPG: 
-- 
