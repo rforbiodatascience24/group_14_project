@@ -142,7 +142,7 @@ correlation_plot_SKOV3 <- ggplot(data = data,
 
 Vi kan se at ikke alle gener er påvirket af knock out, da R\^2 værdien er tæt på 0 og der for mange gener er ca samme ekspression før og efter KO.
 
-###TILFØJ et fælles plot
+### Plot with both OVCAR3 and SKOV3
 
 ```{r}
 correlation_plot_OVCAR3 + correlation_plot_SKOV3  
