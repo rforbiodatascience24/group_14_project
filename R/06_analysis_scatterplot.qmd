@@ -21,37 +21,6 @@ data <- read_tsv("../data/03_dat_aug.tsv")
 ### Scatterplot of KO OVCAR3 genes vs Mock OVCAR3 genes
 
 ```{r}
-Equation_OVCAR3 <- data |>
-  select(OVCAR3_MOCK, OVCAR3_KO) |>
-  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
-
-Equation_OVCAR3
-
-Rho_value_OVCAR3 <- data |>
-  select(OVCAR3_MOCK, OVCAR3_KO) |>
-  cor(method = "spearman")
-
-Rho_value_OVCAR3
-```
-
-```{r}
-ggplot(data = data,
-       mapping = aes(x = OVCAR3_KO,
-                     y = OVCAR3_MOCK,
-                     color = DEG_OVCAR3)) +
-  geom_point() +
-  geom_smooth(method = "lm")+
-  labs(title = "Correlation between KO and Mock OVCAR3 genes",
-       x = "Expression level of KO OVCAR3", 
-       y = "Expression level of Mock OVCAR3", 
-       caption = "Data from Ko EJ et. Al",
-       color = "Differentially expressed genes") +
-  theme_minimal() +
-  theme(legend.position = "right")
-
-```
-
-```{r}
 Equation_OVCAR3_UP <- data |>
   select(OVCAR3_MOCK, OVCAR3_KO, DEG_OVCAR3) |>
   filter(DEG_OVCAR3 == "Upregulated") |>
