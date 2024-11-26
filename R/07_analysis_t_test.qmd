@@ -38,6 +38,8 @@ mock_or_ko <- data |>
 
 ### Correlation between KO and MOCK
 
+Fitting linear models of how the two cell lines correlate for both KO and MOCK
+
 ```{r}
 model_KO <- mock_or_ko |> 
   filter(MOCK_or_KO == "KO") |> 
@@ -47,32 +49,19 @@ model_MOCK <- mock_or_ko |>
   filter(MOCK_or_KO == "MOCK") |> 
   lm(formula = SKOV3 ~ OVCAR3)
 
-model_KO
-model_MOCK
-
-rho_KO <- mock_or_ko |> 
-  filter(MOCK_or_KO == "KO") |> 
-  select(OVCAR3,
-         SKOV3) |> 
-  cor(method = "spearman")
-
-rho_MOCK <- mock_or_ko |> 
-  filter(MOCK_or_KO == "MOCK") |> 
-  select(OVCAR3,
-         SKOV3) |> 
-  cor(method = "spearman")
-
-rho_KO
-rho_MOCK
+summary(model_KO)
+summary(model_MOCK)
 ```
 
 ### Scatter plot between KO and MOCK
 
-To show the nicest version of the plot, some rows are removed
+Scatter plot showing the difference between KO and MOCK including the values from the linear models
 
 ```{r}
 mock_or_ko |> 
-  ggplot(mapping = aes(x = OVCAR3, y = SKOV3, color = MOCK_or_KO)) +
+  ggplot(mapping = aes(x = OVCAR3, 
+                       y = SKOV3, 
+                       color = MOCK_or_KO)) +
   geom_point() + 
   geom_smooth(method = lm,
               se = FALSE) +
@@ -80,10 +69,33 @@ mock_or_ko |>
        color = "MOCK or KO") +
   theme_minimal() +
   scale_x_continuous(limits = c(0,730000)) +
-  scale_y_continuous(limits = c(0,730000))
+  scale_y_continuous(limits = c(0,730000)) +
+  annotate("text", 
+           x = 590000, 
+           y = 250000, 
+           size = 3.5,
+           label = "R^2 = 0.64") +
+  annotate("text", 
+           x = 590000, 
+           y = 220000, 
+           size = 3.5,
+           label = "y = 0.29x + 372.26") +
+  annotate("text", 
+           x = 80000, 
+           y = 290000, 
+           size = 3.5,
+           label = "R^2 = 0.89") +
+    annotate("text", 
+           x = 80000, 
+           y = 260000, 
+           size = 3.5,
+           label = "y = 1.21x + 83.48")
+
 ```
 
-### Statistics: t test and p-values
+### Statistics: t-test and p-values
+
+Using a t-test to check whether or not the KO and MOCK samples are different for each cell line
 
 ```{r}
 KO_OVCAR3 <- mock_or_ko |> 
@@ -107,3 +119,7 @@ MOCK_SKOV3 <- mock_or_ko |>
 broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|> 
   pull(p.value)
 ```
+
+The p-value is 0.74 for OVCAR3. This means that there are no statistical significant difference between the values of KO vs MOCK in this cell line.
+
+The p-value is 5.84e-17 for SKOV. This means that there are a strong statistical significant difference between the values of KO vs MOCK in this cell line.
