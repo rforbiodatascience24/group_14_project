@@ -32,9 +32,9 @@ aug_data <- data |>
   relocate(log2FC_SKOV3, .after = SKOV3_KO)
 ```
 
-### Upregulated vs. downregulated
+### Up-regulated vs. down-regulated
 
-Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that identifies whether each gene is up- or downregulated in each cell line based on the log2FC.
+Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that identifies whether each gene is up- or down-regulated in each cell line based on the log2FC.
 
 ```{r}
 aug_data <- aug_data |> 
