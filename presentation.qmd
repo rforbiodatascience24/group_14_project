@@ -40,9 +40,21 @@ author:
 
 
 ## Results
+28.040 observations (genes)
 
-```         
-```
+OVCAR-3:
+down-regulated: 766
+up: 412
+neu: 23062
+
+SKOV3: 
+down: 920
+up: 270
+neutral: 26850
+
+Common genes:
+up: 59 (eg. CRYBB2, ANKRD62 -> both associated with cancer)
+down: 15 (e.g. RBAKDN and CDH2 -> associated with cell division and adhesion)
 
 When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
 
