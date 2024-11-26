@@ -1,5 +1,5 @@
 ---
-title: "07_analysis_3"
+title: "07_analysis_t_test"
 author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
 format: 
   html:
@@ -21,6 +21,10 @@ library(broom)
 ```{r}
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
+
+### Data for analysis 
+
+Pivot data to long format
 
 ```{r}
 mock_or_ko <- data |> 
@@ -122,4 +126,4 @@ broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|>
 
 The p-value is 0.74 for OVCAR3. This means that there are no statistical significant difference between the values of KO vs MOCK in this cell line.
 
-The p-value is 5.84e-17 for SKOV. This means that there are a strong statistical significant difference between the values of KO vs MOCK in this cell line.
+The p-value is 5.84e-17 for SKOV3. This means that there are a strong statistical significant difference between the values of KO vs MOCK in this cell line.
