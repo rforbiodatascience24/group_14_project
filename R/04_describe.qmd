@@ -16,7 +16,7 @@ library(tidyverse)
 ### Load data
 
 ```{r}
-data <- read_tsv("data/03_dat_aug.tsv")
+data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
 ### Basic info
@@ -26,20 +26,24 @@ ncol(data)
 nrow(data)
 ```
 
-There are 28040 observations (genes)
+There are 28040 observations (genes).
 
-There are 9 variables
+There are 9 variables (MOCK, KO, log2FC and DEG (up/downregulated) for each cell line and a column with gene symbols).
 
 ### Upregulated/downregulated genes
+
+The number of up- and downregulated genes are counted.
 
 ```{r}
 data |> count(DEG_OVCAR3)
 data |> count(DEG_SKOV3)
 ```
 
-For OVCAR3 there are 9.834 downregulated genes, 2.568 neutral genes and 15.638 upregulated genes
+For OVCAR3 there are 9.834 downregulated genes, 2.568 neutral genes and 15.638 upregulated genes.
 
-For SKOV3 there are 18.945 downregulated genes, 5.115 neutral genes and 3.980 upregulated
+For SKOV3 there are 18.945 downregulated genes, 5.115 neutral genes and 3.980 upregulated.
+
+A barplot is made to illustrate the number of differentially expressed genes (DEG) for each cell line. They are divided into Downregulated, Neutral, and Upregulated genes.
 
 ```{r}
 data |> 
@@ -76,6 +80,8 @@ data |>
 
 ### Overlapping genes
 
+Counting the number of genes that are upregulated in both cell lines and the number of genes that are downregulated in both cell lines.
+
 ```{r}
 #upregulated genes for both cell lines
 data |> 
@@ -90,6 +96,6 @@ data |>
   count()
 ```
 
-There are 2.197 genes, which are upregulated for both cell lines
+There are 2.197 genes, which are upregulated for both cell lines.
 
-There are 8.116 genes, which are downregulated for both cell lines
+There are 8.116 genes, which are downregulated for both cell lines.
