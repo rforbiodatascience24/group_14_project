@@ -9,6 +9,7 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(ggplot2)
+library("patchwork")
 ```
 
 ### Load data
@@ -17,18 +18,90 @@ library(ggplot2)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Scatterplot of Knock out OVCAR3 genes vs Mock OVCAR3 genes
+### Scatterplot of KO OVCAR3 genes vs Mock OVCAR3 genes
 
 ```{r}
-ggplot(data = data,
+Equation_OVCAR3_UP <- data |>
+  select(OVCAR3_MOCK, OVCAR3_KO, DEG_OVCAR3) |>
+  filter(DEG_OVCAR3 == "Upregulated") |>
+  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+
+Equation_OVCAR3_DOWN <- data |>
+  select(OVCAR3_MOCK, OVCAR3_KO, DEG_OVCAR3) |>
+  filter(DEG_OVCAR3 == "Downregulated") |>
+  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+
+summary(Equation_OVCAR3_UP)
+summary(Equation_OVCAR3_DOWN)
+```
+
+```{r}
+correlation_plot_OVCAR3 <- ggplot(data = data,
        mapping = aes(x = OVCAR3_KO,
                      y = OVCAR3_MOCK,
                      color = DEG_OVCAR3)) +
   geom_point() +
-  geom_smooth(method = "lm")+ #If trendline is wanted
-  labs(title = "Correlation between Knock Out and Mock OVCAR3 genes",
-       x = "Expression level of Knock out OVCAR3", 
+  geom_smooth(method = "lm")+
+  annotate("text",
+    x = 110000, y = 1.31e+05, size = 3.5,
+    label = "y = 1.63 + 155.93") +
+  annotate("text",
+    x = 110000, y = 1.2e+05, size = 3.5,
+    label = "R^2 = 0.696") +
+  annotate("text",
+    x = 2.55e+5, y = 0.36e+05, size = 3.5,
+    label = "y = 0.29 + 179.69") + 
+  annotate("text",
+    x = 2.55e+5, y = 0.25e+05, size = 3.5,
+    label = "R^2 = 0.769") +
+  labs(title = "Correlation between KO and Mock OVCAR3 genes",
+       x = "Expression level of KO OVCAR3", 
        y = "Expression level of Mock OVCAR3", 
+       caption = "Data from Ko EJ et. Al",
+       color = "Differentially expressed genes") +
+  theme_minimal() +
+  theme(legend.position = "right")
+```
+
+### 'Scatterplot of KO SKOV3 genes vs Mock SKOV3 genes
+
+```{r}
+Equation_SKOV3_UP <- data |>
+  select(SKOV3_MOCK, SKOV3_KO, DEG_SKOV3) |>
+  filter(DEG_SKOV3 == "Upregulated") |>
+  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+
+Equation_SKOV3_DOWN <- data |>
+  select(SKOV3_MOCK, SKOV3_KO, DEG_SKOV3) |>
+  filter(DEG_SKOV3 == "Downregulated") |>
+  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+
+summary(Equation_SKOV3_UP)
+summary(Equation_SKOV3_DOWN)
+```
+
+```{r}
+correlation_plot_SKOV3 <- ggplot(data = data,
+       mapping = aes(x = SKOV3_KO,
+                     y = SKOV3_MOCK,
+                     color = DEG_SKOV3)) +
+  geom_point() +
+  geom_smooth(method = "lm")+
+  annotate("text",
+    x = 50000, y = 1.31e+05, size = 3.5,
+    label = "y = 1.50 - 24.06") +
+  annotate("text",
+    x = 50000, y = 1.2e+05, size = 3.5,
+    label = "R^2 = 0.980") +
+  annotate("text",
+    x = 100000, y = 0.36e+05, size = 3.5,
+    label = "y = 0.762 + 1.54") + 
+  annotate("text",
+    x = 100000, y = 0.25e+05, size = 3.5,
+    label = "R^2 = 0.996") +
+  labs(title = "Correlation between KO and Mock SKOV3 genes",
+       x = "Expression level of KO SKOV3", 
+       y = "Expression level of Mock SKOV3", 
        caption = "Data from Ko EJ et. Al",
        color = "Differentially expressed genes") +
   theme_minimal() +
@@ -36,21 +109,10 @@ ggplot(data = data,
 
 ```
 
-### Scatterplot of Knock out SKOV3 genes vs Mock SKOV3 genes
+Vi kan se at ikke alle gener er påvirket af knock out, da R\^2 værdien er tæt på 0 og der for mange gener er ca samme ekspression før og efter KO.
+
+### Plot with both OVCAR3 and SKOV3
 
 ```{r}
-ggplot(data = data,
-       mapping = aes(x = SKOV3_KO,
-                     y = SKOV3_MOCK,
-                     color = DEG_SKOV3)) +
-  geom_point() +
-  geom_smooth(method = "lm")+ #If trendline is wanted mangler R^2 værdi
-  labs(title = "Correlation between Knock Out and Mock SKOV3 genes",
-       x = "Expression level of Knock out SKOV3", 
-       y = "Expression level of Mock SKOV3", 
-       caption = "Data from Ko EJ et. Al",
-       color = "Differentially expressed genes") +
-  theme_minimal() +
-  theme(legend.position = "right")
-
+correlation_plot_OVCAR3 + correlation_plot_SKOV3  
 ```
