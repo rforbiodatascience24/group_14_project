@@ -21,6 +21,8 @@ data <- read_tsv("data/01_dat_load.tsv")
 
 ### Clean up data
 
+The data is cleaned up by removing all rows (genes) that has an expression level on 0 in all four cases (OVCAR3 MOCK, OVCAR3 KO, SKOV3 MOCK, and SKOV3 KO). The columns are renamed to ensure alignment in names so that the cell lines are called OVCAR3 and SKOV3 respectively.
+
 ```{r}
 clean_data <- data |> 
   filter(rowSums(across(where(is.numeric))) > 0) |> 

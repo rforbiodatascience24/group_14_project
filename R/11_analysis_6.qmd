@@ -1,5 +1,5 @@
 ---
-title: "11_analysis_6"
+title: "11_analysis_KEGG"
 author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
 format: 
   html:
@@ -12,6 +12,7 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(biomaRt)
+library(clusterProfiler)
 library(enrichplot)
 ```
 
@@ -21,7 +22,7 @@ library(enrichplot)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Change gene names into geneID for the future annotation
+### Get geneIDs for each gene
 
 ```{r}
 #connect to ensembl to fetch IDs
@@ -38,32 +39,150 @@ gene_info <- getBM(
 data_with_ID <- data |> 
   left_join(gene_info, by = c("gene" = "external_gene_name")) |>
   relocate(entrezgene_id, .after = gene)
-  
-#save the geneIDs seperate:
-geneIDs <- data_with_ID |> 
-  rename(geneIDs = entrezgene_id) |>  
-  pull(geneIDs) 
 
-geneIDs <- geneIDs |> 
-  na.omit(geneIDs)
+#Separate data into upregulated and downregulated DEGs with geneIDs
+data_OVCAR3_upregulated <- data_with_ID |> 
+  filter(DEG_OVCAR3 == "Upregulated") |> 
+  dplyr::select(gene, entrezgene_id, OVCAR3_MOCK, OVCAR3_KO, log2FC_OVCAR3)
+
+data_OVCAR3_downregulated <- data_with_ID |> 
+  filter(DEG_OVCAR3 == "Downregulated") |> 
+  dplyr::select(gene, entrezgene_id, OVCAR3_MOCK, OVCAR3_KO, log2FC_OVCAR3)
+
+data_SKOV3_upregulated <- data_with_ID |> 
+  filter(DEG_SKOV3 == "Upregulated") |> 
+  dplyr::select(gene, entrezgene_id, SKOV3_MOCK, OVCAR3_KO, log2FC_SKOV3)
+
+data_SKOV3_downregulated <- data_with_ID |> 
+  filter(DEG_SKOV3 == "Downregulated") |> 
+  dplyr::select(gene, entrezgene_id, SKOV3_MOCK, SKOV3_KO, log2FC_SKOV3)
+
+#save the geneIDs seperately for each cell line and type of regulation:
+geneIDs_OVCAR3_upregulated <- data_OVCAR3_upregulated |> 
+  rename(geneIDs = entrezgene_id) |>  
+  pull(geneIDs) |> 
+  na.omit()
+
+geneIDs_SKOV3_downregulated <- data_SKOV3_downregulated |> 
+  rename(geneIDs = entrezgene_id) |>  
+  pull(geneIDs) |> 
+  na.omit()
+
+geneIDs_SKOV3_upregulated <- data_SKOV3_upregulated |> 
+  rename(geneIDs = entrezgene_id) |>  
+  pull(geneIDs) |> 
+  na.omit()
+
+geneIDs_OVCAR3_downregulated <- data_OVCAR3_downregulated |> 
+  rename(geneIDs = entrezgene_id) |>  
+  pull(geneIDs) |> 
+  na.omit()
+
 ```
 
-### Kegg enrichment
+### Kegg enrichment for all upregulated genes in OVCAR3
 
 ```{r}
-kegg_analysis <- kegg_enrichment <- enrichKEGG(gene = geneIDs, 
+kegg_analysis_OVCAR3_upregulated <- enrichKEGG(gene = geneIDs_OVCAR3_upregulated, 
                                                organism = "hsa", 
                                                pAdjustMethod = "BH", minGSSize = 10,
                                                maxGSSize = 500, qvalueCutoff = 0.05)
 
-dotplot(kegg_analysis, 
-        color = "p.adjust", 
-        showCategory = 10, #Can be changed depending on how many categories we want 
-        size = "Count")
+kegg_results <- as_tibble(kegg_analysis_OVCAR3_upregulated)
 
+kegg_results |> 
+  slice_min(order_by = p.adjust, n = 10) |>               
+  mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>   
+  ggplot(aes(x = Count, y = Description)) +                
+  geom_point(aes(size = Count, color = p.adjust)) +        
+  scale_color_gradient(low = "red", high = "blue", name = "p.adjust") +  
+  labs(
+    title = "KEGG Pathway Enrichment Analysis for upregulated genes in OVCAR3",
+    x = "Gene Count",
+    y = "Pathways") +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 10, color = "black"),
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
 
-barplot(kegg_analysis,
-        color = "p.adjust",
-        showCategory = 10,
-        order = TRUE)
+```
+
+### Kegg enrichment for all downregulated genes in OVCAR3
+
+```{r}
+kegg_analysis_OVCAR3_downregulated <- enrichKEGG(gene = geneIDs_OVCAR3_downregulated, 
+                                               organism = "hsa", 
+                                               pAdjustMethod = "BH", minGSSize = 10,
+                                               maxGSSize = 500, qvalueCutoff = 0.05)
+
+kegg_results <- as_tibble(kegg_analysis_OVCAR3_downregulated)
+
+kegg_results |> 
+  slice_min(order_by = p.adjust, n = 10) |>               
+  mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>   
+  ggplot(aes(x = Count, y = Description)) +                
+  geom_point(aes(size = Count, color = p.adjust)) +        
+  scale_color_gradient(low = "red", high = "blue", name = "p.adjust") +  
+  labs(
+    title = "KEGG Pathway Enrichment Analysis for downregulated genes in OVCAR3",
+    x = "Gene Count",
+    y = "Pathways") +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 10, color = "black"),
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
+
+```
+
+### Kegg enrichment for all upregulated genes in SKOV3
+
+```{r}
+kegg_analysis_SKOV3_upregulated <- enrichKEGG(gene = geneIDs_SKOV3_upregulated, 
+                                               organism = "hsa", 
+                                               pAdjustMethod = "BH", minGSSize = 10,
+                                               maxGSSize = 500, qvalueCutoff = 0.05)
+
+kegg_results <- as_tibble(kegg_analysis_SKOV3_upregulated)
+
+kegg_results |> 
+  slice_min(order_by = p.adjust, n = 10) |>               
+  mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>   
+  ggplot(aes(x = Count, y = Description)) +                
+  geom_point(aes(size = Count, color = p.adjust)) +        
+  scale_color_gradient(low = "red", high = "blue", name = "p.adjust") +  
+  labs(
+    title = "KEGG Pathway Enrichment Analysis for upregulated genes in SKOV3",
+    x = "Gene Count",
+    y = "Pathways") +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 10, color = "black"),
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
+
+```
+
+### Kegg enrichment for all downregulated genes in SKOV3
+
+```{r}
+kegg_analysis_SKOV3_downregulated <- enrichKEGG(gene = geneIDs_SKOV3_downregulated, 
+                                               organism = "hsa", 
+                                               pAdjustMethod = "BH", minGSSize = 10,
+                                               maxGSSize = 500, qvalueCutoff = 0.05)
+
+kegg_results <- as_tibble(kegg_analysis_SKOV3_downregulated)
+
+kegg_results |> 
+  slice_min(order_by = p.adjust, n = 10) |>               
+  mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |>   
+  ggplot(aes(x = Count, y = Description)) +                
+  geom_point(aes(size = Count, color = p.adjust)) +        
+  scale_color_gradient(low = "red", high = "blue", name = "p.adjust") +  
+  labs(
+    title = "KEGG Pathway Enrichment Analysis for downregulated genes in SKOV3",
+    x = "Gene Count",
+    y = "Pathways") +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 10, color = "black"),
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
 ```
