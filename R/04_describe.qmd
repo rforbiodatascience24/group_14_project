@@ -19,31 +19,34 @@ library(tidyverse)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Basic info
+### Basic information 
 
 ```{r}
 ncol(data)
 nrow(data)
 ```
 
-There are 28040 observations (genes).
+There are 28.040 observations (genes).
 
-There are 9 variables (MOCK, KO, log2FC and DEG (up/downregulated) for each cell line and a column with gene symbols).
+There are 9 variables, these include: MOCK, KO, log2FC and DEG (up/downregulated) for each cell line and a column with gene symbols.
 
-### Upregulated/downregulated genes
+### Number of up-regulated and down-regulated genes
 
-The number of up- and downregulated genes are counted.
+The number of up- and down-regulated genes are counted.
 
 ```{r}
-data |> count(DEG_OVCAR3)
-data |> count(DEG_SKOV3)
+data |> 
+  count(DEG_OVCAR3)
+
+data |> 
+  count(DEG_SKOV3)
 ```
 
-For OVCAR3 there are 9.834 downregulated genes, 2.568 neutral genes and 15.638 upregulated genes.
+After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated genes, 4.212 up-regulated genes and 23.062 neutral genes.
 
-For SKOV3 there are 18.945 downregulated genes, 5.115 neutral genes and 3.980 upregulated.
+After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated genes, 270 up-regulated genes and 26.850 neutral genes.
 
-A barplot is made to illustrate the number of differentially expressed genes (DEG) for each cell line. They are divided into Downregulated, Neutral, and Upregulated genes.
+A barplot is made to illustrate the number of differentially expressed genes (DEG) for each cell line. They are divided into down-regulated, up-regulated and neutral genes.
 
 ```{r}
 data |> 
@@ -51,14 +54,10 @@ data |>
     cols = c(DEG_OVCAR3, 
              DEG_SKOV3), 
     names_to = "cell_line", 
-    values_to = "expression_level"
-  ) |> 
+    values_to = "expression_level") |> 
   mutate(cell_line = case_when(cell_line == "DEG_OVCAR3" ~ "OVCAR3",
-                               cell_line == "DEG_SKOV3" ~ "SKOV3")
-         ) |> 
-  select(gene, 
-         cell_line, 
-         expression_level) |> 
+                               cell_line == "DEG_SKOV3" ~ "SKOV3")) |>
+  select(gene, cell_line, expression_level) |> 
   count(expression_level, 
         cell_line) |> 
   ggplot(mapping = aes(x = expression_level, 
@@ -68,34 +67,37 @@ data |>
            position = "dodge") +
   geom_text(mapping = aes(label = n), 
             position = position_dodge(width = 0.9),
-            vjust = 1.5) +
+            vjust = -0.2) +
   theme_minimal() + 
-  theme(legend.position = "bottom") +
-  labs(x = "Expression level",
+  labs(x = "",
        y = "Count",
-       title = "Distribution of DEGs in the two cell lines",
-       fill = "Cell line")
+       title = "Distribution of DEGs in the two cell lines OVCAR3 and SKOV3",
+       fill = "Cell line") + 
+  scale_x_discrete(limits = c("Downregulated", "Upregulated", "Neutral"), 
+                   labels = c("Downregulated" = "Down-regulated", "Upregulated" = "Up-regulated"))
 
 ```
 
-### Overlapping genes
+### Number of overlapping genes between the cell lines
 
-Counting the number of genes that are upregulated in both cell lines and the number of genes that are downregulated in both cell lines.
+Counting the number of genes that are up-regulated or down-regulated in both cell lines.
 
 ```{r}
 #upregulated genes for both cell lines
 data |> 
   filter(DEG_OVCAR3 == "Upregulated" &
-         DEG_SKOV3 == "Upregulated") |>
+         DEG_SKOV3 == "Upregulated") |> 
+  print() |> 
   count()
 
 #downregulated genes for both cell lines
 data |> 
   filter(DEG_OVCAR3 == "Downregulated" &
          DEG_SKOV3 == "Downregulated") |>
+  print() |>
   count()
 ```
 
-There are 2.197 genes, which are upregulated for both cell lines.
+For the up-regulated genes there are 59 genes that are overlapping in both cell lines, CRYBB2 and ANKRD62 both associated with cancer.
 
-There are 8.116 genes, which are downregulated for both cell lines.
+In regards to the down-regulated genes there are 15 genes shared between the two cell lines, RBAKDN and CDH2 both associated with cell division and adhesion.
