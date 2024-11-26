@@ -19,7 +19,7 @@ library(tidyverse)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Basic information 
+### Basic information
 
 ```{r}
 ncol(data)

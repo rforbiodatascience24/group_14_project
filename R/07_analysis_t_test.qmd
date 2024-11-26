@@ -22,7 +22,7 @@ library(broom)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Data for analysis 
+### Data for analysis
 
 Pivot data to long format
 

@@ -19,7 +19,7 @@ library(tidyverse)
 data <- read_tsv("../data/02_dat_clean.tsv")
 ```
 
-### Fold change calculation 
+### Fold change calculation
 
 The log2 fold change (log2FC) is calculated for each of the cell lines (OVCAR3 and SKOV3) and added as the two columns log2FC_OVCAR3 and log2FC_SKOV3 to assess the affect of HERV-K KO.
 

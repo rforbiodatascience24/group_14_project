@@ -42,7 +42,7 @@ summary(Equation_OVCAR3_UP)
 summary(Equation_OVCAR3_DOWN)
 ```
 
-### Scatterplot of OVCAR3 KO vs MOCK DEGs 
+### Scatterplot of OVCAR3 KO vs MOCK DEGs
 
 ```{r}
 correlation_plot_OVCAR3 <- data |>  
