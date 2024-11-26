@@ -7,11 +7,10 @@ format:
 editor: visual
 ---
 
-### Loading packages 
+### Loading packages
 
 ```{r}
 library(tidyverse)
-library(clusterProfiler)
 library(biomaRt)
 library(enrichplot)
 ```
