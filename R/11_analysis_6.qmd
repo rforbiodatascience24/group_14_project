@@ -22,7 +22,7 @@ library(enrichplot)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Get geneIDs for each gene 
+### Get geneIDs for each gene
 
 ```{r}
 #connect to ensembl to fetch IDs
@@ -80,7 +80,7 @@ geneIDs_OVCAR3_downregulated <- data_OVCAR3_downregulated |>
 
 ```
 
-### Kegg enrichment for all upregulated genes in OVCAR3 
+### Kegg enrichment for all upregulated genes in OVCAR3
 
 ```{r}
 kegg_analysis_OVCAR3_upregulated <- enrichKEGG(gene = geneIDs_OVCAR3_upregulated, 
@@ -107,7 +107,7 @@ kegg_results |>
 
 ```
 
-### Kegg enrichment for all downregulated genes in OVCAR3 
+### Kegg enrichment for all downregulated genes in OVCAR3
 
 ```{r}
 kegg_analysis_OVCAR3_downregulated <- enrichKEGG(gene = geneIDs_OVCAR3_downregulated, 
@@ -134,7 +134,7 @@ kegg_results |>
 
 ```
 
-### Kegg enrichment for all upregulated genes in SKOV3 
+### Kegg enrichment for all upregulated genes in SKOV3
 
 ```{r}
 kegg_analysis_SKOV3_upregulated <- enrichKEGG(gene = geneIDs_SKOV3_upregulated, 
@@ -161,7 +161,7 @@ kegg_results |>
 
 ```
 
-### Kegg enrichment for all downregulated genes in SKOV3 
+### Kegg enrichment for all downregulated genes in SKOV3
 
 ```{r}
 kegg_analysis_SKOV3_downregulated <- enrichKEGG(gene = geneIDs_SKOV3_downregulated, 
