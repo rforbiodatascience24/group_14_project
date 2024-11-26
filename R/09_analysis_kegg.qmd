@@ -195,7 +195,3 @@ kegg_results |>
     axis.text.y = element_text(size = 10, color = "black"),
     plot.title = element_text(hjust = 0.5, face = "bold", size = 12))
 ```
-
-```{r}
-
-```
