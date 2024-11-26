@@ -12,10 +12,7 @@ editor: visual
 ### Load packages
 
 ```{r}
-library(tidyverse) 
-library(ggplot2)
-library(broom)
-library(cowplot)
+library(tidyverse)
 ```
 
 ### Load data
@@ -23,77 +20,6 @@ library(cowplot)
 ```{r}
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
-
-### dataset for PCA
-
-looking at log2FC and grouped by expression level (up, downregulated, or neutral)
-
-Tror jeg ikke virker... giver ikke den stroe mening når jeg tænker mig om, så skal nok bare slettes...
-
-```{r}
-test_PCA_data <- data |>
-  pivot_longer(
-    cols = c(DEG_OVCAR3,
-             DEG_SKOV3),
-    names_to = "cell_line",
-    values_to = "expression_level") |>
-  mutate(cell_line = case_when(cell_line == "DEG_OVCAR3" ~ "OVCAR3",
-                               cell_line == "DEG_SKOV3" ~ "SKOV3")
-         ) |>
-  select(gene,
-         contains("log2FC"),
-         cell_line,
-         expression_level)
-
-pca_fit <- test_PCA_data |>
-  select(where(is.numeric)) |>  # retain only numeric columns
-  prcomp(scale = TRUE) # do PCA on scaled data
-
-pca_fit |>
-  augment(test_PCA_data) |>
-  ggplot(aes(.fittedPC1, .fittedPC2, color = expression_level)) +
-  geom_point(size = 1.5) +
-  scale_color_manual(
-    values = c(Upregulated = "#339900", Downregulated = "#FF3300", Neutral = "#003399")
-  ) +
-  theme_half_open(12) + background_grid()
-```
-
-Lidt dette samme bare for kun den ene cell line. Her er der taget udgangsunkt i MOCK og KO data, IKKE log2FC. DEtte giver heller ikke det store mening føler jeg...
-
-```{r}
-test_PCA_data_OVCAR <- data |>
-  select(gene,
-         contains("OVCAR3"),
-         -log2FC_OVCAR3)
-
-pca_fit <- test_PCA_data_OVCAR |>
-  select(where(is.numeric)) |>  # retain only numeric columns
-  prcomp(scale = TRUE) # do PCA on scaled data
-
-pca_fit |>
-  augment(test_PCA_data_OVCAR) |>
-  ggplot(aes(.fittedPC1, .fittedPC2, color = DEG_OVCAR3)) +
-  geom_point(size = 1.5) +
-  scale_color_manual(
-    values = c(Upregulated = "#339900", Downregulated = "#FF3300", Neutral = "#003399")
-  ) +
-  theme_half_open(12) + background_grid()
-```
-
-### PCA for MOCK vs KO
-
-Her er den rå data valgt fra (dvs gene, OVCAR3_MOCK, OVCAR3_KO, SKOV3_MOCK, SKOV3_KO.
-
-Så er pivot longer brugt til at lave følgende kolonner:
-
-1.  MOCK eller KO
-2.  OVCAR3 expression
-3.  SKOV3 expression
-
-PCA plot er så lavet på disse expression farvet på baggrund af MOCK eller KO.
-
-Kan ikke helt finde ud af hvor vigtigt det er, når nu der kun er to kategorier med talværdier...
 
 ```{r}
 mock_or_ko <- data |> 
@@ -107,20 +33,6 @@ mock_or_ko <- data |>
                names_to = c(".value", 
                             "MOCK_or_KO"), 
                names_pattern = "(.*)_(.*)" )
-
-pca_fit_mock_or_ko <- mock_or_ko |> 
-  select(where(is.numeric)) |>  # retain only numeric columns 
-  prcomp(scale = TRUE) # do PCA on scaled data
-
-pca_fit_mock_or_ko |> 
-  augment(mock_or_ko) |> 
-  ggplot(aes(.fittedPC1, 
-             .fittedPC2, 
-             color = MOCK_or_KO)) + 
-  geom_point(size = 1.5) + 
-  scale_color_manual(values = c(MOCK = "#339900", 
-                                KO = "#FF3300") ) + 
-  theme_minimal()
 ```
 
 ### Alm scatter plot over de to
