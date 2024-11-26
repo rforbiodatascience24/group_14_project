@@ -23,7 +23,9 @@ library(enrichplot)
 data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
-### Get geneIDs for each gene
+### Get gene IDs for each gene name
+
+Using ensembl and NCBI to retrieve all of the gene IDs for our data. The NCBI database is chosen because the IDs needs to match with the KEGG database. The IDs are then joined with the our data based on the gene names.
 
 ```{r}
 #connect to ensembl to fetch IDs
@@ -31,19 +33,24 @@ mart <- useMart("ensembl",
                 dataset = "hsapiens_gene_ensembl") 
 
 gene_info <- getBM(
-  attributes = c("external_gene_name", "entrezgene_id"),  
+  attributes = c("external_gene_name", "entrezgene_id"),
   filters = "external_gene_name",
-  values = data |>  
-  pull(gene), 
+  values = data |>
+    pull(gene),
   mart = mart)
 
 #Join the data and rearrange the new ID column after the old column.
 data_with_ID <- data |> 
-  left_join(gene_info, 
+  right_join(gene_info, 
             by = c("gene" = "external_gene_name")) |>
   relocate(entrezgene_id, 
            .after = gene)
 
+```
+
+### All up- and down-regulated are separated into individual lists for each cell line.
+
+```{r}
 #Separate data into upregulated and downregulated DEGs with geneIDs
 data_OVCAR3_upregulated <- data_with_ID |> 
   filter(DEG_OVCAR3 == "Upregulated") |> 
@@ -122,6 +129,8 @@ plot_kegg_OVCAR3_upregulated
 
 ```
 
+Only one pathway was significantly up-regulated for the OVCAR3 cell line.
+
 ### KEGG enrichment for all down-regulated genes in OVCAR3
 
 ```{r}
@@ -159,6 +168,8 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
 plot_kegg_OVCAR3_downregulated
 
 ```
+
+Several pathways were enriched when looking at the DEGs that were down-regulated in the OVCAR3 KO cell line. The top 3 pathways are all related to cancer, but also cellular senescence is seen in the plot.
 
 ### KEGG enrichment for all up-regulated genes in SKOV3
 
@@ -198,7 +209,7 @@ plot_kegg_SKOV3_upregulated
 
 ```
 
-There are no significantly up-regulated pathways in SKOV3
+There are no significantly up-regulated pathways in SKOV3.
 
 ### KEGG enrichment for all down-regulated genes in SKOV3
 
@@ -236,3 +247,7 @@ plot_kegg_SKOV3_downregulated <- kegg_analysis_SKOV3_downregulated |>
 
 plot_kegg_SKOV3_downregulated
 ```
+
+There are no significantly down-regulated pathways in SKOV3.
+
+The KEGG analysis indicate that the majority of the regulation can only be seen in the OVCAR3 cell line.
