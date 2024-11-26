@@ -13,6 +13,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(broom)
 ```
 
 ### Load data
@@ -48,8 +49,8 @@ mock_or_ko |>
   labs(title = "Gene expression in the two cell lines for MOCK and KO",
        color = "MOCK or KO") +
   theme_minimal() +
-  scale_x_continuous(limits = c(0,200000)) +
-  scale_y_continuous(limits = c(0,200000))
+  scale_x_continuous(limits = c(0,730000)) +
+  scale_y_continuous(limits = c(0,730000))
 ```
 
 ### Correlation for the regression
@@ -68,21 +69,41 @@ model_MOCK <- mock_or_ko |>
 model_KO
 model_MOCK
 
-mock_or_ko |> cor.test(SKOV3, OVCAR3, method = "spearman")
+rho_KO <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(OVCAR3,
+         SKOV3) |> 
+  cor(method = "spearman")
+
+rho_MOCK <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(OVCAR3,
+         SKOV3) |> 
+  cor(method = "spearman")
+
+rho_KO
+rho_MOCK
 ```
 
 ```{r}
-model_OVCAR3 <- mock_or_ko |> 
-  lm(formula = OVCAR3 ~ MOCK_or_KO)
+KO_OVCAR3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(OVCAR3)
+MOCK_OVCAR3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(OVCAR3)
 
-model_SKOV3 <- mock_or_ko |> 
-  lm(formula = SKOV3 ~ MOCK_or_KO)
+broom::tidy(t.test(KO_OVCAR3, MOCK_OVCAR3), paired = TRUE)|> 
+  pull(p.value)
 
-model_OVCAR3
-model_SKOV3
-```
 
-```{r}
-broom::tidy(t.test(model_OVCAR3, model_SKOV3)) |> 
+KO_SKOV3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(SKOV3)
+MOCK_SKOV3 <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(SKOV3)
+
+broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|> 
   pull(p.value)
 ```
