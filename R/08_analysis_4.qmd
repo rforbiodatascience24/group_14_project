@@ -45,5 +45,7 @@ mock_or_ko |>
               se = FALSE) +
   labs(title = "Gene expression in the two cell lines for MOCK and KO",
        color = "MOCK or KO") +
-  theme_minimal()
+  theme_minimal() +
+  scale_x_continuous(limits = c(0,200000)) +
+  scale_y_continuous(limits = c(0,200000))
 ```
