@@ -11,6 +11,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(broom)
 ```
 
 ### Load data
@@ -24,21 +25,16 @@ data <- read_tsv("../data/03_dat_aug.tsv")
 #### OVCAR3
 
 ```{r}
+# Add p-values using t-tests
 data_test <- data |> 
-  mutate(model_object = map(
-    .x = data,
-    .f = ~lm(formula = OVCAR3_MOCK ~ OVCAR3_KO,
-             data = .x)))
-```
+  rowwise() |> # Perform row-wise operations
+  mutate(
+    p_value_OVCAR3 = broom::tidy(t.test(OVCAR3_MOCK, OVCAR3_KO, paired = TRUE)) |> 
+                pull(p.value)
+  ) |>
+  ungroup() # Return to a standard tibble
 
-Stat
 
-```{r}
-gravier_clean_aug_long_nested <- gravier_clean_aug_long_nested |> 
-  mutate(model_object_tidy = map(
-    .x = model_object,
-    .f = ~tidy(.x, conf.int = TRUE,
-               conf.level = 0.95)))
 ```
 
 #### SKOV3
@@ -46,6 +42,17 @@ gravier_clean_aug_long_nested <- gravier_clean_aug_long_nested |>
 ### Volcano plots
 
 #### OVCAR3
+
+Add variable `q.value` and indicator variable `significant` to identify significant and non-significant genes:
+
+```{r}
+OVCAR3_estimates <- OVCAR3_estimates |> 
+  mutate(q.value = p.adjust(p.value)) |> 
+  mutate(significant = case_when(p.value > 0.05 ~ "no",
+                                 p.value < 0.05 ~ "yes"))
+```
+
+Create volcano plot:
 
 ```{r}
 OVCAR3_estimates |> 
@@ -67,9 +74,9 @@ OVCAR3_estimates |>
   labs(
     x = "Estimates",
     y = "-log10(p)",
-    title = "Genes Associated with Early Metastasis in Small Node-Negative Breast Carcinoma",
-    subtitle = "Genes highlighted in turquoise were significant after multiple testing correction",
-    caption = "Data from DOI: 10.1002/gcc.20820")
+    title = "Genes Associated with HERV‑K env gene knockout in ovarian cancer OVCAR3 cell line",
+    subtitle = "Genes highlighted in turquoise are significant",
+    caption = "Data from DOI: 10.1007/s13258-024-01544-4")
 ```
 
 #### SKOV3
