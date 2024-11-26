@@ -37,6 +37,8 @@ mock_or_ko <- data |>
 
 ### Alm scatter plot over de to
 
+To show the nicest version of the plot, some rows are removed
+
 ```{r}
 mock_or_ko |> 
   ggplot(mapping = aes(x = OVCAR3, y = SKOV3, color = MOCK_or_KO)) +
@@ -48,4 +50,39 @@ mock_or_ko |>
   theme_minimal() +
   scale_x_continuous(limits = c(0,200000)) +
   scale_y_continuous(limits = c(0,200000))
+```
+
+### Correlation for the regression
+
+Though some points are removed in the plot above, all values are a part of the models beneath. Therefore the models beneath are not equal to the regressions above.
+
+```{r}
+model_KO <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  lm(formula = SKOV3 ~ OVCAR3)
+
+model_MOCK <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  lm(formula = SKOV3 ~ OVCAR3)
+
+model_KO
+model_MOCK
+
+mock_or_ko |> cor.test(SKOV3, OVCAR3, method = "spearman")
+```
+
+```{r}
+model_OVCAR3 <- mock_or_ko |> 
+  lm(formula = OVCAR3 ~ MOCK_or_KO)
+
+model_SKOV3 <- mock_or_ko |> 
+  lm(formula = SKOV3 ~ MOCK_or_KO)
+
+model_OVCAR3
+model_SKOV3
+```
+
+```{r}
+broom::tidy(t.test(model_OVCAR3, model_SKOV3)) |> 
+  pull(p.value)
 ```
