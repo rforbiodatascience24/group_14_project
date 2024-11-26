@@ -50,12 +50,6 @@ SKOV3_MOCK <- SKOV3_MOCK |>
   group_by(`Gene Symbol`) |>
   filter(n() == 1) |>
   ungroup()
-
-
-# OVCAR3_KO <- OVCAR3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
-# OVCAR3_MOCK <- OVCAR3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
-# SKOV3_KO <- SKOV3_KO |> distinct(`Gene Symbol`, .keep_all = TRUE)
-# SKOV3_MOCK <- SKOV3_MOCK |> distinct(`Gene Symbol`, .keep_all = TRUE)
 ```
 
 ### Joining data
