@@ -6,6 +6,8 @@ format:
     embed-resources: true
 editor: visual
 output-dir: ../results
+editor_options: 
+  chunk_output_type: inline
 ---
 
 ### Load packages
@@ -81,7 +83,7 @@ barplot <- data |>
 
 ```
 
-Saving the barplot in a png-file in the results folder::
+The barplot is saved in a png-file in the results folder::
 
 ```{r}
 ggsave(filename = here("results/04_key_plot_1.png"),
