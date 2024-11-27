@@ -178,7 +178,7 @@ broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|>
 
 The p-value is 0.79 for OVCAR3. This means that there are no statistical significant difference between the values of KO vs baseline (MOCK) in this cell line.
 
-The p-value is 0.0688 for SKOV3. This means that there are no statistical significant difference between the values of KO vs MOCK in this cell line.
+The p-value is 0.0688 for SKOV3. This means that there are no statistical significant difference between the values of KO vs baseline (MOCK) in this cell line.
 
 ### Significant difference between KO and baseline in the cell lines for GDF15 gene
 
