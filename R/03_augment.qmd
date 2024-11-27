@@ -5,55 +5,57 @@ format:
   html:
     embed-resources: true
 editor: visual
+output-dir: ../results
 ---
 
 ### Load packages
 
 ```{r}
 library(tidyverse)
+library(readr)
+library(here)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv("data/02_dat_clean.tsv")
+data <- read_tsv(file = here("data/02_dat_clean.tsv"))
 ```
 
-### Log2FC
+### Fold change calculation
 
-The log2 fold change (log2FC) is calculated for each of the cell lines (OVCAR3 and SKOV3) and added as the two columns log2FC_OVCAR3 and log2FC_SKOV3 to assess the affect of KO.
+The log2 fold change (log2FC) is calculated for each of the cell lines (OVCAR3 and SKOV3) and added as the two columns log2FC_OVCAR3 and log2FC_SKOV3 to assess the affect of HERV-K KO.
 
 ```{r}
-aug_data <- data |> 
-  mutate(log2FC_OVCAR3 = log2( (OVCAR3_KO+1) / (OVCAR3_MOCK+1) ),
-         log2FC_SKOV3 = log2( (SKOV3_KO+1) / (SKOV3_MOCK+1))
-         ) |> 
-  relocate(log2FC_OVCAR3, .after = OVCAR3_KO) |> 
-  relocate(log2FC_SKOV3, .after = SKOV3_KO)
+aug_data <- data |>
+  mutate(log2FC_OVCAR3 = log2((OVCAR3_KO+1) / (OVCAR3_MOCK+1)),
+         log2FC_SKOV3 = log2((SKOV3_KO+1) / (SKOV3_MOCK+1))) |>
+  relocate(log2FC_OVCAR3, 
+           .after = OVCAR3_KO) |> 
+  relocate(log2FC_SKOV3, 
+           .after = SKOV3_KO)
 ```
 
-### Upregulated vs. downregulated
+### Assign regulation pattern to data
 
-Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that identifies whether each gene is up- or downregulated in each cell line based on the log2FC.
+Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that identifies whether each gene is up- or down-regulated in each cell line. This is based on the log2 fold change, if it is above 2 the genes are "Upregulated", and below -2 they are "Downregulated", if they are between -2 and 2 they are "Neutral".
 
 ```{r}
 aug_data <- aug_data |> 
-  mutate(DEG_OVCAR3 = case_when(log2FC_OVCAR3 > 0 ~ "Upregulated",
-                       log2FC_OVCAR3 < 0 ~ "Downregulated",
-                       log2FC_OVCAR3 == 0 ~ "Neutral"
-                       ),
-         DEG_SKOV3 = case_when(log2FC_SKOV3 > 0 ~ "Upregulated",
-                       log2FC_SKOV3 < 0 ~ "Downregulated",
-                       log2FC_SKOV3 == 0 ~ "Neutral"
-                       )
-  ) |> 
-  relocate(DEG_OVCAR3, .after = log2FC_OVCAR3) |> 
-  relocate(DEG_SKOV3, .after = log2FC_SKOV3)
+  mutate(DEG_OVCAR3 = case_when(log2FC_OVCAR3 >= 2 ~ "Upregulated",
+                                log2FC_OVCAR3 <= -2 ~ "Downregulated",
+                                log2FC_OVCAR3 < 2 & log2FC_OVCAR3 > -2 ~ "Neutral"),
+         DEG_SKOV3 = case_when(log2FC_SKOV3 >= 2 ~ "Upregulated",
+                               log2FC_SKOV3 <= -2 ~ "Downregulated",
+                               log2FC_SKOV3 < 2 & log2FC_SKOV3 > -2 ~ "Neutral")) |>
+  relocate(DEG_OVCAR3, 
+           .after = log2FC_OVCAR3) |>
+  relocate(DEG_SKOV3, 
+           .after = log2FC_SKOV3)
 ```
 
 ### Save data for later use
 
 ```{r}
-#Then save it to the data folder for later use 
-write_tsv(aug_data, "data/03_dat_aug.tsv")
+write_tsv(aug_data, here("data", "03_dat_aug.tsv"))
 ```
