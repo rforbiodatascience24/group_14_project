@@ -1,5 +1,5 @@
 ---
-title: "07_analysis_3"
+title: "07_analysis_t_test"
 author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
 format: 
   html:
@@ -25,9 +25,11 @@ library(broom)
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
+Pivot data that contains MOCK or KO for both cell lines to a long format
+
 ```{r}
 mock_or_ko <- data |> 
-  select(gene, 
+  select(gene,
          contains("MOCK"), 
          contains("_KO")) |> 
   pivot_longer(cols = c(OVCAR3_MOCK, 
