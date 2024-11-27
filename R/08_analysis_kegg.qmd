@@ -137,9 +137,7 @@ The KEGG is saved in a png-file in the results folder:
 
 ```{r}
 ggsave(filename = here("results/08_key_plot_1.png"),
-       plot = plot_kegg_OVCAR3_upregulated,
-       width = 12, 
-       height = 8)
+       plot = plot_kegg_OVCAR3_upregulated)
 ```
 
 ### KEGG enrichment for all down-regulated genes in OVCAR3
