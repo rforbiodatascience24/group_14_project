@@ -4,13 +4,14 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor: visual
+editor_options:
+  chunk_output_type: inline
 output-dir: ../results
 ---
 
 ### Load packages
 
-```{r}
+```{r, include = FALSE}
 library(tidyverse)
 library(ggplot2)
 library(patchwork)
@@ -21,7 +22,7 @@ library(scales)
 
 ### Load data
 
-```{r}
+```{r, include = FALSE}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
