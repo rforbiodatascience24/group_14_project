@@ -85,7 +85,7 @@ scatter_plot_OVCAR3 <- data |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 18))+
+        axis.text = element_text(size = 12))+
   annotate("text",
            x = 110000, y = 2.0e+05, 
            size = 3.5,
@@ -192,7 +192,7 @@ scatter_plot_SKOV3 <- data |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 18))+
+        axis.text = element_text(size = 12))+
   annotate("text",
            x = 1e+5, y = 0.35e+05, 
            size = 3.5,
@@ -255,7 +255,7 @@ scatter_plot_SKOV3_fixed <- data |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 18))+
+        axis.text = element_text(size = 12))+
   theme(legend.key = element_rect(color = "white")) +
   labs(title = "Snippet of correlation between DEGs at baseline \nand DEGs HERV-K KO in SKOV3",
        x = "SKOV3 KO (Log2FC)", 
