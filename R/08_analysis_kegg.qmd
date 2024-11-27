@@ -123,9 +123,10 @@ plot_kegg_OVCAR3_upregulated <- kegg_analysis_OVCAR3_upregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text = element_text(size = 18),
     plot.title = element_text(size = 24,
                               hjust = 0.8),
+    axis.text = element_text(size = 18,
+                             angle = 45),
     axis.title = element_text(size = 18),
     legend.title = element_text(size = 16),
     legend.text = element_text(size = 14))
@@ -173,9 +174,9 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text = element_text(size = 18,),
     plot.title = element_text(size = 24,
                               hjust = 0.8),
+    axis.text = element_text(size = 18),
     axis.title = element_text(size = 18),
     legend.title = element_text(size = 16),
     legend.text = element_text(size = 14))
