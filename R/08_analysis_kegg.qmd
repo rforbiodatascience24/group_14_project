@@ -118,7 +118,7 @@ plot_kegg_OVCAR3_upregulated <- kegg_analysis_OVCAR3_upregulated |>
                        high = "blue", 
                        name = "p.adjust") + 
   labs(
-    title = "KEGG Pathway Enrichment Analysis for upregulated genes in OVCAR3",
+    title = "KEGG Pathway Enrichment Analysis for upregulated \ngenes in OVCAR3",
     x = "Gene Count",
     y = "Pathways") +
   theme_minimal() +
@@ -167,7 +167,7 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
                        high = "blue", 
                        name = "p.adjust") +  
   labs(
-    title = "KEGG Pathway Enrichment Analysis for downregulated genes in OVCAR3",
+    title = "KEGG Pathway Enrichment Analysis for downregulated \ngenes in OVCAR3",
     x = "Gene Count",
     y = "Pathways") +
   theme_minimal() +
