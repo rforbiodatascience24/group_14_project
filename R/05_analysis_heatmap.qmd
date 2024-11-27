@@ -62,7 +62,8 @@ Saving heatmap in a png-file in the results folder:
 ```{r}
 ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/05_key_plot_1.png",
        plot = heatmap_random,
-       width = 12, height = 8, dpi = 300)
+       width = 12, 
+       height = 8)
 ```
 
 ### Heatmap of overlapping up- and down-regulated DEGs in the two cell lines
@@ -102,5 +103,8 @@ heatmap_overlap <- data |>
 Saving heatmap in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/05_key_plot_2.png", plot = heatmap_overlap)
+ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/05_key_plot_2.png",
+       plot = heatmap_overlap,
+       width = 12, 
+       height = 8)
 ```
