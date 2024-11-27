@@ -5,23 +5,26 @@ format:
   html:
     embed-resources: true
 editor: visual
+output-dir: ../results
 ---
 
 ### Load packages
 
 ```{r}
 library(tidyverse)
+library(readr)
+library(here)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv("data/01_dat_load.tsv")
+data <- read_tsv(file = here("data/01_dat_load.tsv"))
 ```
 
 ### Clean up data
 
-The data is cleaned up by removing all rows (genes) that has an expression level on 0 in all four cases (OVCAR3 MOCK, OVCAR3 KO, SKOV3 MOCK, and SKOV3 KO). The columns are renamed to ensure alignment in names so that the cell lines are called OVCAR3 and SKOV3 respectively.
+The data is cleaned by removing all rows (genes) that has an expression level of 0 in all four cases. The columns are renamed to ensure alignment in names so that the cell lines are called OVCAR3 and SKOV3 respectively, (OVCAR3_MOCK, OVCAR3_KO, SKOV3_MOCK, SKOV3_KO).
 
 ```{r}
 clean_data <- data |> 
@@ -34,6 +37,5 @@ clean_data <- data |>
 ### Save data for later use
 
 ```{r}
-#Then save it to the data folder for later use
-write_tsv(clean_data, "data/02_dat_clean.tsv")
+write_tsv(clean_data, here("data", "02_dat_clean.tsv"))
 ```
