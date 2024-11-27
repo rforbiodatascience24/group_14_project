@@ -133,6 +133,15 @@ plot_kegg_OVCAR3_upregulated
 
 Only one pathway was significantly up-regulated for the OVCAR3 cell line.
 
+The KEGG is saved in a png-file in the results folder:
+
+```{r}
+ggsave(filename = here("results/08_key_plot_1.png"),
+       plot = plot_kegg_OVCAR3_upregulated,
+       width = 12, 
+       height = 8)
+```
+
 ### KEGG enrichment for all down-regulated genes in OVCAR3
 
 ```{r}
@@ -172,6 +181,15 @@ plot_kegg_OVCAR3_downregulated
 ```
 
 Several pathways were enriched when looking at the DEGs that were down-regulated in the OVCAR3 KO cell line. The top 3 pathways are all related to cancer, but also cellular senescence is seen in the plot.
+
+The KEGG is saved in a png-file in the results folder:
+
+```{r}
+ggsave(filename = here("results/08_key_plot_2.png"),
+       plot = plot_kegg_OVCAR3_downregulated,
+       width = 12, 
+       height = 8)
+```
 
 ### KEGG enrichment for all up-regulated genes in SKOV3
 
