@@ -7,19 +7,22 @@ format:
 editor: visual
   markdown: 
     wrap: 72
+output-dir: ../results
 ---
 
 ### Load packages
 
 ```{r}
 library(tidyverse)
+library(readr)
+library(here)
 library(broom)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv("../data/03_dat_aug.tsv")
+data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
 ### Data for analysis
