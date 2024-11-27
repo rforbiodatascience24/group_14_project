@@ -46,7 +46,7 @@ heatmap_random <- data |>
                        high = "red") +
   labs(x = "Gene",
        y = "Cell line",
-       title = "Gene expression differences from baseline to HERV-K KO in SKOV3 and OVCAR3 cells",
+       title = "Gene expression differences from baseline to HERV-K KO in \nSKOV3 and OVCAR3 cells",
        fill = "Log2FC") +
   theme_classic() +
   theme(plot.title = element_text(size = 24),
@@ -92,10 +92,11 @@ heatmap_overlap <- data |>
                        high = "red") +
   labs(x = "Gene",
        y = "Cell line",
-       title = "Gene expression differences from baseline to HERV-K KO in SKOV3 and OVCAR3 cells for overlapping DEGs",
+       title = "Gene expression differences from baseline to HERV-K KO in \nSKOV3 and OVCAR3 cells for overlapping DEGs",
        fill = "Log2FC") +
   theme_classic() +
-  theme(axis.title.x = element_text(size = 16),
+  theme(plot.title = element_text(size = 24),
+        axis.title.x = element_text(size = 16),
         axis.text.x = element_text(size = 8,
                                    angle = 45, 
                                    hjust = 1),
