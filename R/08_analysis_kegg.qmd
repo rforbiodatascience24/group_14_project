@@ -237,11 +237,11 @@ There are no significantly up-regulated pathways in SKOV3.
 
 ```{r}
 kegg_analysis_SKOV3_downregulated <- enrichKEGG(gene = geneIDs_SKOV3_downregulated,
-                                                 organism = "hsa", 
-                                                 pAdjustMethod = "BH",
-                                                 minGSSize = 10,
-                                                 maxGSSize = 500,
-                                                 qvalueCutoff = 0.05) |> 
+                                                organism = "hsa", 
+                                                pAdjustMethod = "BH",
+                                                minGSSize = 10,
+                                                maxGSSize = 500,
+                                                qvalueCutoff = 0.05) |> 
   as_tibble()
 
 plot_kegg_SKOV3_downregulated <- kegg_analysis_SKOV3_downregulated |> 
