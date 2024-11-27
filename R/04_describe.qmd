@@ -88,8 +88,8 @@ The barplot is saved in a png-file in the results folder::
 ```{r}
 ggsave(filename = here("results/04_key_plot_1.png"),
        plot = barplot,
-       width = 12, 
-       height = 8)
+       width = 10, 
+       height = 6)
 ```
 
 ### Number of overlapping genes between the cell lines
