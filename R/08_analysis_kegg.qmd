@@ -8,7 +8,7 @@ editor: visual
 output-dir: ../results
 ---
 
-### Loading package
+### Loading packages
 
 ```{r}
 library(here)
