@@ -1,34 +1,39 @@
 ---
-format: html
+title: "05_analysis_heatmap"
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
 editor: visual
-editor_options: 
-  chunk_output_type: console
+output-dir: ../results
 ---
 
-### Load Packages
+### Load packages
 
 ```{r}
 library(tidyverse)
+library(here)
+library(readr)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv("data/03_dat_aug.tsv")
+data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
-### Heatmap
+### Heatmap of randomly selected genes
 
-A heatmap of 70 randomly sampled genes is created. The heatmap shows the 70 genes colored by log2FC for each cell line. Red color indicates upregulated genes and blue indicates downregulated genes.
+A heatmap of 70 randomly sampled genes is created. The heatmap shows the 70 genes colored by log2 fold change for each cell line. Red color indicates up-regulated genes and blue indicates down-regulated genes.
 
 ```{r}
-#70 are sampled rondomly
+#70 are sampled randomly
 data |>
   sample_n(70) |> 
   pivot_longer(
     cols = c(log2FC_OVCAR3, log2FC_SKOV3), 
     names_to = "cell_line", 
-    values_to = "log2_expression") |> 
+    values_to = "log2_expression") |>
   ggplot(mapping = aes(x = gene,
                        y = cell_line,
                        fill = log2_expression)) +
@@ -39,11 +44,45 @@ data |>
                        high = "red") +
   labs(x = "Gene",
        y = "Cell line",
-       title = "Log2 gene expression differences from baseline to HERV-K knockouts in SKOV3 and OVCAR3 cells",
+       title = "Gene expression differences from baseline to HERV-K KO in SKOV3 and OVCAR3 cells",
        fill = "Log2FC") +
   theme_classic() +
   theme(axis.title.x = element_text(size = 16),
         axis.text.x = element_text(size = 12,
+                                   angle = 45, 
+                                   hjust = 1),
+        axis.title.y = element_text(size = 16),
+        axis.text.y = element_text(size = 12)) +
+  scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
+```
+
+### Heatmap of overlapping up- and down-regulated DEGs in the two cell lines
+
+```{r}
+data |>
+  pivot_longer(
+    cols = c(log2FC_OVCAR3, log2FC_SKOV3), 
+    names_to = "cell_line", 
+    values_to = "log2_expression") |>
+  filter(DEG_OVCAR3 == "Upregulated" &
+           DEG_SKOV3 == "Upregulated" |
+           DEG_OVCAR3 == "Downregulated" &
+           DEG_SKOV3 == "Downregulated") |>
+  ggplot(mapping = aes(x = gene,
+                       y = cell_line,
+                       fill = log2_expression)) +
+  geom_tile() +
+  scale_fill_gradient2(midpoint = 0,
+                       low = "blue",
+                       mid = "white",
+                       high = "red") +
+  labs(x = "Gene",
+       y = "Cell line",
+       title = "Gene expression differences from baseline to HERV-K KO in SKOV3 and OVCAR3 cells for overlapping DEGs",
+       fill = "Log2FC") +
+  theme_classic() +
+  theme(axis.title.x = element_text(size = 16),
+        axis.text.x = element_text(size = 8,
                                    angle = 45, 
                                    hjust = 1),
         axis.title.y = element_text(size = 16),
