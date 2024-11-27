@@ -14,7 +14,7 @@ editor_options:
 
 ### Load packages
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
 library(broom)
 library(here)
@@ -106,7 +106,10 @@ scatterplot_mock_ko <- mock_or_ko |>
        x = "OVCAR3 (Log2FC)", 
        y = "SKOV3 (Log2FC)",
        color = "") +
-  theme_minimal() +
+  theme_minimal() + 
+  theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 12)) +
   scale_x_continuous(limits = c(0,730000)) +
   scale_y_continuous(limits = c(0,730000)) +
   annotate("text", 
@@ -200,7 +203,7 @@ gdf15_matrix <- gdf15 |>
   as.matrix()
 ```
 
-### Fishers test 
+### Fishers test
 
 ```{r}
 fisher.test(gdf15_matrix)
