@@ -18,7 +18,7 @@ library(readr)
 
 ### Load data
 
-```{r}
+```{r, include=FALSE}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
@@ -54,6 +54,8 @@ heatmap_random <- data |>
         axis.title.y = element_text(size = 16),
         axis.text.y = element_text(size = 12)) +
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
+
+heatmap_random
 ```
 
 Saving heatmap in a png-file in the results folder:
@@ -97,6 +99,8 @@ heatmap_overlap <- data |>
         axis.title.y = element_text(size = 16),
         axis.text.y = element_text(size = 12)) +
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
+
+heatmap_overlap
 ```
 
 Saving heatmap in a png-file in the results folder:
