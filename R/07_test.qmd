@@ -25,13 +25,11 @@ library(readr)
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
-<<<<<<< HEAD
-Pivot data that contains MOCK or KO for both cell lines to a long format
-=======
+# Pivot data that contains MOCK or KO for both cell lines to a long format
+
 ### Data for analysis
 
 Pivot data to long format
->>>>>>> 795e0c99d49ebeac751bcbb5e5120c70df9e7e53
 
 ```{r}
 mock_or_ko <- data |> 
