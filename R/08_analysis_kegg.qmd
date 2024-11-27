@@ -10,8 +10,9 @@ editor: visual
 ### Loading packages
 
 ```{r}
+library(here)
+library(readr)
 library(tidyverse)
-library(ggplot2)
 library(biomaRt)
 library(clusterProfiler)
 library(enrichplot)
@@ -20,7 +21,7 @@ library(enrichplot)
 ### Load data
 
 ```{r}
-data <- read_tsv("../data/03_dat_aug.tsv")
+data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
 ### Get gene IDs for each gene name
