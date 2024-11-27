@@ -110,7 +110,7 @@ Expression of either up- or downregulated genes are plotted for comparison of th
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
-![skriv noget](results/06_key_plot_1.png){fig-align="center" width="60%"}
+![](results/06_key_plot_1.png){fig-align="center" width="60%"}
 :::
 :::
 
@@ -120,14 +120,14 @@ Scatter plot of correlation between gene expresseion for KO and baseline genes f
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
-![skriv noget](results/06_key_plot_2.png){fig-align="center" width="100%"}
+![](results/06_key_plot_2.png){fig-align="center" width="100%"}
 :::
 :::
 
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline of SKOV3\
-![skriv noget](results/06_key_plot_3.png){fig-align="center" width="100%"}
+![](results/06_key_plot_3.png){fig-align="center" width="100%"}
 :::
 :::
 :::
@@ -136,14 +136,34 @@ Scatter plot of correlation between gene expresseion for KO and baseline of SKOV
 ## Results - t-test
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
-Hej 
+
+![](results/07_key_plot_1.png){fig-align="center" width="80%"}
 :::
 :::
 
 ## Results - KEGG
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
-Halløj
+
+KEGG plots displaying enriched pathways \
+
+::: columns
+::: {.column width="50%"}
+
+
+![](results/08_key_plot_1.png){fig-align="center" width="100%"}
+:::
+
+::: {.column width="50%"}
+::: {style="font-size:70%;"}
+
+![](results/08_key_plot_2.png){fig-align="center" width="100%"}
+:::
+:::
+:::
+
+Cancer, senescence and PI3K/AKT pathways are downregulated after HERV-K KO in OVCAR3 (ovarian cancer cells) 
+
 :::
 :::
 
@@ -151,6 +171,8 @@ Halløj
 ## Discussion
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
+
+Noget der giver mening
 
 :::
 :::
