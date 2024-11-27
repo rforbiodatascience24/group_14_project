@@ -3120,7 +3120,7 @@ vertical-align: -.125em;
 </section>
 <section id="load-data-and-save-for-later-use" class="level3">
 <h3 class="anchored" data-anchor-id="load-data-and-save-for-later-use">Load data and save for later use</h3>
-<p>The data is loaded as tibbles from four different files, each containing a column with gene symbols and a column with expression levels. In case an expression level is empty, NA or N/A, it is saved as “na”.</p>
+<p>The data is loaded as tibbles (tsv files) from four different txt files, each containing a column with gene symbols and a column with expression levels. For the genes where the expression level is empty, NA or N/A, it is saved as “na”.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#First load the raw data taking care of missing values </span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>SKOV3_MOCK <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">&quot;../data/_raw/GSM8331622_SKOV_MOCK.txt&quot;</span>, <span class="at">na =</span> <span class="fu">c</span>(<span class="st">&quot;&quot;</span>, <span class="st">&quot;NA&quot;</span>, <span class="st">&quot;N/A&quot;</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -3171,9 +3171,9 @@ dbl (1): OVCAR_KO
 </section>
 <section id="removing-duplicates" class="level3">
 <h3 class="anchored" data-anchor-id="removing-duplicates">Removing duplicates</h3>
-<p>If a gene occurs more than once, all duplicates are removed and the specific gene does not occur in the analysis. This is to remove undocumented reasons for duplicates.</p>
+<p>If a gene occurs more than once, all duplicates are removed and the specific gene does not occur in the analysis. There is not sufficient information about why duplicates occur, this is why we have chosen to remove all cases.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>OVCAR3_KO <span class="ot">&lt;-</span> OVCAR3_KO <span class="sc">|&gt;</span> </span>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>OVCAR3_KO <span class="ot">&lt;-</span> OVCAR3_KO <span class="sc">|&gt;</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(<span class="st">`</span><span class="at">Gene Symbol</span><span class="st">`</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">==</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>()</span>
@@ -3196,7 +3196,8 @@ dbl (1): OVCAR_KO
 </section>
 <section id="joining-data" class="level3">
 <h3 class="anchored" data-anchor-id="joining-data">Joining data</h3>
-<p>The four tibbles are joined into one tibble with rows corresponding to the unique genes and columns corresponding to each cell line with and without KO: OVCAR3_MOCK, OVCAR3_KO, SKOV3_MOCK, and SKOV3_KO.</p>
+<p>The four tibbles are joined into one tibble with rows corresponding to the unique genes and columns corresponding to each cell line (OVCAR3 and SKOV3) at baseline (_MOCK) and after knock-out of gene HERV-K (_KO):</p>
+<p>OVCAR3_MOCK, OVCAR3_KO, SKOV3_MOCK, and SKOV3_KO.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">left_join</span>(OVCAR3_MOCK,</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>                  OVCAR3_KO, </span>

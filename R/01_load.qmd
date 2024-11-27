@@ -5,6 +5,7 @@ format:
   html:
     embed-resources: true
 editor: visual
+output-dir: ../results
 ---
 
 ### Load libraries
@@ -12,6 +13,7 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(readr)
+library("here")
 ```
 
 ### Load data and save for later use
@@ -20,10 +22,10 @@ The data is loaded as tibbles (tsv files) from four different txt files, each co
 
 ```{r}
 #First load the raw data taking care of missing values 
-SKOV3_MOCK <- read_tsv("../data/_raw/GSM8331622_SKOV_MOCK.txt", na = c("", "NA", "N/A")) 
-SKOV3_KO <- read_tsv("../data/_raw/GSM8331624_SKOV_KO.txt", na = c("", "NA", "N/A")) 
-OVCAR3_MOCK <- read_tsv("../data/_raw/GSM8331623_OVCAR3_MOCK.txt", na = c("", "NA", "N/A")) 
-OVCAR3_KO <- read_tsv("../data/_raw/GSM8331625_OVCAR_KO.txt", na = c("", "NA", "N/A")) 
+SKOV3_MOCK <- read_tsv(file = here("data/_raw/GSM8331622_SKOV_MOCK.txt"))
+SKOV3_KO <- read_tsv(file = here("data/_raw/GSM8331624_SKOV_KO.txt"))
+OVCAR3_MOCK <- read_tsv(file = here("data/_raw/GSM8331623_OVCAR3_MOCK.txt")) 
+OVCAR3_KO <- read_tsv(file = here("data/_raw/GSM8331625_OVCAR_KO.txt")) 
 ```
 
 ### Removing duplicates
@@ -72,5 +74,5 @@ data <- left_join(OVCAR3_MOCK,
 ### Saving in data folder
 
 ```{r}
-write_tsv(data, "../data/01_dat_load.tsv")
+write_tsv(data, "data/01_dat_load.tsv")
 ```
