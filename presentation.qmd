@@ -38,8 +38,12 @@ author:
 
 -   KEGG enrichment using clusterProfiler (v4.10.1), biomaRt (v2.58.2) and enrichplot (v1.22.0)
 
+## Materials and methods
+### Loading data and arumenting
+- .....
 
-## Results
+## Results 
+### Descriptive statistics
 28.040 observations (genes)
 
 OVCAR-3:
@@ -56,10 +60,18 @@ Common genes:
 up: 59 (eg. CRYBB2, ANKRD62 -> both associated with cancer)
 down: 15 (e.g. RBAKDN and CDH2 -> associated with cell division and adhesion)
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+Husk histogram 
+![Titel](results/05_key_plot_1.png)
+## Results 
+### Heatmap 
 
-```{r}
-1 + 1
-```
+## Results 
+### Scatter plot
+
+## Results 
+### t-test
+
+## Results 
+### KEGG
 
 ## Discussion
