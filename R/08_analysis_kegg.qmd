@@ -123,7 +123,7 @@ plot_kegg_OVCAR3_upregulated <- kegg_analysis_OVCAR3_upregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 12, 
+    axis.text.y = element_text(size = 18, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
                               size = 24),
@@ -172,7 +172,7 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 12, 
+    axis.text.y = element_text(size = 18, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
                               size = 24),
