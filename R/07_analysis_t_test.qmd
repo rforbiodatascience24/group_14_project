@@ -7,25 +7,28 @@ format:
 editor: visual
   markdown: 
     wrap: 72
-output-dir: ../results
 ---
 
 ### Load packages
 
 ```{r}
 library(tidyverse)
-library(readr)
-library(here)
 library(broom)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv(file = here("data/03_dat_aug.tsv"))
+data <- read_tsv("../data/03_dat_aug.tsv")
 ```
 
+<<<<<<< HEAD
 Pivot data that contains MOCK or KO for both cell lines to a long format
+=======
+### Data for analysis
+
+Pivot data to long format
+>>>>>>> 795e0c99d49ebeac751bcbb5e5120c70df9e7e53
 
 ```{r}
 mock_or_ko <- data |> 
@@ -127,4 +130,4 @@ broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|>
 
 The p-value is 0.74 for OVCAR3. This means that there are no statistical significant difference between the values of KO vs MOCK in this cell line.
 
-The p-value is 5.84e-17 for SKOV. This means that there are a strong statistical significant difference between the values of KO vs MOCK in this cell line.
+The p-value is 5.84e-17 for SKOV3. This means that there are a strong statistical significant difference between the values of KO vs MOCK in this cell line.
