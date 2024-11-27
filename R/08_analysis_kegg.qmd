@@ -10,7 +10,7 @@ output-dir: ../results
 
 ### Loading packages
 
-```{r}
+```{r, include=FALSE}
 library(here)
 library(readr)
 library(tidyverse)
@@ -21,7 +21,7 @@ library(enrichplot)
 
 ### Load data
 
-```{r}
+```{r, include=FALSE}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
