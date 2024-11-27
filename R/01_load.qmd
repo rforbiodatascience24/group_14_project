@@ -74,5 +74,5 @@ data <- left_join(OVCAR3_MOCK,
 ### Saving in data folder
 
 ```{r}
-write_tsv(data, "data/01_dat_load.tsv")
+write_tsv(data, here("data", "01_dat_load.tsv"))
 ```
