@@ -18,7 +18,7 @@ library(here)
 
 ### Load data
 
-```{r}
+```{r, include=FALSE}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
