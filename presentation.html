@@ -7,7 +7,7 @@
 <link href="presentation_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
-<link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="presentation_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.555">
 
   <meta name="author" content=" Julie Brockhoff, s204519">
@@ -325,7 +325,7 @@
     }
   </style>
 </head>
-<body class="quarto-dark">
+<body class="quarto-light">
   <div class="reveal">
     <div class="slides">
 
@@ -383,6 +383,8 @@ Lise Lotte Eriksen, s154123
 </section>
 <section id="materials-and-methods" class="slide level2">
 <h2>Materials and methods</h2>
+<div style="font-size:70%;">
+<div style="font-size: 25px; margin-top: 30px;">
 <ul>
 <li><p>HERV-K was knocked out in two ovarian cancer cell lines: SKOV3 and OVCAR3.</p>
 <ul>
@@ -390,45 +392,144 @@ Lise Lotte Eriksen, s154123
 </ul></li>
 <li><p>DEG identification and plotting using R version 4.3.1</p>
 <ul>
-<li>with packages: tidyverse (v2.0.0) and patchwork (1.1.3)</li>
+<li>with packages: tidyverse (v2.0.0) and patchwork (v1.1.3)</li>
 </ul></li>
 <li><p>KEGG enrichment using clusterProfiler (v4.10.1), biomaRt (v2.58.2) and enrichplot (v1.22.0)</p></li>
 </ul>
+</div>
+</div>
 </section>
-<section id="materials-and-methods-1" class="slide level2">
-<h2>Materials and methods</h2>
-<h3 id="loading-data-and-arumenting">Loading data and arumenting</h3>
-<ul>
-<li>…..</li>
-</ul>
+<section id="loading-data-augment" class="slide level2">
+<h2>Loading data &amp; Augment</h2>
+<div style="font-size:70%;">
+<div style="font-size: 25px; margin-top: 30px;">
+<p><strong>Data load and clean</strong><br>
+- Merging of 4 files<br>
+- Removed all duplicates of genes<br>
+</p>
+<p><strong>Augment</strong><br>
+- Calcualte log2 fold change based on expression<br>
+- Add up/ down regulated coulumn<br>
+- Based on critera of +/- 2 log2 fold change</p>
+</div>
+</div>
 </section>
-<section id="results" class="slide level2">
-<h2>Results</h2>
-<h3 id="descriptive-statistics">Descriptive statistics</h3>
+<section id="results---descriptive-statistics" class="slide level2">
+<h2>Results - Descriptive statistics</h2>
+<div style="font-size: 25px; margin-top: 30px;">
+<div class="columns">
+<div class="column" style="width:35%;">
+<div style="font-size:70%;">
 <p>28.040 observations (genes)</p>
-<p>OVCAR-3: down-regulated: 766 up: 412 neu: 23062</p>
-<p>SKOV3: down: 920 up: 270 neutral: 26850</p>
-<p>Common genes: up: 59 (eg. CRYBB2, ANKRD62 -&gt; both associated with cancer) down: 15 (e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion)</p>
-<p>Husk histogram <img data-src="results/05_key_plot_1.png" alt="Titel"></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>OVCAR3</th>
+<th>SKOV3</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Upregulated</td>
+<td>412</td>
+<td>270</td>
+</tr>
+<tr class="even">
+<td>Neutral</td>
+<td>23062</td>
+<td>26850</td>
+</tr>
+<tr class="odd">
+<td>Downregulated</td>
+<td>766</td>
+<td>920</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Common genes:</strong><br>
+<strong>Upregulated:</strong> 59<br>
+e.g.&nbsp;CRYBB2, ANKRD62 -&gt; both associated with cancer<br>
+</p>
+<p><strong>Downregulated:</strong> 15<br>
+e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
+</div>
+</div><div class="column" style="width:65%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="results/04_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="results-1" class="slide level2">
-<h2>Results</h2>
-<h3 id="heatmap">Heatmap</h3>
+<section id="results---heatmap" class="slide level2">
+<h2>Results - Heatmap</h2>
+<div style="font-size: 25px; margin-top: 30px;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size:70%;">
+<p>Expression of 70 randomly selected genes are plotted for comparison of the cell lines. <img data-src="results/05_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size:70%;">
+<p>Expression of either up- or downregulated genes are plotted for comparison of the cell lines. <img data-src="results/05_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="results-2" class="slide level2">
-<h2>Results</h2>
-<h3 id="scatter-plot">Scatter plot</h3>
+<section id="results---scatterplot-for-ovcar3" class="slide level2">
+<h2>Results - Scatterplot for OVCAR3</h2>
+<div style="font-size: 25px; margin-top: 30px;">
+<div style="font-size:70%;">
+<p>Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3<br>
+<img data-src="results/06_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:60.0%" alt="skriv noget"></p>
+</div>
+</div>
 </section>
-<section id="results-3" class="slide level2">
-<h2>Results</h2>
-<h3 id="t-test">t-test</h3>
+<section id="results---scatterplot-for-skov3" class="slide level2">
+<h2>Results - Scatterplot for SKOV3</h2>
+<div style="font-size: 25px; margin-top: 30px;">
+<div class="columns">
+<div class="column" style="width:50%;">
+<div style="font-size:70%;">
+<p>Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3<br>
+<img data-src="results/06_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="skriv noget"></p>
+</div>
+</div><div class="column" style="width:50%;">
+<div style="font-size:70%;">
+<p>Scatter plot of correlation between gene expresseion for KO and baseline of SKOV3<br>
+<img data-src="results/06_key_plot_3.png" class="quarto-figure quarto-figure-center" style="width:100.0%" alt="skriv noget"></p>
+</div>
+</div>
+</div>
+</div>
 </section>
-<section id="results-4" class="slide level2">
-<h2>Results</h2>
-<h3 id="kegg">KEGG</h3>
+<section id="results---t-test" class="slide level2">
+<h2>Results - t-test</h2>
+<div style="font-size: 25px;margin-top: 30px;">
+<div style="font-size:70%;">
+<p>Hej</p>
+</div>
+</div>
+</section>
+<section id="results---kegg" class="slide level2">
+<h2>Results - KEGG</h2>
+<div style="font-size: 25px;margin-top: 30px;">
+<div style="font-size:70%;">
+<p>Halløj</p>
+</div>
+</div>
 </section>
 <section id="discussion" class="slide level2">
 <h2>Discussion</h2>
+<div style="font-size: 25px;margin-top: 30px;">
+<div style="font-size:70%;">
+
+</div>
+</div>
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
@@ -616,7 +717,7 @@ Lise Lotte Eriksen, s154123
         height: 700,
 
         // Factor of the display size that should remain empty around the content
-        margin: 0.1,
+        margin: 5.0e-4,
 
         math: {
           mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',

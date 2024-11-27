@@ -3,7 +3,9 @@ title: "<span style = 'font-size: 100px;'>Group 14</span>"
 subtitle: "<span style = 'font-size: 60px;'>Final project 14</span>"
 format:
   revealjs:
-    theme: moon
+    theme: simple
+    width: 1050
+    margin: 0.0005
 editor: visual
 author:
 - "<div style = 'text-align: center; font-size: 20px; color: gray'>Julie Brockhoff, s204519</span>"
@@ -27,6 +29,8 @@ author:
 :::
 
 ## Materials and methods
+::: {style="font-size:70%;"}
+::: {style="font-size: 25px; margin-top: 30px;"}
 
 -   HERV-K was knocked out in two ovarian cancer cell lines: SKOV3 and OVCAR3.
 
@@ -34,44 +38,120 @@ author:
 
 -   DEG identification and plotting using R version 4.3.1
 
-    -   with packages: tidyverse (v2.0.0) and patchwork (1.1.3)
+    -   with packages: tidyverse (v2.0.0) and patchwork (v1.1.3)
 
 -   KEGG enrichment using clusterProfiler (v4.10.1), biomaRt (v2.58.2) and enrichplot (v1.22.0)
+:::
+:::
 
-## Materials and methods
-### Loading data and arumenting
-- .....
+## Loading data & Augment
+::: {style="font-size:70%;"}
+::: {style="font-size: 25px; margin-top: 30px;"}
 
-## Results 
-### Descriptive statistics
+**Data load and clean** \
+-   Merging of 4 files\
+-   Removed all duplicates of genes\
+
+**Augment** \
+-   Calcualte log2 fold change based on expression \
+-   Add up/ down regulated coulumn \
+    -   Based on critera of +/- 2 log2 fold change
+:::
+:::
+
+## Results - Descriptive statistics
+::: {style="font-size: 25px; margin-top: 30px;"}
+::: columns
+::: {.column width="35%"}
+::: {style="font-size:70%;"}
 28.040 observations (genes)
 
-OVCAR-3:
-down-regulated: 766
-up: 412
-neu: 23062
+|               | OVCAR3 | SKOV3 |
+|---------------|--------|-------|
+| Upregulated   | 412    | 270   |
+| Neutral       | 23062  | 26850 |
+| Downregulated | 766    | 920   |
 
-SKOV3: 
-down: 920
-up: 270
-neutral: 26850
+**Common genes:** \
+**Upregulated:** 59 \
+  e.g. CRYBB2, ANKRD62 -\> both associated with cancer\
 
-Common genes:
-up: 59 (eg. CRYBB2, ANKRD62 -> both associated with cancer)
-down: 15 (e.g. RBAKDN and CDH2 -> associated with cell division and adhesion)
+**Downregulated:** 15 \
+  e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
+:::
+:::
 
-Husk histogram 
-![Titel](results/05_key_plot_1.png)
-## Results 
-### Heatmap 
+::: {.column width="65%"}
+![](results/04_key_plot_1.png){fig-align="center" width="100%"}
+:::
+:::
+:::
 
-## Results 
-### Scatter plot
+## Results - Heatmap
+::: {style="font-size: 25px; margin-top: 30px;"}
+::: columns
+::: {.column width="50%"}
+::: {style="font-size:70%;"}
+Expression of 70 randomly selected genes are plotted for comparison of the cell lines.
+![](results/05_key_plot_1.png){fig-align="center" width="100%"}
+:::
+:::
 
-## Results 
-### t-test
+::: {.column width="50%"}
+::: {style="font-size:70%;"}
+Expression of either up- or downregulated genes are plotted for comparison of the cell lines.
+![](results/05_key_plot_2.png){fig-align="center" width="100%"}
+:::
+:::
+:::
+:::
 
-## Results 
-### KEGG
+## Results - Scatterplot for OVCAR3
+::: {style="font-size: 25px; margin-top: 30px;"}
+::: {style="font-size:70%;"}
+Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
+![skriv noget](results/06_key_plot_1.png){fig-align="center" width="60%"}
+:::
+:::
+
+## Results - Scatterplot for SKOV3
+::: {style="font-size: 25px; margin-top: 30px;"}
+::: columns
+::: {.column width="50%"}
+::: {style="font-size:70%;"}
+Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
+![skriv noget](results/06_key_plot_2.png){fig-align="center" width="100%"}
+:::
+:::
+
+::: {.column width="50%"}
+::: {style="font-size:70%;"}
+Scatter plot of correlation between gene expresseion for KO and baseline of SKOV3\
+![skriv noget](results/06_key_plot_3.png){fig-align="center" width="100%"}
+:::
+:::
+:::
+:::
+
+## Results - t-test
+::: {style="font-size: 25px;margin-top: 30px;"}
+::: {style="font-size:70%;"}
+Hej 
+:::
+:::
+
+## Results - KEGG
+::: {style="font-size: 25px;margin-top: 30px;"}
+::: {style="font-size:70%;"}
+Halløj
+:::
+:::
+
 
 ## Discussion
+::: {style="font-size: 25px;margin-top: 30px;"}
+::: {style="font-size:70%;"}
+
+:::
+:::
+
