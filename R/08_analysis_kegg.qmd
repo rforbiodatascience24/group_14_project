@@ -123,11 +123,11 @@ plot_kegg_OVCAR3_upregulated <- kegg_analysis_OVCAR3_upregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
+    axis.text.y = element_text(size = 12, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+                              size = 24),
+    axis.title = element_text(size = 18))
 
 plot_kegg_OVCAR3_upregulated
 
@@ -172,11 +172,11 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
+    axis.text.y = element_text(size = 12, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+                              size = 24),
+    axis.title = element_text(size = 18))
 
 plot_kegg_OVCAR3_downregulated
 
@@ -221,11 +221,11 @@ plot_kegg_SKOV3_upregulated <- kegg_analysis_SKOV3_upregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
+    axis.text.y = element_text(size = 12, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+                              size = 24),
+    axis.title = element_text(size = 18))
 
 plot_kegg_SKOV3_upregulated
 
@@ -261,11 +261,11 @@ plot_kegg_SKOV3_downregulated <- kegg_analysis_SKOV3_downregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
+    axis.text.y = element_text(size = 12, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+                              size = 24),
+    axis.title = element_text(size = 18))
 
 plot_kegg_SKOV3_downregulated
 ```
