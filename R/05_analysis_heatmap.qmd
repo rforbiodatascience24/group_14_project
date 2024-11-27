@@ -61,7 +61,7 @@ heatmap_random <- data |>
 heatmap_random
 ```
 
-Saving heatmap in a png-file in the results folder:
+Saving the heatmap in a png-file in the results folder:
 
 ```{r}
 ggsave(filename = here("results/05_key_plot_1.png"),
@@ -106,7 +106,7 @@ heatmap_overlap <- data |>
 heatmap_overlap
 ```
 
-Saving heatmap in a png-file in the results folder:
+Saving the heatmap in a png-file in the results folder:
 
 ```{r}
 ggsave(filename = here("results/05_key_plot_2.png"),
