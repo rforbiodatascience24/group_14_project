@@ -125,8 +125,8 @@ The plot is saved in a png-file in the results folder:
 ```{r}
 ggsave(filename = here("results/06_key_plot_1.png"),
        plot = scatter_plot_OVCAR3,
-       width = 12, 
-       height = 8)
+       width = 8, 
+       height = 5)
 ```
 
 ### Regression models for up- and down-regulated SKOV3 DEGs
@@ -225,7 +225,16 @@ scatter_plot_SKOV3
 
 As expected, a clear positive correlation is seen for the neutral DEGs in SKOV3.
 
-Scatter plot of KO vs baseline DEGs in SKOV3 with changed axis
+The plot is saved in a png-file in the results folder:
+
+```{r}
+ggsave(filename = here("results/06_key_plot_2.png"),
+       plot = scatter_plot_SKOV3,
+       width = 8, 
+       height = 5)
+```
+
+### Scatter plot of KO vs baseline DEGs in SKOV3 with changed axis
 
 In the above correlation analysis, it is not possible to see the down-regulated and up-regulated DEGs in SKOV3, as their relative expression is low. The same correlation analysis is performed, but with changed axis making it possible to see the up- and down-regulated DEGs.
 
@@ -281,6 +290,6 @@ The plot is saved in a png-file in the results folder:
 ```{r, include=FALSE}
 ggsave(filename = here("results/06_key_plot_3.png"),
        plot = scatter_plot_SKOV3_fixed,
-       width = 12, 
-       height = 8)
+       width = 8, 
+       height = 5)
 ```
