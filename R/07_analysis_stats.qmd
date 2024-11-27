@@ -105,7 +105,6 @@ scatterplot_mock_ko <- mock_or_ko |>
   labs(title = "Gene expression in the two cell lines for KO and at baseline",
        x = "OVCAR3 (Log2FC)", 
        y = "SKOV3 (Log2FC)",
-       caption = "Data from Ko EJ et Al.",
        color = "") +
   theme_minimal() +
   scale_x_continuous(limits = c(0,730000)) +
