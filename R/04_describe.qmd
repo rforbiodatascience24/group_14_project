@@ -79,7 +79,7 @@ barplot <- data |>
         axis.text = element_text(size = 18)) +
   labs(x = "",
        y = "Count",
-       title = "Distribution of DEGs in the two cell lines OVCAR3 \\and SKOV3",
+       title = "Distribution of DEGs in the two cell lines OVCAR3 \nand SKOV3",
        fill = "Cell line") + 
   scale_x_discrete(limits = c("Downregulated", "Upregulated", "Neutral"), 
                    labels = c("Downregulated" = "Down-regulated", "Upregulated" = "Up-regulated"))
