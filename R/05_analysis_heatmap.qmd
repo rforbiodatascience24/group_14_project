@@ -49,7 +49,8 @@ heatmap_random <- data |>
        title = "Gene expression differences from baseline to HERV-K KO in SKOV3 and OVCAR3 cells",
        fill = "Log2FC") +
   theme_classic() +
-  theme(axis.title.x = element_text(size = 16),
+  theme(plot.title = element_text(size = 24),
+        axis.title.x = element_text(size = 16),
         axis.text.x = element_text(size = 12,
                                    angle = 45, 
                                    hjust = 1),

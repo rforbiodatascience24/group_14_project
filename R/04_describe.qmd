@@ -12,7 +12,7 @@ editor_options:
 
 ### Load packages
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
 library(readr)
 library(here)
