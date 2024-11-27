@@ -124,9 +124,11 @@ plot_kegg_OVCAR3_upregulated <- kegg_analysis_OVCAR3_upregulated |>
   theme_minimal() +
   theme(
     axis.text.y = element_text(size = 18),
-    plot.title = element_text(size = 24),
+    plot.title = element_text(size = 24,
+                              hjust = 0.5),
     axis.title = element_text(size = 18),
-    legend.text = element_text(size = 10))
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14))
 
 plot_kegg_OVCAR3_upregulated
 
@@ -172,9 +174,11 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
   theme_minimal() +
   theme(
     axis.text.y = element_text(size = 18,),
-    plot.title = element_text(size = 24),
+    plot.title = element_text(size = 24,
+                              hjust = 0.5),
     axis.title = element_text(size = 18),
-    legend.text = element_text(size = 10))
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14))
 
 plot_kegg_OVCAR3_downregulated
 
