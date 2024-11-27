@@ -5,18 +5,21 @@ format:
   html:
     embed-resources: true
 editor: visual
+output-dir: ../results
 ---
 
 ### Load packages
 
 ```{r}
 library(tidyverse)
+library(readr)
+library(here)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv("../data/02_dat_clean.tsv")
+data <- read_tsv(file = here("data/02_dat_clean.tsv"))
 ```
 
 ### Fold change calculation
@@ -54,5 +57,5 @@ aug_data <- aug_data |>
 ### Save data for later use
 
 ```{r}
-write_tsv(aug_data, "../data/03_dat_aug.tsv")
+write_tsv(aug_data, here("data", "03_dat_aug.tsv"))
 ```
