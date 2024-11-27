@@ -102,7 +102,7 @@ scatterplot_mock_ko <- mock_or_ko |>
   geom_smooth(method = lm,
               linewidth = 0.5,
               se = FALSE) +
-  labs(title = "Gene expression in the two cell lines for KO and at baseline",
+  labs(title = "Gene expression in the two cell lines for KO and \nat baseline",
        x = "OVCAR3 (Log2FC)", 
        y = "SKOV3 (Log2FC)",
        color = "") +
@@ -111,24 +111,24 @@ scatterplot_mock_ko <- mock_or_ko |>
         axis.title = element_text(size = 18),
         axis.text = element_text(size = 12)) +
   scale_x_continuous(limits = c(0,730000)) +
-  scale_y_continuous(limits = c(0,730000)) +
+  scale_y_continuous(limits = c(0,400000)) +
   annotate("text", 
-           x = 590000, y = 250000, 
+           x = 590000, y = 220000, 
            size = 3.5,
            label = "R^2 = 0.64", 
            color = "firebrick1") +
   annotate("text", 
-           x = 590000, y = 220000, 
+           x = 590000, y = 250000, 
            size = 3.5,
            label = "y = 0.29x + 372.26", 
            color = "firebrick1") +
   annotate("text", 
-           x = 80000, y = 290000, 
+           x = 80000, y = 260000, 
            size = 3.5,
            label = "R^2 = 0.89", 
            color = "cyan4") +
   annotate("text", 
-           x = 80000, y = 260000, 
+           x = 80000, y = 290000, 
            size = 3.5,
            label = "y = 1.21x + 83.48", 
            color = "cyan4")
