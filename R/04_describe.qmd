@@ -14,7 +14,6 @@ output-dir: ../results
 library(tidyverse)
 library(readr)
 library(here)
-library(ggplot2)
 ```
 
 ### Load data
@@ -86,7 +85,9 @@ Saving the barplot in a png-file in the results folder::
 
 ```{r}
 ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/04_key_plot.png",
-       plot = barplot)
+       plot = barplot,
+       width = 12, 
+       height = 8)
 ```
 
 ### Number of overlapping genes between the cell lines
