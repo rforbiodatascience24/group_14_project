@@ -138,6 +138,9 @@ Scatter plot of correlation between gene expresseion for KO and baseline of SKOV
 ::: {style="font-size:70%;"}
 
 ![](results/07_key_plot_1.png){fig-align="center" width="80%"}
+
+Noget med p-værdier
+
 :::
 :::
 
@@ -166,7 +169,6 @@ Cancer, senescence and PI3K/AKT pathways are downregulated after HERV-K KO in OV
 
 :::
 :::
-
 
 ## Discussion
 ::: {style="font-size: 25px;margin-top: 30px;"}
