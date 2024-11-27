@@ -76,7 +76,7 @@ scatter_plot_OVCAR3 <- data |>
   geom_smooth(method = "lm",
               linewidth = 0.5,
               se = FALSE) +
-  labs(title = "Correlation between DEGs at baseline and \nDEGs in HERV-K KO in OVCAR3",
+  labs(title = "Correlation between DEGs at baseline \nand DEGs in HERV-K KO in OVCAR3",
        x = "OVCAR3 KO (Log2FC)", 
        y = "OVCAR3 baseline (Log2FC)",
        color = "Differentially expressed genes") +
@@ -85,7 +85,8 @@ scatter_plot_OVCAR3 <- data |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 12)) +
+        axis.text = element_text(size = 12),
+        legend.key.size = unit(2,"cm")) +
   annotate("text",
            x = 110000, y = 2.0e+05, 
            size = 3.5,
@@ -183,7 +184,7 @@ scatter_plot_SKOV3 <- data |>
   geom_smooth(method = "lm",
               se = FALSE,
               linewidth = 0.5) +
-  labs(title = "Correlation between DEGs at baseline and \nDEGs HERV-K KO in SKOV3",
+  labs(title = "Correlation between DEGs at baseline \nand DEGs HERV-K KO in SKOV3",
        x = "SKOV3 KO (Log2FC)", 
        y = "SKOV3 baseline (Log2FC)", 
        color = "Differentially expressed genes") +
@@ -192,7 +193,8 @@ scatter_plot_SKOV3 <- data |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 12))+
+        axis.text = element_text(size = 12),
+        legend.key.size = unit(2,"cm"))+
   annotate("text",
            x = 1e+5, y = 0.35e+05, 
            size = 3.5,
@@ -255,9 +257,10 @@ scatter_plot_SKOV3_fixed <- data |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 12))+
-  theme(legend.key = element_rect(color = "white")) +
-  labs(title = "Snippet of correlation between DEGs at baseline \nand DEGs HERV-K KO in SKOV3",
+        axis.text = element_text(size = 12),
+        legend.key.size = unit(2,"cm"),
+        legend.key = element_rect(color = "white"))+
+  labs(title = "Snippet of correlation between DEGs at \nbaseline nd DEGs HERV-K KO in SKOV3",
        x = "SKOV3 KO (Log2FC)", 
        y = "SKOV3 baseline (Log2FC)", 
        color = "Differentially expressed genes") +
