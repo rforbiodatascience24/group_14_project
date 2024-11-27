@@ -4,8 +4,8 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-    output-dir: "results"
 editor: visual
+output-dir: "results"
 ---
 
 ### Load libraries
@@ -14,6 +14,7 @@ editor: visual
 library(tidyverse)
 library(readr)
 library("here")
+library(quarto)
 ```
 
 ### Load data and save for later use
