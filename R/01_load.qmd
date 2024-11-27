@@ -5,7 +5,7 @@ format:
   html:
     embed-resources: true
 editor: visual
-output-dir: ../results
+output-dir: "results"
 ---
 
 ### Load libraries
@@ -14,6 +14,7 @@ output-dir: ../results
 library(tidyverse)
 library(readr)
 library("here")
+library(quarto)
 ```
 
 ### Load data and save for later use
