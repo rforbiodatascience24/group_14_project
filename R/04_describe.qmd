@@ -82,7 +82,7 @@ barplot <- data |>
 
 ```
 
-Saving the barplot in a png-file:
+Saving the barplot in a png-file in the results folder::
 
 ```{r}
 ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/04_key_plot.png", plot = barplot)

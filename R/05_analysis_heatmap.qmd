@@ -14,6 +14,7 @@ output-dir: ../results
 library(tidyverse)
 library(here)
 library(readr)
+library(ggplot2)
 ```
 
 ### Load data
@@ -28,7 +29,7 @@ A heatmap of 70 randomly sampled genes is created. The heatmap shows the 70 gene
 
 ```{r}
 #70 are sampled randomly
-data |>
+heatmap_random <- data |>
   sample_n(70) |> 
   pivot_longer(
     cols = c(log2FC_OVCAR3, log2FC_SKOV3), 
@@ -56,10 +57,16 @@ data |>
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
 ```
 
+Saving heatmap in a png-file in the results folder:
+
+```{r}
+ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/05_key_plot_2.png", plot = heatmap_random)
+```
+
 ### Heatmap of overlapping up- and down-regulated DEGs in the two cell lines
 
 ```{r}
-data |>
+heatmap_overlap <- data |>
   pivot_longer(
     cols = c(log2FC_OVCAR3, log2FC_SKOV3), 
     names_to = "cell_line", 
@@ -88,4 +95,10 @@ data |>
         axis.title.y = element_text(size = 16),
         axis.text.y = element_text(size = 12)) +
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
+```
+
+Saving heatmap in a png-file in the results folder:
+
+```{r}
+ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/05_key_plot_2.png", plot = heatmap_overlap)
 ```
