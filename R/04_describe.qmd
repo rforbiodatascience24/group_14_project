@@ -75,10 +75,11 @@ barplot <- data |>
             vjust = -0.2) +
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
         axis.text = element_text(size = 18)) +
   labs(x = "",
        y = "Count",
-       title = "Distribution of DEGs in the two cell lines OVCAR3 and SKOV3",
+       title = "Distribution of DEGs in the two cell lines OVCAR3 \\and SKOV3",
        fill = "Cell line") + 
   scale_x_discrete(limits = c("Downregulated", "Upregulated", "Neutral"), 
                    labels = c("Downregulated" = "Down-regulated", "Upregulated" = "Up-regulated"))
