@@ -1,0 +1,262 @@
+---
+title: "06_analysis_scatterplot"
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+output-dir: ../results
+---
+
+### Load packages
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(patchwork)
+library(here)
+library(readr)
+library(scales)
+```
+
+### Load data
+
+```{r}
+data <- read_tsv(file = here("data/03_dat_aug.tsv"))
+```
+
+### Regression models for up- and down-regulated OVCAR3 DEGs
+
+Two separate regression models comparing the OVCAR3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs and down-regulated DEGs.
+
+```{r}
+#Regression model for up-regulated DEGs
+Equation_OVCAR3_UP <- data |>
+  select(OVCAR3_MOCK, 
+         OVCAR3_KO, 
+         DEG_OVCAR3) |>
+  filter(DEG_OVCAR3 == "Upregulated") |>
+  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+
+summary(Equation_OVCAR3_UP)
+
+
+#Regression model for down-regulated DEGs
+Equation_OVCAR3_DOWN <- data |>
+  select(OVCAR3_MOCK, 
+         OVCAR3_KO, 
+         DEG_OVCAR3) |>
+  filter(DEG_OVCAR3 == "Downregulated") |>
+  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+
+summary(Equation_OVCAR3_DOWN)
+
+
+#Regression model for neutral DEGs
+Equation_OVCAR3_NEU <- data |>
+  select(OVCAR3_MOCK, 
+         OVCAR3_KO, 
+         DEG_OVCAR3) |>
+  filter(DEG_OVCAR3 == "Neutral") |>
+  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+
+summary(Equation_OVCAR3_NEU)
+```
+
+### Scatter plot of KO vs baseline DEGs in OVCAR3
+
+A scatter plot is done to visualise the comparison of the OVCAR3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs, down-regulated DEGs and neutral DEGs from above.
+
+```{r}
+data |>  
+  ggplot(mapping = aes(x = OVCAR3_KO,
+                       y = OVCAR3_MOCK,
+                       color = DEG_OVCAR3)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              linewidth = 0.5,
+              se = FALSE) +
+  labs(title = "Correlation between DEGs at baseline and \nDEGs in HERV-K KO in OVCAR3",
+       x = "OVCAR3 KO (Log2FC)", 
+       y = "OVCAR3 baseline (Log2FC)", 
+       caption = "Data from Ko EJ et. al",
+       color = "Differentially expressed genes") +
+  scale_x_continuous(labels = scientific) +
+  scale_y_continuous(labels = scientific) +  
+  theme_minimal() +
+  annotate("text",
+           x = 110000, y = 2.0e+05, 
+           size = 3.5,
+           label = "y = 1.63x + 155.93",
+           color = "red") +
+  annotate("text",
+           x = 110000, y = 1.85e+05, 
+           size = 3.5,
+           label = "R^2 = 0.696",
+           color = "red") +
+  annotate("text",
+           x = 3.5e+5, y = 0.36e+05, 
+           size = 3.5,
+           label = "y = 0.29x + 179.69",
+           color = "blue") + 
+  annotate("text",
+           x = 3.5e+5, y = 0.23e+05, 
+           size = 3.5,
+           label = "R^2 = 0.769",
+           color = "blue") +
+  annotate("text",
+           x = 5e+5, y = 2.5e5, 
+           size = 3.5,
+           label = "y = 0.366x + 0.039",
+           color = "forestgreen") + 
+  annotate("text",
+           x = 5e+5, y = 2.35e5, 
+           size = 3.5,
+           label = "R^2 = 0.639",
+           color = "forestgreen")
+```
+
+For all three DEG groups (up- and down-regulated and neutral) a positive correlation is found between the OVCAR3 cells at baseline and after HERV-K KO.
+
+### Regression models for up- and down-regulated SKOV3 DEGs
+
+Two separate regression models comparing the SKOV3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs and down-regulated DEGs.
+
+```{r}
+#Regression model for up-regulated DEGs
+Equation_SKOV3_UP <- data |>
+  select(SKOV3_MOCK, 
+         SKOV3_KO, 
+         DEG_SKOV3) |>
+  filter(DEG_SKOV3 == "Upregulated") |>
+  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+
+summary(Equation_SKOV3_UP)
+
+
+#Regression model for down-regulated DEGs
+Equation_SKOV3_DOWN <- data |>
+  select(SKOV3_MOCK, 
+         SKOV3_KO, 
+         DEG_SKOV3) |>
+  filter(DEG_SKOV3 == "Downregulated") |>
+  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+
+summary(Equation_SKOV3_DOWN)
+
+
+#Regression model for neutral DEGs
+Equation_SKOV3_NEU <- data |>
+  select(SKOV3_MOCK, 
+         SKOV3_KO, 
+         DEG_SKOV3) |>
+  filter(DEG_SKOV3 == "Neutral") |>
+  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+
+summary(Equation_SKOV3_NEU)
+```
+
+### Scatter plot of KO vs baseline DEGs in SKOV3
+
+A scatter plot is done to visualise the comparison of the SKOV3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs, down-regulated DEGs and neutral DEGs from above.
+
+```{r}
+#Scatterplot showing all data DEGs
+data |> 
+  ggplot(mapping = aes(x = SKOV3_KO,
+                       y = SKOV3_MOCK,
+                       color = DEG_SKOV3)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              linewidth = 0.5) +
+  labs(title = "Correlation between DEGs at baseline and \nDEGs HERV-K KO in SKOV3",
+       x = "SKOV3 KO (Log2FC)", 
+       y = "SKOV3 baseline (Log2FC)", 
+       caption = "Data from Ko EJ et. Al",
+       color = "Differentially expressed genes") +
+  scale_x_continuous(labels = scientific) +
+  scale_y_continuous(labels = scientific) +
+  theme_minimal() +
+  annotate("text",
+           x = 1e+5, y = 0.35e+05, 
+           size = 3.5,
+           label = "y = 4.781x + 5.222",
+           color = "blue") +
+  annotate("text",
+           x = 1e+5, y = 0.2e+05, 
+           size = 3.5,
+           label = "R^2 = 0.995",
+           color = "blue") +
+  annotate("text",
+           x = 3e+4, y = 1.3e+05, 
+           size = 3.5,
+           label = "y = 0.154x - 0.595",
+           color = "red") +
+  annotate("text",
+           x = 3e+4, y = 1.15e+05, 
+           size = 3.5,
+           label = "R^2 = 0.772",
+           color = "red") +
+  annotate("text",
+           x = 1.28e+5, y = 2.5e+5, 
+           size = 3.5,
+           label = "y = 1.460x - 2.704",
+           color = "forestgreen") + 
+  annotate("text",
+           x = 1.28e+5, y = 2.35e+5, 
+           size = 3.5,
+           label = "R^2 = 0.969",
+           color = "forestgreen")
+```
+
+As expected, a clear positive correlation is seen for the neutral DEGs in SKOV3.
+
+### Scatter plot of KO vs baseline DEGs in SKOV3 with changed axis
+
+In the above correlation analysis, it is not possible to see the down-regulated and up-regulated DEGs in SKOV3, as their relative expression is low. The same correlation analysis is performed, but with changed axis making it possible to see the up- and down-regulated DEGs.
+
+```{r}
+#Scatterplot with chosen axis
+data |> 
+  ggplot(mapping = aes(x = SKOV3_KO,
+                       y = SKOV3_MOCK,
+                       color = DEG_SKOV3)) +
+  geom_point(size = 1) +
+  geom_smooth(method = "lm",
+              linewidth = 0.5,
+              se = FALSE) +
+  theme_minimal() +
+  theme(legend.key = element_rect(color = "white")) +
+  labs(title = "Correlation between DEGs at baseline and \nDEGs HERV-K KO in SKOV3",
+       x = "SKOV3 KO (Log2FC)", 
+       y = "SKOV3 baseline (Log2FC)", 
+       caption = "Data from Ko EJ et. Al",
+       color = "Differentially expressed genes") +
+  scale_x_continuous(labels = scientific) +
+  scale_y_continuous(labels = scientific) +  
+  xlim(0, 100) +
+  ylim(0, 100) +
+  annotate("text",
+           x = 70, y = 15, 
+           size = 3.5,
+           label = "y = 4.781x + 5.222",
+           color = "blue") +
+  annotate("text",
+           x = 70, y = 10, 
+           size = 3.5,
+           label = "R^2 = 0.995",
+           color = "blue") +
+  annotate("text",
+           x = 15, y = 90, 
+           size = 3.5,
+           label = "y = 0.154x - 0.595",
+           color = "red") +
+  annotate("text",
+           x = 15, y = 85, 
+           size = 3.5,
+           label = "R^2 = 0.772",
+           color = "red")
+```
+
+When changing the visible area, we can see similar results as seen for OVCAR3. A positive correlation is found between the SKOV3 cells at baseline and after HERV-K KO.
