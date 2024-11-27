@@ -12,14 +12,14 @@ output-dir: ../results
 
 ```{r}
 library(tidyverse)
-library("here")
+library(here)
 library(readr)
 ```
 
 ### Load data
 
 ```{r}
-data <- read_tsv(file = here("data/03_dat_aug.tsv")
+data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
 ### Heatmap of randomly selected genes
