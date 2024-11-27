@@ -11,6 +11,7 @@ editor: visual
 
 ```{r}
 library(tidyverse)
+library(ggplot2)
 ```
 
 ### Load data
@@ -46,7 +47,7 @@ For SKOV3 there are 18.945 downregulated genes, 5.115 neutral genes and 3.980 up
 A barplot is made to illustrate the number of differentially expressed genes (DEG) for each cell line. They are divided into Downregulated, Neutral, and Upregulated genes.
 
 ```{r}
-data |> 
+barplot <- data |> 
   pivot_longer(
     cols = c(DEG_OVCAR3, 
              DEG_SKOV3), 
@@ -76,6 +77,17 @@ data |>
        title = "Distribution of DEGs in the two cell lines",
        fill = "Cell line")
 
+```
+
+Saving the barplot in a png-file in the results folder:
+
+```{r}
+ggsave(filename = "/net/pupil1/home/people/s204560/projects/group_14_project/results/04_key_plot.png", 
+       plot = barplot)
+```
+
+```{r}
+getwd()
 ```
 
 ### Overlapping genes
