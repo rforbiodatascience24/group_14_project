@@ -74,6 +74,7 @@ barplot <- data |>
             position = position_dodge(width = 0.9),
             vjust = -0.2) +
   theme_minimal() + 
+  theme(axis.text = element_text(size = 40))
   labs(x = "",
        y = "Count",
        title = "Distribution of DEGs in the two cell lines OVCAR3 and SKOV3",
