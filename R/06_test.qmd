@@ -78,12 +78,14 @@ scatter_plot_OVCAR3 <- data |>
               se = FALSE) +
   labs(title = "Correlation between DEGs at baseline and \nDEGs in HERV-K KO in OVCAR3",
        x = "OVCAR3 KO (Log2FC)", 
-       y = "OVCAR3 baseline (Log2FC)", 
-       caption = "Data from Ko EJ et. al",
+       y = "OVCAR3 baseline (Log2FC)",
        color = "Differentially expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +  
-  theme_minimal() +
+  theme_minimal() + 
+  theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 18))+
   annotate("text",
            x = 110000, y = 2.0e+05, 
            size = 3.5,
@@ -184,11 +186,13 @@ scatter_plot_SKOV3 <- data |>
   labs(title = "Correlation between DEGs at baseline and \nDEGs HERV-K KO in SKOV3",
        x = "SKOV3 KO (Log2FC)", 
        y = "SKOV3 baseline (Log2FC)", 
-       caption = "Data from Ko EJ et. Al",
        color = "Differentially expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +
-  theme_minimal() +
+  theme_minimal() + 
+  theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 18))+
   annotate("text",
            x = 1e+5, y = 0.35e+05, 
            size = 3.5,
@@ -248,12 +252,14 @@ scatter_plot_SKOV3_fixed <- data |>
   geom_smooth(method = "lm",
               linewidth = 0.5,
               se = FALSE) +
-  theme_minimal() +
+  theme_minimal() + 
+  theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 18))+
   theme(legend.key = element_rect(color = "white")) +
-  labs(title = "Correlation between DEGs at baseline and \nDEGs HERV-K KO in SKOV3",
+  labs(title = "Snippet of correlation between DEGs at baseline \nand DEGs HERV-K KO in SKOV3",
        x = "SKOV3 KO (Log2FC)", 
        y = "SKOV3 baseline (Log2FC)", 
-       caption = "Data from Ko EJ et. Al",
        color = "Differentially expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +  
