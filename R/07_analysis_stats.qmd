@@ -1,0 +1,210 @@
+---
+title: "07_analysis_t_test"
+author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
+format: 
+  html:
+    embed-resources: true
+editor: visual
+  markdown: 
+    wrap: 72
+output-dir: ../results
+editor_options: 
+  chunk_output_type: inline
+---
+
+### Load packages
+
+```{r}
+library(tidyverse)
+library(broom)
+library(here)
+library(readr)
+```
+
+### Load data
+
+```{r, include=FALSE}
+data <- read_tsv(file = here("data/03_dat_aug.tsv"))
+```
+
+### Data for analysis
+
+Pivot data to long format
+
+```{r}
+#Data for comparison of the two cell lines
+mock_or_ko <- data |> 
+  select(gene,
+         contains("_MOCK"), 
+         contains("_KO")) |> 
+  pivot_longer(cols = c(OVCAR3_MOCK, 
+                        OVCAR3_KO, 
+                        SKOV3_MOCK, 
+                        SKOV3_KO), 
+               names_to = c(".value", 
+                            "MOCK_or_KO"), 
+               names_pattern = "(.*)_(.*)")
+
+#Data for comparison of KO and baseline in OVCAR3
+OVCAR3_mock_or_ko <- data |> 
+    filter(DEG_OVCAR3 == "Upregulated" |
+           DEG_OVCAR3 == "Downregulated") |> 
+  select(gene, OVCAR3_MOCK, OVCAR3_KO) |> 
+  pivot_longer(cols = c(OVCAR3_MOCK, 
+                        OVCAR3_KO), 
+               names_to = c(".value", 
+                            "MOCK_or_KO"), 
+               names_pattern = "(.*)_(.*)" )
+
+#Data for comparison of KO and baseline in SKOV3
+SKOV3_mock_or_ko <- data |> 
+    filter(DEG_SKOV3 == "Upregulated" |
+           DEG_SKOV3 == "Downregulated") |> 
+  select(gene, SKOV3_MOCK, SKOV3_KO) |> 
+  pivot_longer(cols = c(SKOV3_MOCK, 
+                        SKOV3_KO), 
+               names_to = c(".value", 
+                            "MOCK_or_KO"), 
+               names_pattern = "(.*)_(.*)" )
+```
+
+### Regression models for KO and baseline in the two cell lines
+
+Fitting linear models of how the two cell lines correlate for both KO and MOCK
+
+```{r}
+#Regression model for KO genes
+model_KO <- mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  lm(formula = SKOV3 ~ OVCAR3)
+
+summary(model_KO)
+
+
+#Regression model for baseline genes
+model_MOCK <- mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  lm(formula = SKOV3 ~ OVCAR3)
+
+summary(model_MOCK)
+```
+
+### Scatter plot between KO and baseline
+
+Scatter plot showing the difference between KO and baseline including the values from the linear models
+
+```{r}
+scatterplot_mock_ko <- mock_or_ko |> 
+  ggplot(mapping = aes(x = OVCAR3, 
+                       y = SKOV3, 
+                       color = MOCK_or_KO)) +
+  geom_point(size = 1) + 
+  geom_smooth(method = lm,
+              linewidth = 0.5,
+              se = FALSE) +
+  labs(title = "Gene expression in the two cell lines for KO and at baseline",
+       x = "OVCAR3 (Log2FC)", 
+       y = "SKOV3 (Log2FC)",
+       caption = "Data from Ko EJ et Al.",
+       color = "") +
+  theme_minimal() +
+  scale_x_continuous(limits = c(0,730000)) +
+  scale_y_continuous(limits = c(0,730000)) +
+  annotate("text", 
+           x = 590000, y = 250000, 
+           size = 3.5,
+           label = "R^2 = 0.64", 
+           color = "firebrick1") +
+  annotate("text", 
+           x = 590000, y = 220000, 
+           size = 3.5,
+           label = "y = 0.29x + 372.26", 
+           color = "firebrick1") +
+  annotate("text", 
+           x = 80000, y = 290000, 
+           size = 3.5,
+           label = "R^2 = 0.89", 
+           color = "cyan4") +
+  annotate("text", 
+           x = 80000, y = 260000, 
+           size = 3.5,
+           label = "y = 1.21x + 83.48", 
+           color = "cyan4")
+
+scatterplot_mock_ko
+```
+
+There is a positive correlation between the two cell lines for both the knock-out and the baseline. The genes for the baseline (MOCK) cell lines correlate the best. This indicates that the two cell lines are quite similar in the wildtype state. However, the two cell lines differ a bit more when we look at the KO cell lines.
+
+Save the plot as png-file in results folder
+
+```{r}
+ggsave(filename = here("results/07_key_plot_1.png"),
+       plot = scatterplot_mock_ko,
+       width = 10, 
+       height = 6)
+```
+
+### Statistics: t-test and p-values
+
+Using a t-test to check whether or not the KO and baseline samples are different for each cell line.
+
+```{r}
+KO_OVCAR3 <- OVCAR3_mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |>
+  select(OVCAR3)
+
+MOCK_OVCAR3 <- OVCAR3_mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(OVCAR3)
+
+#t-test for OVCAR3
+broom::tidy(t.test(KO_OVCAR3, MOCK_OVCAR3), paired = TRUE)|> 
+  pull(p.value)
+
+
+KO_SKOV3 <- SKOV3_mock_or_ko |> 
+  filter(MOCK_or_KO == "KO") |> 
+  select(SKOV3)
+
+MOCK_SKOV3 <- SKOV3_mock_or_ko |> 
+  filter(MOCK_or_KO == "MOCK") |> 
+  select(SKOV3)
+
+#t-test for SKOV3
+broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|> 
+  pull(p.value)
+```
+
+The p-value is 0.79 for OVCAR3. This means that there are no statistical significant difference between the values of KO vs baseline (MOCK) in this cell line.
+
+The p-value is 0.0688 for SKOV3. This means that there are no statistical significant difference between the values of KO vs MOCK in this cell line.
+
+### Significant difference between KO and baseline in the cell lines for GDF15 gene
+
+The GDF15 gene has been shown to be highly induced in ovarian cell cancer, this gene is investigated for our cell lines and their KO's.
+
+```{r}
+gdf15 <- data |>  
+  filter(gene == "GDF15") |> 
+  select(OVCAR3_MOCK, OVCAR3_KO, SKOV3_MOCK, SKOV3_KO) |> 
+  pivot_longer(cols = c(OVCAR3_MOCK, 
+                        OVCAR3_KO, 
+                        SKOV3_MOCK, 
+                        SKOV3_KO), 
+               names_to = c(".value", 
+                            "MOCK_or_KO"),
+               names_pattern = "(.*)_(.*)")
+
+gdf15_matrix <- gdf15 |>
+  column_to_rownames(var = "MOCK_or_KO") |> 
+  as.matrix()
+```
+
+### Fishers test 
+
+```{r}
+fisher.test(gdf15_matrix)
+```
+
+The fisher test for the GDF15 gene between each of the conditions (KO, MOCK and cell line) shows a p-value of 2.2\*10\^-16. Which means that there is a strong significant difference between the conditions for this gene.
