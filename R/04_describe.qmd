@@ -6,11 +6,13 @@ format:
     embed-resources: true
 editor: visual
 output-dir: ../results
+editor_options: 
+  chunk_output_type: inline
 ---
 
 ### Load packages
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
 library(readr)
 library(here)
@@ -18,7 +20,8 @@ library(here)
 
 ### Load data
 
-```{r}
+
+```{r, include=FALSE}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
@@ -52,7 +55,7 @@ After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated genes, 270 
 A barplot is made to illustrate the number of differentially expressed genes (DEG) for each cell line. They are divided into down-regulated, up-regulated and neutral genes.
 
 ```{r}
-data |> 
+barplot <- data |> 
   pivot_longer(
     cols = c(DEG_OVCAR3, 
              DEG_SKOV3), 
@@ -72,13 +75,25 @@ data |>
             position = position_dodge(width = 0.9),
             vjust = -0.2) +
   theme_minimal() + 
+  theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 18)) +
   labs(x = "",
        y = "Count",
-       title = "Distribution of DEGs in the two cell lines OVCAR3 and SKOV3",
+       title = "Distribution of DEGs in the two cell lines OVCAR3 \nand SKOV3",
        fill = "Cell line") + 
   scale_x_discrete(limits = c("Downregulated", "Upregulated", "Neutral"), 
                    labels = c("Downregulated" = "Down-regulated", "Upregulated" = "Up-regulated"))
 
+```
+
+The barplot is saved in a png-file in the results folder::
+
+```{r}
+ggsave(filename = here("results/04_key_plot_1.png"),
+       plot = barplot,
+       width = 10, 
+       height = 6)
 ```
 
 ### Number of overlapping genes between the cell lines
