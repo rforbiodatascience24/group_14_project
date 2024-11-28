@@ -4,12 +4,11 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor: visual
+editor: 
   markdown: 
     wrap: 72
-output-dir: ../results
 editor_options: 
-  chunk_output_type: inline
+  chunk_output_type: inline
 ---
 
 ### Load packages
@@ -70,7 +69,8 @@ SKOV3_mock_or_ko <- data |>
 
 ### Regression models for KO and baseline in the two cell lines
 
-Fitting linear models of how the two cell lines correlate for both KO and MOCK
+Fitting linear models of how the two cell lines correlate for both KO
+and MOCK
 
 ```{r}
 #Regression model for KO genes
@@ -91,7 +91,8 @@ summary(model_MOCK)
 
 ### Scatter plot between KO and baseline
 
-Scatter plot showing the difference between KO and baseline including the values from the linear models
+Scatter plot showing the difference between KO and baseline including
+the values from the linear models
 
 ```{r}
 scatterplot_mock_ko <- mock_or_ko |> 
@@ -136,7 +137,11 @@ scatterplot_mock_ko <- mock_or_ko |>
 scatterplot_mock_ko
 ```
 
-There is a positive correlation between the two cell lines for both the knock-out and the baseline. The genes for the baseline (MOCK) cell lines correlate the best. This indicates that the two cell lines are quite similar in the wildtype state. However, the two cell lines differ a bit more when we look at the KO cell lines.
+There is a positive correlation between the two cell lines for both the
+knock-out and the baseline. The genes for the baseline (MOCK) cell lines
+correlate the best. This indicates that the two cell lines are quite
+similar in the wildtype state. However, the two cell lines differ a bit
+more when we look at the KO cell lines.
 
 Save the plot as png-file in results folder
 
@@ -149,7 +154,8 @@ ggsave(filename = here("results/07_key_plot_1.png"),
 
 ### Statistics: t-test and p-values
 
-Using a t-test to check whether or not the KO and baseline samples are different for each cell line.
+Using a t-test to check whether or not the KO and baseline samples are
+different for each cell line.
 
 ```{r}
 KO_OVCAR3 <- OVCAR3_mock_or_ko |> 
@@ -178,13 +184,18 @@ broom::tidy(t.test(KO_SKOV3, MOCK_SKOV3), paired = TRUE)|>
   pull(p.value)
 ```
 
-The p-value is 0.79 for OVCAR3. This means that there are no statistical significant difference between the values of KO vs baseline (MOCK) in this cell line.
+The p-value is 0.79 for OVCAR3. This means that there are no statistical
+significant difference between the values of KO vs baseline (MOCK) in
+this cell line.
 
-The p-value is 0.0688 for SKOV3. This means that there are no statistical significant difference between the values of KO vs baseline (MOCK) in this cell line.
+The p-value is 0.0688 for SKOV3. This means that there are no
+statistical significant difference between the values of KO vs baseline
+(MOCK) in this cell line.
 
 ### Significant difference between KO and baseline in the cell lines for GDF15 gene
 
-The GDF15 gene has been shown to be highly induced in ovarian cell cancer, this gene is investigated for our cell lines and their KO's.
+The GDF15 gene has been shown to be highly induced in ovarian cell
+cancer, this gene is investigated for our cell lines and their KO's.
 
 ```{r}
 gdf15 <- data |>  
@@ -209,4 +220,7 @@ gdf15_matrix <- gdf15 |>
 fisher.test(gdf15_matrix)
 ```
 
-The fisher test for the GDF15 gene between each of the conditions (KO, MOCK and cell line) shows a p-value of 2.2\*10\^-16. Which means that there is a strong significant difference between the conditions for this gene.
+The fisher test for the GDF15 gene between each of the conditions (KO,
+MOCK and cell line) shows a p-value of 2.2\*10\^-16. Which means that
+there is a strong significant difference between the conditions for this
+gene.

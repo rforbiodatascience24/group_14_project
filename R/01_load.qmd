@@ -75,9 +75,3 @@ data <- left_join(OVCAR3_MOCK,
 ```{r}
 write_tsv(data, here("data", "01_dat_load.tsv"))
 ```
-
-### Save HTML file
-
-```{r}
-#rmarkdown::render("R/01_load.qmd", output_dir = "results")
-```

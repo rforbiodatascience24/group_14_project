@@ -12,7 +12,7 @@
 <meta name="author" content="Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)" />
 
 
-<title>01_load</title>
+<title>04_describe</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">01_load</h1>
+<h1 class="title toc-ignore">04_describe</h1>
 <h4 class="author">Julie Bruun Brockhoff (s204519), Cecilie Kejlberg
 Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann
 Polhaus (s153664), Lise Lotte Eriksen (s154123)</h4>
@@ -357,101 +357,107 @@ Polhaus (s153664), Lise Lotte Eriksen (s154123)</h4>
 </div>
 
 
-<div id="load-libraries" class="section level3">
-<h3>Load libraries</h3>
+<div id="load-packages" class="section level3">
+<h3>Load packages</h3>
 <pre class="r"><code>library(tidyverse)
 library(readr)
 library(here)</code></pre>
 </div>
-<div id="load-data-and-save-for-later-use" class="section level3">
-<h3>Load data and save for later use</h3>
-<p>The data is loaded as tibbles (tsv files) from four different txt
-files, each containing a column with gene symbols and a column with
-expression levels. For the genes where the expression level is empty, NA
-or N/A, it is saved as “na”.</p>
-<pre class="r"><code>#First load the raw data taking care of missing values 
-SKOV3_MOCK &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331622_SKOV_MOCK.txt&quot;))</code></pre>
-<pre><code>## Rows: 58173 Columns: 2
+<div id="load-data" class="section level3">
+<h3>Load data</h3>
+<pre class="r"><code>data &lt;- read_tsv(file = here(&quot;data/03_dat_aug.tsv&quot;))</code></pre>
+<pre><code>## Rows: 28040 Columns: 9
 ## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
 ## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): SKOV_MOCK
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>SKOV3_KO &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331624_SKOV_KO.txt&quot;))</code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): SKOV_KO
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>OVCAR3_MOCK &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331623_OVCAR3_MOCK.txt&quot;)) </code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): OVCAR3_MOCK
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>OVCAR3_KO &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331625_OVCAR_KO.txt&quot;)) </code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): OVCAR_KO
+## chr (3): gene, DEG_OVCAR3, DEG_SKOV3
+## dbl (6): OVCAR3_MOCK, OVCAR3_KO, log2FC_OVCAR3, SKOV3_MOCK, SKOV3_KO, log2FC_SKOV3
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
-<div id="removing-duplicates" class="section level3">
-<h3>Removing duplicates</h3>
-<p>If a gene occurs more than once, all duplicates are removed and the
-specific gene does not occur in the analysis. There is not sufficient
-information about why duplicates occur, this is why we have chosen to
-remove all cases.</p>
-<pre class="r"><code>OVCAR3_KO &lt;- OVCAR3_KO |&gt;
-  group_by(`Gene Symbol`) |&gt; 
-  filter(n() == 1) |&gt; 
-  ungroup()
-
-OVCAR3_MOCK &lt;- OVCAR3_MOCK |&gt;
-  group_by(`Gene Symbol`) |&gt;
-  filter(n() == 1) |&gt;
-  ungroup()
-
-SKOV3_KO &lt;- SKOV3_KO |&gt;
-  group_by(`Gene Symbol`) |&gt;
-  filter(n() == 1) |&gt;
-  ungroup()
-
-SKOV3_MOCK &lt;- SKOV3_MOCK |&gt;
-  group_by(`Gene Symbol`) |&gt;
-  filter(n() == 1) |&gt;
-  ungroup()</code></pre>
+<div id="basic-information" class="section level3">
+<h3>Basic information</h3>
+<pre class="r"><code>ncol(data)</code></pre>
+<pre><code>## [1] 9</code></pre>
+<pre class="r"><code>nrow(data)</code></pre>
+<pre><code>## [1] 28040</code></pre>
+<p>There are 28.040 observations (genes).</p>
+<p>There are 9 variables, these include: MOCK, KO, log2FC and DEG
+(up/downregulated) for each cell line and a column with gene
+symbols.</p>
 </div>
-<div id="joining-data" class="section level3">
-<h3>Joining data</h3>
-<p>The four tibbles are joined into one tibble with rows corresponding
-to the unique genes and columns corresponding to each cell line (OVCAR3
-and SKOV3) at baseline (_MOCK) and after knock-out of gene HERV-K
-(_KO):</p>
-<p>OVCAR3_MOCK, OVCAR3_KO, SKOV3_MOCK, and SKOV3_KO.</p>
-<pre class="r"><code>data &lt;- left_join(OVCAR3_MOCK,
-                  OVCAR3_KO, 
-                  by = join_by(`Gene Symbol`)) |&gt; 
-  left_join(SKOV3_MOCK, 
-            by = join_by(`Gene Symbol`)) |&gt; 
-  left_join(SKOV3_KO, 
-            by = join_by(`Gene Symbol`)) |&gt; 
-  rename(gene = `Gene Symbol`)</code></pre>
+<div id="number-of-up-regulated-and-down-regulated-genes" class="section level3">
+<h3>Number of up-regulated and down-regulated genes</h3>
+<p>The number of up- and down-regulated genes are counted.</p>
+<pre class="r"><code>data |&gt; 
+  count(DEG_OVCAR3)
+
+data |&gt; 
+  count(DEG_SKOV3)</code></pre>
+<p>After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated
+genes, 4.212 up-regulated genes and 23.062 neutral genes.</p>
+<p>After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated
+genes, 270 up-regulated genes and 26.850 neutral genes.</p>
+<p>A barplot is made to illustrate the number of differentially
+expressed genes (DEG) for each cell line. They are divided into
+down-regulated, up-regulated and neutral genes.</p>
+<pre class="r"><code>barplot &lt;- data |&gt; 
+  pivot_longer(
+    cols = c(DEG_OVCAR3, 
+             DEG_SKOV3), 
+    names_to = &quot;cell_line&quot;, 
+    values_to = &quot;expression_level&quot;) |&gt; 
+  mutate(cell_line = case_when(cell_line == &quot;DEG_OVCAR3&quot; ~ &quot;OVCAR3&quot;,
+                               cell_line == &quot;DEG_SKOV3&quot; ~ &quot;SKOV3&quot;)) |&gt;
+  select(gene, cell_line, expression_level) |&gt; 
+  count(expression_level, 
+        cell_line) |&gt; 
+  ggplot(mapping = aes(x = expression_level, 
+                       y = n, 
+                       fill = cell_line)) +
+  geom_bar(stat = &quot;identity&quot;, 
+           position = &quot;dodge&quot;) +
+  geom_text(mapping = aes(label = n), 
+            position = position_dodge(width = 0.9),
+            vjust = -0.2) +
+  theme_minimal() + 
+  theme(plot.title = element_text(size = 24),
+        axis.title = element_text(size = 18),
+        axis.text = element_text(size = 18)) +
+  labs(x = &quot;&quot;,
+       y = &quot;Count&quot;,
+       title = &quot;Distribution of DEGs in the two cell lines OVCAR3 \nand SKOV3&quot;,
+       fill = &quot;Cell line&quot;) + 
+  scale_x_discrete(limits = c(&quot;Downregulated&quot;, &quot;Upregulated&quot;, &quot;Neutral&quot;), 
+                   labels = c(&quot;Downregulated&quot; = &quot;Down-regulated&quot;, &quot;Upregulated&quot; = &quot;Up-regulated&quot;))</code></pre>
+<p>The barplot is saved in a png-file in the results folder::</p>
+<pre class="r"><code>ggsave(filename = here(&quot;results/04_key_plot_1.png&quot;),
+       plot = barplot,
+       width = 10, 
+       height = 6)</code></pre>
 </div>
-<div id="saving-in-data-folder" class="section level3">
-<h3>Saving in data folder</h3>
-<pre class="r"><code>write_tsv(data, here(&quot;data&quot;, &quot;01_dat_load.tsv&quot;))</code></pre>
+<div id="number-of-overlapping-genes-between-the-cell-lines" class="section level3">
+<h3>Number of overlapping genes between the cell lines</h3>
+<p>Counting the number of genes that are up-regulated or down-regulated
+in both cell lines.</p>
+<pre class="r"><code>#upregulated genes for both cell lines
+data |&gt; 
+  filter(DEG_OVCAR3 == &quot;Upregulated&quot; &amp;
+         DEG_SKOV3 == &quot;Upregulated&quot;) |&gt; 
+  print() |&gt; 
+  count()
+
+#downregulated genes for both cell lines
+data |&gt; 
+  filter(DEG_OVCAR3 == &quot;Downregulated&quot; &amp;
+         DEG_SKOV3 == &quot;Downregulated&quot;) |&gt;
+  print() |&gt;
+  count()</code></pre>
+<p>For the up-regulated genes there are 59 genes that are overlapping in
+both cell lines, CRYBB2 and ANKRD62 both associated with cancer.</p>
+<p>In regards to the down-regulated genes there are 15 genes shared
+between the two cell lines, RBAKDN and CDH2 both associated with cell
+division and adhesion.</p>
 </div>
 
 
