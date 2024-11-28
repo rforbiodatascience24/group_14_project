@@ -10,7 +10,7 @@ output-dir: ../results
 
 ### Load packages
 
-```{r}
+```{r, include=FALSE}
 library(tidyverse)
 library(readr)
 library(here)
@@ -18,7 +18,7 @@ library(here)
 
 ### Load data
 
-```{r}
+```{r, include=FALSE}
 data <- read_tsv(file = here("data/02_dat_clean.tsv"))
 ```
 
