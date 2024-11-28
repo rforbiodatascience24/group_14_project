@@ -12,7 +12,7 @@
 <meta name="author" content="Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)" />
 
 
-<title>01_load</title>
+<title>07_load</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -349,7 +349,7 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">01_load</h1>
+<h1 class="title toc-ignore">07_load</h1>
 <h4 class="author">Julie Bruun Brockhoff (s204519), Cecilie Kejlberg
 Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann
 Polhaus (s153664), Lise Lotte Eriksen (s154123)</h4>
@@ -359,8 +359,18 @@ Polhaus (s153664), Lise Lotte Eriksen (s154123)</h4>
 
 <div id="load-libraries" class="section level3">
 <h3>Load libraries</h3>
-<pre class="r"><code>library(tidyverse)
-library(readr)
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ───────────────────────────────────────────────────────────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ─────────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<pre class="r"><code>library(readr)
 library(here)</code></pre>
 </div>
 <div id="load-data-and-save-for-later-use" class="section level3">

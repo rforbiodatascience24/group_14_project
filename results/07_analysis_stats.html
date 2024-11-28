@@ -359,9 +359,22 @@ Polhaus (s153664), Lise Lotte Eriksen (s154123)</h4>
 
 <div id="load-packages" class="section level3">
 <h3>Load packages</h3>
+<pre class="r"><code>library(tidyverse)
+library(broom)
+library(here)
+library(readr)</code></pre>
 </div>
 <div id="load-data" class="section level3">
 <h3>Load data</h3>
+<pre class="r"><code>data &lt;- read_tsv(file = here(&quot;data/03_dat_aug.tsv&quot;))</code></pre>
+<pre><code>## Rows: 28040 Columns: 9
+## ── Column specification ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;\t&quot;
+## chr (3): gene, DEG_OVCAR3, DEG_SKOV3
+## dbl (6): OVCAR3_MOCK, OVCAR3_KO, log2FC_OVCAR3, SKOV3_MOCK, SKOV3_KO, log2FC_SKOV3
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <div id="data-for-analysis" class="section level3">
 <h3>Data for analysis</h3>
