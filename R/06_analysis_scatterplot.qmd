@@ -228,7 +228,6 @@ scatter_plot_SKOV3 <- data |>
 
 scatter_plot_SKOV3
 ```
-
 As expected, a clear positive correlation is seen for the neutral DEGs in SKOV3.
 
 The plot is saved in a png-file in the results folder:
@@ -290,6 +289,17 @@ scatter_plot_SKOV3_fixed <- data |>
            color = "red")
 
 scatter_plot_SKOV3_fixed
+```
+
+When changing the visible area, we can see similar results as seen for OVCAR3. A positive correlation is found between the SKOV3 cells at baseline and after HERV-K KO.
+
+The plot is saved in a png-file in the results folder:
+
+```{r, include=FALSE}
+ggsave(filename = here("results/06_key_plot_3.png"),
+       plot = scatter_plot_SKOV3_fixed,
+       width = 8, 
+       height = 5)
 ```
 
 When changing the visible area, we can see similar results as seen for OVCAR3. A positive correlation is found between the SKOV3 cells at baseline and after HERV-K KO.
