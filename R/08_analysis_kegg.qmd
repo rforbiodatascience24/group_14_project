@@ -12,7 +12,7 @@ editor_options:
 
 ### Loading packages
 
-```{r, include=FALSE}
+```{r}
 library(here)
 library(readr)
 library(tidyverse)
@@ -23,7 +23,7 @@ library(enrichplot)
 
 ### Load data
 
-```{r, include=FALSE}
+```{r}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 

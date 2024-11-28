@@ -11,7 +11,7 @@ output-dir: ../results
 
 ### Load packages
 
-```{r, include = FALSE}
+```{r}
 library(tidyverse)
 library(patchwork)
 library(here)
@@ -21,7 +21,7 @@ library(scales)
 
 ### Load data
 
-```{r, include = FALSE}
+```{r}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
@@ -228,6 +228,7 @@ scatter_plot_SKOV3 <- data |>
 
 scatter_plot_SKOV3
 ```
+
 As expected, a clear positive correlation is seen for the neutral DEGs in SKOV3.
 
 The plot is saved in a png-file in the results folder:

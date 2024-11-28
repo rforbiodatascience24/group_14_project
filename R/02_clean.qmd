@@ -10,7 +10,7 @@ output-dir: ../results
 
 ### Load packages
 
-```{r, include=FALSE}
+```{r}
 library(tidyverse)
 library(readr)
 library(here)
