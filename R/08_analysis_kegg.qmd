@@ -6,11 +6,13 @@ format:
     embed-resources: true
 editor: visual
 output-dir: ../results
+editor_options: 
+  chunk_output_type: inline
 ---
 
 ### Loading packages
 
-```{r}
+```{r, include=FALSE}
 library(here)
 library(readr)
 library(tidyverse)
@@ -21,7 +23,7 @@ library(enrichplot)
 
 ### Load data
 
-```{r}
+```{r, include=FALSE}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
@@ -116,22 +118,34 @@ plot_kegg_OVCAR3_upregulated <- kegg_analysis_OVCAR3_upregulated |>
                        high = "blue", 
                        name = "p.adjust") + 
   labs(
-    title = "KEGG Pathway Enrichment Analysis for upregulated genes in OVCAR3",
+    title = "KEGG Pathway Enrichment Analysis for upregulated \ngenes in OVCAR3",
     x = "Gene Count",
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
-                               color = "black"),
-    plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+    plot.title = element_text(size = 24,
+                              hjust = 0.8),
+    axis.text.x = element_text(size = 18,
+                             angle = 45),
+    axis.text.y = element_text(size = 18),
+    axis.title = element_text(size = 18),
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14))
 
 plot_kegg_OVCAR3_upregulated
 
 ```
 
 Only one pathway was significantly up-regulated for the OVCAR3 cell line.
+
+The KEGG is saved in a png-file in the results folder:
+
+```{r}
+ggsave(filename = here("results/08_key_plot_1.png"),
+       plot = plot_kegg_OVCAR3_upregulated,
+       width = 10, 
+       height = 6)
+```
 
 ### KEGG enrichment for all down-regulated genes in OVCAR3
 
@@ -156,22 +170,32 @@ plot_kegg_OVCAR3_downregulated <- kegg_analysis_OVCAR3_downregulated |>
                        high = "blue", 
                        name = "p.adjust") +  
   labs(
-    title = "KEGG Pathway Enrichment Analysis for downregulated genes in OVCAR3",
+    title = "KEGG Pathway Enrichment Analysis for downregulated \ngenes in OVCAR3",
     x = "Gene Count",
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
-                               color = "black"),
-    plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+    plot.title = element_text(size = 24,
+                              hjust = 0.8),
+    axis.text = element_text(size = 18),
+    axis.title = element_text(size = 18),
+    legend.title = element_text(size = 16),
+    legend.text = element_text(size = 14))
 
 plot_kegg_OVCAR3_downregulated
 
 ```
 
 Several pathways were enriched when looking at the DEGs that were down-regulated in the OVCAR3 KO cell line. The top 3 pathways are all related to cancer, but also cellular senescence is seen in the plot.
+
+The KEGG is saved in a png-file in the results folder:
+
+```{r}
+ggsave(filename = here("results/08_key_plot_2.png"),
+       plot = plot_kegg_OVCAR3_downregulated,
+       width = 10, 
+       height = 6)
+```
 
 ### KEGG enrichment for all up-regulated genes in SKOV3
 
@@ -201,11 +225,11 @@ plot_kegg_SKOV3_upregulated <- kegg_analysis_SKOV3_upregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
+    axis.text.y = element_text(size = 12, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+                              size = 24),
+    axis.title = element_text(size = 18))
 
 plot_kegg_SKOV3_upregulated
 
@@ -217,11 +241,11 @@ There are no significantly up-regulated pathways in SKOV3.
 
 ```{r}
 kegg_analysis_SKOV3_downregulated <- enrichKEGG(gene = geneIDs_SKOV3_downregulated,
-                                                 organism = "hsa", 
-                                                 pAdjustMethod = "BH",
-                                                 minGSSize = 10,
-                                                 maxGSSize = 500,
-                                                 qvalueCutoff = 0.05) |> 
+                                                organism = "hsa", 
+                                                pAdjustMethod = "BH",
+                                                minGSSize = 10,
+                                                maxGSSize = 500,
+                                                qvalueCutoff = 0.05) |> 
   as_tibble()
 
 plot_kegg_SKOV3_downregulated <- kegg_analysis_SKOV3_downregulated |> 
@@ -241,11 +265,11 @@ plot_kegg_SKOV3_downregulated <- kegg_analysis_SKOV3_downregulated |>
     y = "Pathways") +
   theme_minimal() +
   theme(
-    axis.text.y = element_text(size = 10, 
+    axis.text.y = element_text(size = 12, 
                                color = "black"),
     plot.title = element_text(hjust = 0.5, 
-                              face = "bold", 
-                              size = 12))
+                              size = 24),
+    axis.title = element_text(size = 18))
 
 plot_kegg_SKOV3_downregulated
 ```
