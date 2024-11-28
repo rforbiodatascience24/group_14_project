@@ -4,8 +4,11 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor: visual
-output-dir: ../results
+editor: 
+  markdown: 
+    wrap: 72
+editor_options: 
+  chunk_output_type: inline
 ---
 
 ### Load packages
@@ -24,7 +27,9 @@ data <- read_tsv(file = here("data/02_dat_clean.tsv"))
 
 ### Fold change calculation
 
-The log2 fold change (log2FC) is calculated for each of the cell lines (OVCAR3 and SKOV3) and added as the two columns log2FC_OVCAR3 and log2FC_SKOV3 to assess the affect of HERV-K KO.
+The log2 fold change (log2FC) is calculated for each of the cell lines
+(OVCAR3 and SKOV3) and added as the two columns log2FC_OVCAR3 and
+log2FC_SKOV3 to assess the affect of HERV-K KO.
 
 ```{r}
 aug_data <- data |>
@@ -38,7 +43,11 @@ aug_data <- data |>
 
 ### Assign regulation pattern to data
 
-Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that identifies whether each gene is up- or down-regulated in each cell line. This is based on the log2 fold change, if it is above 2 the genes are "Upregulated", and below -2 they are "Downregulated", if they are between -2 and 2 they are "Neutral".
+Two new columns are added (DEG_OVCAR3 and DEG_SKOV3) to the tibble that
+identifies whether each gene is up- or down-regulated in each cell line.
+This is based on the log2 fold change, if it is above 2 the genes are
+"Upregulated", and below -2 they are "Downregulated", if they are
+between -2 and 2 they are "Neutral".
 
 ```{r}
 aug_data <- aug_data |> 

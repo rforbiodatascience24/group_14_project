@@ -1,19 +1,23 @@
 ---
-title: "01_load"
+title: "99_render_to_html"
 author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
 format: 
   html:
     embed-resources: true
-editor: visual
+editor: 
+  markdown: 
+    wrap: 72
+editor_options: 
+  chunk_output_type: inline
 ---
 
-Load packages
+### Load packages
 
 ```{r}
 library(here)
 ```
 
-Render all documents to html in results folder
+### Render all documents to html in results folder
 
 ```{r}
 rmarkdown::render(here("R/01_load.qmd"), output_dir = here("results"))

@@ -4,9 +4,11 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor_options:
+editor: 
+  markdown: 
+    wrap: 72
+editor_options: 
   chunk_output_type: inline
-output-dir: ../results
 ---
 
 ### Load packages
@@ -27,7 +29,9 @@ data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 
 ### Regression models for up- and down-regulated OVCAR3 DEGs
 
-Two separate regression models comparing the OVCAR3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs and down-regulated DEGs.
+Two separate regression models comparing the OVCAR3 cell line at
+baseline and after HERV-K knock-out for both up-regulated DEGs and
+down-regulated DEGs.
 
 ```{r}
 #Regression model for up-regulated DEGs
@@ -65,7 +69,9 @@ summary(Equation_OVCAR3_NEU)
 
 ### Scatter plot of KO vs baseline DEGs in OVCAR3
 
-A scatter plot is done to visualise the comparison of the OVCAR3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs, down-regulated DEGs and neutral DEGs from above.
+A scatter plot is done to visualise the comparison of the OVCAR3 cell
+line at baseline and after HERV-K knock-out for both up-regulated DEGs,
+down-regulated DEGs and neutral DEGs from above.
 
 ```{r}
 scatter_plot_OVCAR3 <- data |>  
@@ -121,7 +127,9 @@ scatter_plot_OVCAR3 <- data |>
 scatter_plot_OVCAR3
 ```
 
-For all three DEG groups (up- and down-regulated and neutral) a positive correlation is found between the OVCAR3 cells at baseline and after HERV-K KO.
+For all three DEG groups (up- and down-regulated and neutral) a positive
+correlation is found between the OVCAR3 cells at baseline and after
+HERV-K KO.
 
 The plot is saved in a png-file in the results folder:
 
@@ -134,7 +142,9 @@ ggsave(filename = here("results/06_key_plot_1.png"),
 
 ### Regression models for up- and down-regulated SKOV3 DEGs
 
-Two separate regression models comparing the SKOV3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs and down-regulated DEGs.
+Two separate regression models comparing the SKOV3 cell line at baseline
+and after HERV-K knock-out for both up-regulated DEGs and down-regulated
+DEGs.
 
 ```{r}
 #Regression model for up-regulated DEGs
@@ -172,7 +182,9 @@ summary(Equation_SKOV3_NEU)
 
 ### Scatter plot of KO vs baseline DEGs in SKOV3
 
-A scatter plot is done to visualise the comparison of the SKOV3 cell line at baseline and after HERV-K knock-out for both up-regulated DEGs, down-regulated DEGs and neutral DEGs from above.
+A scatter plot is done to visualise the comparison of the SKOV3 cell
+line at baseline and after HERV-K knock-out for both up-regulated DEGs,
+down-regulated DEGs and neutral DEGs from above.
 
 ```{r}
 #Scatterplot showing all data DEGs
@@ -229,7 +241,8 @@ scatter_plot_SKOV3 <- data |>
 scatter_plot_SKOV3
 ```
 
-As expected, a clear positive correlation is seen for the neutral DEGs in SKOV3.
+As expected, a clear positive correlation is seen for the neutral DEGs
+in SKOV3.
 
 The plot is saved in a png-file in the results folder:
 
@@ -242,7 +255,10 @@ ggsave(filename = here("results/06_key_plot_2.png"),
 
 ### Scatter plot of KO vs baseline DEGs in SKOV3 with changed axis
 
-In the above correlation analysis, it is not possible to see the down-regulated and up-regulated DEGs in SKOV3, as their relative expression is low. The same correlation analysis is performed, but with changed axis making it possible to see the up- and down-regulated DEGs.
+In the above correlation analysis, it is not possible to see the
+down-regulated and up-regulated DEGs in SKOV3, as their relative
+expression is low. The same correlation analysis is performed, but with
+changed axis making it possible to see the up- and down-regulated DEGs.
 
 ```{r}
 #Scatterplot with chosen axis
@@ -292,7 +308,9 @@ scatter_plot_SKOV3_fixed <- data |>
 scatter_plot_SKOV3_fixed
 ```
 
-When changing the visible area, we can see similar results as seen for OVCAR3. A positive correlation is found between the SKOV3 cells at baseline and after HERV-K KO.
+When changing the visible area, we can see similar results as seen for
+OVCAR3. A positive correlation is found between the SKOV3 cells at
+baseline and after HERV-K KO.
 
 The plot is saved in a png-file in the results folder:
 
@@ -303,7 +321,9 @@ ggsave(filename = here("results/06_key_plot_3.png"),
        height = 5)
 ```
 
-When changing the visible area, we can see similar results as seen for OVCAR3. A positive correlation is found between the SKOV3 cells at baseline and after HERV-K KO.
+When changing the visible area, we can see similar results as seen for
+OVCAR3. A positive correlation is found between the SKOV3 cells at
+baseline and after HERV-K KO.
 
 The plot is saved in a png-file in the results folder:
 

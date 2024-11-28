@@ -4,8 +4,9 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor: visual
-output-dir: ../results
+editor: 
+  markdown: 
+    wrap: 72
 editor_options: 
   chunk_output_type: inline
 ---
@@ -26,7 +27,9 @@ data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 
 ### Heatmap of randomly selected genes
 
-A heatmap of 70 randomly sampled genes is created. The heatmap shows the 70 genes colored by log2 fold change for each cell line. Red color indicates up-regulated genes and blue indicates down-regulated genes.
+A heatmap of 70 randomly sampled genes is created. The heatmap shows the
+70 genes colored by log2 fold change for each cell line. Red color
+indicates up-regulated genes and blue indicates down-regulated genes.
 
 ```{r}
 #70 are sampled randomly

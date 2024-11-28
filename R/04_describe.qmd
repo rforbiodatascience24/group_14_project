@@ -4,8 +4,9 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor: visual
-output-dir: ../results
+editor: 
+  markdown: 
+    wrap: 72
 editor_options: 
   chunk_output_type: inline
 ---
@@ -33,7 +34,8 @@ nrow(data)
 
 There are 28.040 observations (genes).
 
-There are 9 variables, these include: MOCK, KO, log2FC and DEG (up/downregulated) for each cell line and a column with gene symbols.
+There are 9 variables, these include: MOCK, KO, log2FC and DEG
+(up/downregulated) for each cell line and a column with gene symbols.
 
 ### Number of up-regulated and down-regulated genes
 
@@ -47,11 +49,15 @@ data |>
   count(DEG_SKOV3)
 ```
 
-After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated genes, 4.212 up-regulated genes and 23.062 neutral genes.
+After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated
+genes, 4.212 up-regulated genes and 23.062 neutral genes.
 
-After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated genes, 270 up-regulated genes and 26.850 neutral genes.
+After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated
+genes, 270 up-regulated genes and 26.850 neutral genes.
 
-A barplot is made to illustrate the number of differentially expressed genes (DEG) for each cell line. They are divided into down-regulated, up-regulated and neutral genes.
+A barplot is made to illustrate the number of differentially expressed
+genes (DEG) for each cell line. They are divided into down-regulated,
+up-regulated and neutral genes.
 
 ```{r}
 barplot <- data |> 
@@ -97,7 +103,8 @@ ggsave(filename = here("results/04_key_plot_1.png"),
 
 ### Number of overlapping genes between the cell lines
 
-Counting the number of genes that are up-regulated or down-regulated in both cell lines.
+Counting the number of genes that are up-regulated or down-regulated in
+both cell lines.
 
 ```{r}
 #upregulated genes for both cell lines
@@ -115,6 +122,9 @@ data |>
   count()
 ```
 
-For the up-regulated genes there are 59 genes that are overlapping in both cell lines, CRYBB2 and ANKRD62 both associated with cancer.
+For the up-regulated genes there are 59 genes that are overlapping in
+both cell lines, CRYBB2 and ANKRD62 both associated with cancer.
 
-In regards to the down-regulated genes there are 15 genes shared between the two cell lines, RBAKDN and CDH2 both associated with cell division and adhesion.
+In regards to the down-regulated genes there are 15 genes shared between
+the two cell lines, RBAKDN and CDH2 both associated with cell division
+and adhesion.

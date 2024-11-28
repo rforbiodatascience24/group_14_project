@@ -4,7 +4,11 @@ author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amali
 format: 
   html:
     embed-resources: true
-editor: visual
+editor: 
+  markdown: 
+    wrap: 72
+editor_options: 
+  chunk_output_type: inline
 ---
 
 ## Load packages
@@ -43,7 +47,8 @@ data_test <- data |>
 
 #### OVCAR3
 
-Add variable `q.value` and indicator variable `significant` to identify significant and non-significant genes:
+Add variable `q.value` and indicator variable `significant` to identify
+significant and non-significant genes:
 
 ```{r}
 OVCAR3_estimates <- OVCAR3_estimates |> 

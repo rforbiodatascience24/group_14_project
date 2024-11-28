@@ -1,11 +1,12 @@
 ---
-title: "08_analysis_KEGG"
+title: "07_analysis_t_test"
 author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
 format: 
   html:
     embed-resources: true
-editor: visual
-output-dir: ../results
+editor: 
+  markdown: 
+    wrap: 72
 editor_options: 
   chunk_output_type: inline
 ---
@@ -29,7 +30,10 @@ data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 
 ### Get gene IDs for each gene name
 
-Using ensembl and NCBI to retrieve all of the gene IDs for our data. The NCBI database is chosen because the IDs needs to match with the KEGG database. The IDs are then joined with the our data based on the gene names.
+Using ensembl and NCBI to retrieve all of the gene IDs for our data. The
+NCBI database is chosen because the IDs needs to match with the KEGG
+database. The IDs are then joined with the our data based on the gene
+names.
 
 ```{r}
 #connect to ensembl to fetch IDs
@@ -136,7 +140,8 @@ plot_kegg_OVCAR3_upregulated
 
 ```
 
-Only one pathway was significantly up-regulated for the OVCAR3 cell line.
+Only one pathway was significantly up-regulated for the OVCAR3 cell
+line.
 
 The KEGG is saved in a png-file in the results folder:
 
@@ -186,7 +191,9 @@ plot_kegg_OVCAR3_downregulated
 
 ```
 
-Several pathways were enriched when looking at the DEGs that were down-regulated in the OVCAR3 KO cell line. The top 3 pathways are all related to cancer, but also cellular senescence is seen in the plot.
+Several pathways were enriched when looking at the DEGs that were
+down-regulated in the OVCAR3 KO cell line. The top 3 pathways are all
+related to cancer, but also cellular senescence is seen in the plot.
 
 The KEGG is saved in a png-file in the results folder:
 
@@ -276,4 +283,5 @@ plot_kegg_SKOV3_downregulated
 
 There are no significantly down-regulated pathways in SKOV3.
 
-The KEGG analysis indicate that the majority of the regulation can only be seen in the OVCAR3 cell line.
+The KEGG analysis indicate that the majority of the regulation can only
+be seen in the OVCAR3 cell line.
