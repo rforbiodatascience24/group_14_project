@@ -9,7 +9,7 @@ editor: visual
 
 ### Load libraries
 
-```{r, include=FALSE}
+```{r}
 library(tidyverse)
 library(readr)
 library(here)
@@ -19,7 +19,7 @@ library(here)
 
 The data is loaded as tibbles (tsv files) from four different txt files, each containing a column with gene symbols and a column with expression levels. For the genes where the expression level is empty, NA or N/A, it is saved as "na".
 
-```{r, include=FALSE}
+```{r}
 #First load the raw data taking care of missing values 
 SKOV3_MOCK <- read_tsv(file = here("data/_raw/GSM8331622_SKOV_MOCK.txt"))
 SKOV3_KO <- read_tsv(file = here("data/_raw/GSM8331624_SKOV_KO.txt"))
@@ -79,5 +79,5 @@ write_tsv(data, here("data", "01_dat_load.tsv"))
 ### Save HTML file
 
 ```{r}
-#rmarkdown::render(here("R/01_load.qmd"), output_dir = here("results"))
+#rmarkdown::render("R/01_load.qmd", output_dir = "results")
 ```

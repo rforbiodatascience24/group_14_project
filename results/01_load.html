@@ -359,9 +359,6 @@ Polhaus (s153664), Lise Lotte Eriksen (s154123)</h4>
 
 <div id="load-libraries" class="section level3">
 <h3>Load libraries</h3>
-<pre class="r"><code>library(tidyverse)
-library(readr)
-library(here)</code></pre>
 </div>
 <div id="load-data-and-save-for-later-use" class="section level3">
 <h3>Load data and save for later use</h3>
@@ -369,43 +366,6 @@ library(here)</code></pre>
 files, each containing a column with gene symbols and a column with
 expression levels. For the genes where the expression level is empty, NA
 or N/A, it is saved as “na”.</p>
-<pre class="r"><code>#First load the raw data taking care of missing values 
-SKOV3_MOCK &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331622_SKOV_MOCK.txt&quot;))</code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ───────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): SKOV_MOCK
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>SKOV3_KO &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331624_SKOV_KO.txt&quot;))</code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ───────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): SKOV_KO
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>OVCAR3_MOCK &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331623_OVCAR3_MOCK.txt&quot;)) </code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ───────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): OVCAR3_MOCK
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre class="r"><code>OVCAR3_KO &lt;- read_tsv(file = here(&quot;data/_raw/GSM8331625_OVCAR_KO.txt&quot;)) </code></pre>
-<pre><code>## Rows: 58173 Columns: 2
-## ── Column specification ───────────────────────────────────
-## Delimiter: &quot;\t&quot;
-## chr (1): Gene Symbol
-## dbl (1): OVCAR_KO
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 </div>
 <div id="removing-duplicates" class="section level3">
 <h3>Removing duplicates</h3>

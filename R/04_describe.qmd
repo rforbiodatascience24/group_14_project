@@ -12,7 +12,7 @@ editor_options:
 
 ### Load packages
 
-```{r, include=FALSE}
+```{r}
 library(tidyverse)
 library(readr)
 library(here)
@@ -20,7 +20,7 @@ library(here)
 
 ### Load data
 
-```{r, include=FALSE}
+```{r}
 data <- read_tsv(file = here("data/03_dat_aug.tsv"))
 ```
 
