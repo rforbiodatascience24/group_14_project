@@ -40,7 +40,7 @@ Equation_OVCAR3_UP <- data |>
          OVCAR3_KO, 
          DEG_OVCAR3) |>
   filter(DEG_OVCAR3 == "Upregulated") |>
-  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+  lm(formula = OVCAR3_KO ~ OVCAR3_MOCK)
 
 summary(Equation_OVCAR3_UP)
 
@@ -51,7 +51,7 @@ Equation_OVCAR3_DOWN <- data |>
          OVCAR3_KO, 
          DEG_OVCAR3) |>
   filter(DEG_OVCAR3 == "Downregulated") |>
-  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+  lm(formula = OVCAR3_KO ~ OVCAR3_MOCK)
 
 summary(Equation_OVCAR3_DOWN)
 
@@ -62,7 +62,7 @@ Equation_OVCAR3_NEU <- data |>
          OVCAR3_KO, 
          DEG_OVCAR3) |>
   filter(DEG_OVCAR3 == "Neutral") |>
-  lm(formula = OVCAR3_MOCK ~ OVCAR3_KO)
+  lm(formula = OVCAR3_KO ~ OVCAR3_MOCK)
 
 summary(Equation_OVCAR3_NEU)
 ```
@@ -75,16 +75,16 @@ down-regulated DEGs and neutral DEGs from above.
 
 ```{r}
 scatter_plot_OVCAR3 <- data |>  
-  ggplot(mapping = aes(x = OVCAR3_KO,
-                       y = OVCAR3_MOCK,
+  ggplot(mapping = aes(x = OVCAR3_MOCK,
+                       y = OVCAR3_KO,
                        color = DEG_OVCAR3)) +
   geom_point(size = 1) +
   geom_smooth(method = "lm",
               linewidth = 0.5,
               se = FALSE) +
   labs(title = "Correlation between DEGs at baseline \nand DEGs in HERV-K KO in OVCAR3",
-       x = "OVCAR3 KO (Log2FC)", 
-       y = "OVCAR3 baseline (Log2FC)",
+       x = "OVCAR3 baseline", 
+       y = "OVCAR3 KO",
        color = "Differentially expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +  
@@ -94,34 +94,34 @@ scatter_plot_OVCAR3 <- data |>
         axis.text = element_text(size = 12),
         legend.key.size = unit(1,"cm")) +
   annotate("text",
-           x = 110000, y = 2.0e+05, 
+           x = 150000, y = 80000, 
            size = 3.5,
-           label = "y = 1.63x + 155.93",
+           label = "y = 0.18x - 5.44",
            color = "red") +
   annotate("text",
-           x = 110000, y = 1.85e+05, 
+           x = 150000, y = 40000, 
            size = 3.5,
-           label = "R^2 = 0.696",
+           label = "R^2 = 0.95",
            color = "red") +
   annotate("text",
-           x = 3.5e+5, y = 0.36e+05, 
+           x = 50000, y = 500000, 
            size = 3.5,
-           label = "y = 0.29x + 179.69",
+           label = "y = 5.03x + 13.83",
            color = "blue") + 
   annotate("text",
-           x = 3.5e+5, y = 0.23e+05, 
+           x = 50000, y = 460000, 
            size = 3.5,
-           label = "R^2 = 0.769",
+           label = "R^2 = 0.99",
            color = "blue") +
   annotate("text",
-           x = 5e+5, y = 2.5e5, 
+           x = 150000, y = 400000, 
            size = 3.5,
-           label = "y = 0.366x + 0.039",
+           label = "y = 1.74x - 468",
            color = "forestgreen") + 
   annotate("text",
-           x = 5e+5, y = 2.35e5, 
+           x = 150000, y = 360000, 
            size = 3.5,
-           label = "R^2 = 0.639",
+           label = "R^2 = 0.634",
            color = "forestgreen")
 
 scatter_plot_OVCAR3
@@ -153,7 +153,7 @@ Equation_SKOV3_UP <- data |>
          SKOV3_KO, 
          DEG_SKOV3) |>
   filter(DEG_SKOV3 == "Upregulated") |>
-  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+  lm(formula = SKOV3_KO ~ SKOV3_MOCK)
 
 summary(Equation_SKOV3_UP)
 
@@ -164,7 +164,7 @@ Equation_SKOV3_DOWN <- data |>
          SKOV3_KO, 
          DEG_SKOV3) |>
   filter(DEG_SKOV3 == "Downregulated") |>
-  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+  lm(formula = SKOV3_KO ~ SKOV3_MOCK)
 
 summary(Equation_SKOV3_DOWN)
 
@@ -175,7 +175,7 @@ Equation_SKOV3_NEU <- data |>
          SKOV3_KO, 
          DEG_SKOV3) |>
   filter(DEG_SKOV3 == "Neutral") |>
-  lm(formula = SKOV3_MOCK ~ SKOV3_KO)
+  lm(formula = SKOV3_KO ~ SKOV3_MOCK)
 
 summary(Equation_SKOV3_NEU)
 ```
@@ -189,16 +189,16 @@ down-regulated DEGs and neutral DEGs from above.
 ```{r}
 #Scatterplot showing all data DEGs
 scatter_plot_SKOV3 <- data |> 
-  ggplot(mapping = aes(x = SKOV3_KO,
-                       y = SKOV3_MOCK,
+  ggplot(mapping = aes(x = SKOV3_MOCK,
+                       y = SKOV3_KO,
                        color = DEG_SKOV3)) +
   geom_point(size = 1) +
   geom_smooth(method = "lm",
               se = FALSE,
               linewidth = 0.5) +
   labs(title = "Correlation between DEGs at baseline \nand DEGs HERV-K KO in SKOV3",
-       x = "SKOV3 KO (Log2FC)", 
-       y = "SKOV3 baseline (Log2FC)", 
+       x = "SKOV3 baseline", 
+       y = "SKOV3 KO", 
        color = "Differentially expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +
@@ -208,34 +208,34 @@ scatter_plot_SKOV3 <- data |>
         axis.text = element_text(size = 12),
         legend.key.size = unit(1,"cm"))+
   annotate("text",
-           x = 1e+5, y = 0.35e+05, 
+           x = 150000, y = 35000, 
            size = 3.5,
-           label = "y = 4.781x + 5.222",
+           label = "y = 5.01x + 4.05",
            color = "blue") +
   annotate("text",
-           x = 1e+5, y = 0.2e+05, 
+           x = 150000, y = 25000, 
+           size = 3.5,
+           label = "R^2 = 0.77",
+           color = "blue") +
+  annotate("text",
+           x = 30000, y = 100000, 
+           size = 3.5,
+           label = "y = 0.20x - 1.08",
+           color = "red") +
+  annotate("text",
+           x = 30000, y = 90000, 
            size = 3.5,
            label = "R^2 = 0.995",
-           color = "blue") +
-  annotate("text",
-           x = 3e+4, y = 1.3e+05, 
-           size = 3.5,
-           label = "y = 0.154x - 0.595",
            color = "red") +
   annotate("text",
-           x = 3e+4, y = 1.15e+05, 
+           x = 200000, y = 180000, 
            size = 3.5,
-           label = "R^2 = 0.772",
-           color = "red") +
-  annotate("text",
-           x = 1.28e+5, y = 2.5e+5, 
-           size = 3.5,
-           label = "y = 1.460x - 2.704",
+           label = "y = 0.66x + 19.38",
            color = "forestgreen") + 
   annotate("text",
-           x = 1.28e+5, y = 2.35e+5, 
+           x = 200000, y = 170000, 
            size = 3.5,
-           label = "R^2 = 0.969",
+           label = "R^2 = 0.97",
            color = "forestgreen")
 
 scatter_plot_SKOV3
@@ -261,15 +261,15 @@ expression is low. The same correlation analysis is performed, but with
 changed axis making it possible to see the up- and down-regulated DEGs.
 
 ```{r}
-#Scatterplot with chosen axis
+#Scatterplot with chosen axis FIX: 
 scatter_plot_SKOV3_fixed <- data |> 
-  ggplot(mapping = aes(x = SKOV3_KO,
-                       y = SKOV3_MOCK,
+  ggplot(mapping = aes(x = SKOV3_MOCK,
+                       y = SKOV3_KO,
                        color = DEG_SKOV3)) +
   geom_point(size = 1) +
   geom_smooth(method = "lm",
-              linewidth = 0.5,
-              se = FALSE) +
+              se = FALSE,
+              linewidth = 0.5) +
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
@@ -277,48 +277,35 @@ scatter_plot_SKOV3_fixed <- data |>
         legend.key.size = unit(1,"cm"),
         legend.key = element_rect(color = "white"))+
   labs(title = "Snippet of correlation between DEGs at \nbaseline nd DEGs HERV-K KO in SKOV3",
-       x = "SKOV3 KO (Log2FC)", 
-       y = "SKOV3 baseline (Log2FC)", 
+       x = "SKOV3 baseline", 
+       y = "SKOV3 KO", 
        color = "Differentially expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +  
   xlim(0, 100) +
   ylim(0, 100) +
   annotate("text",
-           x = 70, y = 15, 
+           x = 12, y = 65, 
            size = 3.5,
-           label = "y = 4.781x + 5.222",
+           label = "y = 5.01x + 4.05",
            color = "blue") +
   annotate("text",
-           x = 70, y = 10, 
+           x = 12, y = 60, 
            size = 3.5,
-           label = "R^2 = 0.995",
+           label = "R^2 = 0.77",
            color = "blue") +
   annotate("text",
-           x = 15, y = 90, 
+           x = 90, y = 23, 
            size = 3.5,
-           label = "y = 0.154x - 0.595",
+           label = "y = 0.20x - 1.08",
            color = "red") +
   annotate("text",
-           x = 15, y = 85, 
+           x = 90, y = 18, 
            size = 3.5,
-           label = "R^2 = 0.772",
+           label = "R^2 = 0.995",
            color = "red")
 
 scatter_plot_SKOV3_fixed
-```
-
-When changing the visible area, we can see similar results as seen for
-OVCAR3. A positive correlation is found between the SKOV3 cells at
-baseline and after HERV-K KO.
-
-The plot is saved in a png-file in the results folder:
-
-```{r, include=FALSE}
-ggsave(filename = here("results/06_key_plot_3.png"),
-       plot = scatter_plot_SKOV3_fixed,
-       width = 8, 
-       height = 5)
 ```
 
 When changing the visible area, we can see similar results as seen for
