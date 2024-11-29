@@ -400,17 +400,17 @@ Lise Lotte Eriksen, s154123
 </div>
 </section>
 <section id="loading-data-augment" class="slide level2">
-<h2>Loading data &amp; Augment</h2>
+<h2>Loading data &amp; augment</h2>
 <div style="font-size:70%;">
 <div style="font-size: 25px; margin-top: 30px;">
 <p><strong>Data load and clean</strong><br>
-- Merging of 4 files<br>
-- Removed all duplicates of genes<br>
+- Merging of 4 .txt-files to 1 .tsv-file<br>
+- Genes found in duplicate was removed<br>
 </p>
 <p><strong>Augment</strong><br>
-- Calcualte log2 fold change based on expression<br>
-- Add up/ down regulated coulumn<br>
-- Based on critera of +/- 2 log2 fold change</p>
+- Log2 fold change (Log2FC) was calculated based on the gene expression<br>
+- A column was added with information about whether the genes are up-regulated, down-regulated or neutral<br>
+- Based on a critera of +/- 2 Log2FC</p>
 </div>
 </div>
 </section>
@@ -457,7 +457,7 @@ e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
 </div><div class="column" style="width:65%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="results/04_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="../results/04_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>
@@ -470,11 +470,11 @@ e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div style="font-size:70%;">
-<p>Expression of 70 randomly selected genes are plotted for comparison of the cell lines. <img data-src="results/05_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p>Expression of 70 randomly selected genes are plotted for comparison of the cell lines. <img data-src="../results/05_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </div>
 </div><div class="column" style="width:50%;">
 <div style="font-size:70%;">
-<p>Expression of either up- or downregulated genes are plotted for comparison of the cell lines. <img data-src="results/05_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p>Expression of up- or down-regulated DEGs are plotted for comparison of the two cell lines. <img data-src="../results/05_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </div>
 </div>
 </div>
@@ -485,7 +485,7 @@ e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
 <div style="font-size: 25px; margin-top: 30px;">
 <div style="font-size:70%;">
 <p>Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3<br>
-<img data-src="results/06_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+<img data-src="../results/06_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
 </div>
 </div>
 </section>
@@ -496,12 +496,12 @@ e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
 <div class="column" style="width:50%;">
 <div style="font-size:70%;">
 <p>Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3<br>
-<img data-src="results/06_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<img data-src="../results/06_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </div>
 </div><div class="column" style="width:50%;">
 <div style="font-size:70%;">
 <p>Scatter plot of correlation between gene expresseion for KO and baseline of SKOV3<br>
-<img data-src="results/06_key_plot_3.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<img data-src="../results/06_key_plot_3.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </div>
 </div>
 </div>
@@ -513,7 +513,7 @@ e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
 <div style="font-size:70%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="results/07_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
+<p><img data-src="../results/07_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:80.0%"></p>
 </figure>
 </div>
 <p>Noget med p-værdier</p>
@@ -530,14 +530,14 @@ e.g.&nbsp;RBAKDN and CDH2 -&gt; associated with cell division and adhesion</p>
 <div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="results/08_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="../results/08_key_plot_1.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div><div class="column" style="width:50%;">
 <div style="font-size:70%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="results/08_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+<p><img data-src="../results/08_key_plot_2.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
 </figure>
 </div>
 </div>

@@ -29,9 +29,9 @@ author:
 :::
 
 ## Materials and methods
+
 ::: {style="font-size:70%;"}
 ::: {style="font-size: 25px; margin-top: 30px;"}
-
 -   HERV-K was knocked out in two ovarian cancer cell lines: SKOV3 and OVCAR3.
 
     -   Next-gen mRNA sequencing was done on baseline and KO cells
@@ -45,21 +45,22 @@ author:
 :::
 
 ## Loading data & augment
+
 ::: {style="font-size:70%;"}
 ::: {style="font-size: 25px; margin-top: 30px;"}
+**Data load and clean**\
+- Merging of 4 .txt-files to 1 .tsv-file\
+- Genes found in duplicate was removed\
 
-**Data load and clean** \
--   Merging of 4 .txt-files to 1 .tsv-file \
--   Genes found in duplicate was removed \
-
-**Augment** \
--   Log2 fold change (Log2FC) was calculated based on the gene expression \
--   A column was added with information about whether the genes are up-regulated, down-regulated or neutral \
-    -   Based on a critera of +/- 2 Log2FC
+**Augment**\
+- Log2 fold change (Log2FC) was calculated based on the gene expression\
+- A column was added with information about whether the genes are up-regulated, down-regulated or neutral\
+- Based on a critera of +/- 2 Log2FC
 :::
 :::
 
 ## Results - Descriptive statistics
+
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ::: columns
 ::: {.column width="35%"}
@@ -72,109 +73,104 @@ author:
 | Neutral       | 23062  | 26850 |
 | Downregulated | 766    | 920   |
 
-**Common genes:** \
-**Upregulated:** 59 \
-  e.g. CRYBB2, ANKRD62 -\> both associated with cancer\
+**Common genes:**\
+**Upregulated:** 59\
+e.g. CRYBB2, ANKRD62 -\> both associated with cancer\
 
-**Downregulated:** 15 \
-  e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
+**Downregulated:** 15\
+e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
 :::
 :::
 
 ::: {.column width="65%"}
-![](results/04_key_plot_1.png){fig-align="center" width="100%"}
+![](../results/04_key_plot_1.png){fig-align="center" width="100%"}
 :::
 :::
 :::
 
 ## Results - Heatmap
+
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ::: columns
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
-Expression of 70 randomly selected genes are plotted for comparison of the cell lines.
-![](results/05_key_plot_1.png){fig-align="center" width="100%"}
+Expression of 70 randomly selected genes are plotted for comparison of the cell lines. ![](../results/05_key_plot_1.png){fig-align="center" width="100%"}
 :::
 :::
 
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
-Expression of up- or down-regulated DEGs are plotted for comparison of the two cell lines.
-![](results/05_key_plot_2.png){fig-align="center" width="100%"}
+Expression of up- or down-regulated DEGs are plotted for comparison of the two cell lines. ![](../results/05_key_plot_2.png){fig-align="center" width="100%"}
 :::
 :::
 :::
 :::
 
 ## Results - Scatterplot for OVCAR3
+
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
-![](results/06_key_plot_1.png){fig-align="center" width="60%"}
+![](../results/06_key_plot_1.png){fig-align="center" width="60%"}
 :::
 :::
 
 ## Results - Scatterplot for SKOV3
+
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ::: columns
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
-![](results/06_key_plot_2.png){fig-align="center" width="100%"}
+![](../results/06_key_plot_2.png){fig-align="center" width="100%"}
 :::
 :::
 
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline of SKOV3\
-![](results/06_key_plot_3.png){fig-align="center" width="100%"}
+![](../results/06_key_plot_3.png){fig-align="center" width="100%"}
 :::
 :::
 :::
 :::
 
 ## Results - t-test
+
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
-
-![](results/07_key_plot_1.png){fig-align="center" width="80%"}
+![](../results/07_key_plot_1.png){fig-align="center" width="80%"}
 
 Noget med p-værdier
-
 :::
 :::
 
 ## Results - KEGG
+
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
-
-KEGG plots displaying enriched pathways \
+KEGG plots displaying enriched pathways\
 
 ::: columns
 ::: {.column width="50%"}
-
-
-![](results/08_key_plot_1.png){fig-align="center" width="100%"}
+![](../results/08_key_plot_1.png){fig-align="center" width="100%"}
 :::
 
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
-
-![](results/08_key_plot_2.png){fig-align="center" width="100%"}
+![](../results/08_key_plot_2.png){fig-align="center" width="100%"}
 :::
 :::
 :::
 
-Cancer, senescence and PI3K/AKT pathways are downregulated after HERV-K KO in OVCAR3 (ovarian cancer cells) 
-
+Cancer, senescence and PI3K/AKT pathways are downregulated after HERV-K KO in OVCAR3 (ovarian cancer cells)
 :::
 :::
 
 ## Discussion
+
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
-
 Noget der giver mening
-
 :::
 :::

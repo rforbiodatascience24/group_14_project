@@ -393,18 +393,9 @@ gene_info &lt;- getBM(
   filters = &quot;external_gene_name&quot;,
   values = data |&gt;
     pull(gene),
-  mart = mart)</code></pre>
-<pre><code>## 
-Batch submitting query [=============&gt;----------------------------------------------------------------------] 17% eta: 9s
-Batch
-## submitting query [===========================&gt;--------------------------------------------------------] 33% eta: 7s
-Batch submitting
-## query [=========================================&gt;------------------------------------------] 50% eta: 5s
-Batch submitting query
-## [=======================================================&gt;----------------------------] 67% eta: 3s
-Batch submitting query
-## [=====================================================================&gt;--------------] 83% eta: 2s</code></pre>
-<pre class="r"><code>#Join the data and rearrange the new ID column after the old column.
+  mart = mart)
+
+#Join the data and rearrange the new ID column after the old column.
 data_with_ID &lt;- data |&gt; 
   right_join(gene_info, 
             by = c(&quot;gene&quot; = &quot;external_gene_name&quot;)) |&gt;
@@ -460,10 +451,9 @@ geneIDs_OVCAR3_downregulated &lt;- data_OVCAR3_downregulated |&gt;
                                                minGSSize = 10,
                                                maxGSSize = 500,
                                                qvalueCutoff = 0.05) |&gt; 
-  as_tibble()</code></pre>
-<pre><code>## Reading KEGG annotation online: &quot;https://rest.kegg.jp/link/hsa/pathway&quot;...</code></pre>
-<pre><code>## Reading KEGG annotation online: &quot;https://rest.kegg.jp/list/pathway/hsa&quot;...</code></pre>
-<pre class="r"><code>plot_kegg_OVCAR3_upregulated &lt;- kegg_analysis_OVCAR3_upregulated |&gt; 
+  as_tibble()
+
+plot_kegg_OVCAR3_upregulated &lt;- kegg_analysis_OVCAR3_upregulated |&gt; 
   slice_min(order_by = p.adjust, 
             n = 10) |&gt; 
   mutate(Description = fct_reorder(Description, p.adjust, .desc = TRUE)) |&gt;

@@ -208,22 +208,22 @@ scatter_plot_SKOV3 <- data |>
         axis.text = element_text(size = 12),
         legend.key.size = unit(1,"cm"))+
   annotate("text",
-           x = 150000, y = 35000, 
+           x = 30000, y = 100000,
            size = 3.5,
            label = "y = 5.01x + 4.05",
            color = "blue") +
   annotate("text",
-           x = 150000, y = 25000, 
+           x = 30000, y = 90000,
            size = 3.5,
            label = "R^2 = 0.77",
            color = "blue") +
   annotate("text",
-           x = 30000, y = 100000, 
+           x = 150000, y = 35000,
            size = 3.5,
            label = "y = 0.20x - 1.08",
            color = "red") +
   annotate("text",
-           x = 30000, y = 90000, 
+           x = 150000, y = 25000, 
            size = 3.5,
            label = "R^2 = 0.995",
            color = "red") +

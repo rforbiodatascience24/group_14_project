@@ -20,12 +20,21 @@ library(here)
 ### Render all documents to html in results folder
 
 ```{r}
-rmarkdown::render(here("R/01_load.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/02_clean.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/03_augment.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/04_describe.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/05_analysis_heatmap.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/06_analysis_scatterplot.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/07_analysis_stats.qmd"), output_dir = here("results"))
-rmarkdown::render(here("R/08_analysis_kegg.qmd"), output_dir = here("results"))
+rmarkdown::render(here("R/01_load.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/02_clean.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/03_augment.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/04_describe.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/05_analysis_heatmap.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/06_analysis_scatterplot.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/07_analysis_stats.qmd"), 
+                  output_dir = here("results"))
+rmarkdown::render(here("R/08_analysis_kegg.qmd"), 
+                  output_dir = here("results"))
+system(paste("quarto render", here("doc/presentation.qmd")))
 ```
