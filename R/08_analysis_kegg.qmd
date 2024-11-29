@@ -1,5 +1,5 @@
 ---
-title: "07_analysis_t_test"
+title: "08_analysis_kegg"
 author: "Julie Bruun Brockhoff (s204519), Cecilie Kejlberg Leth (s204584), Amalie Drud Nielsen (s204560), Chrysillis Hellemann Polhaus (s153664), Lise Lotte Eriksen (s154123)"
 format: 
   html:
