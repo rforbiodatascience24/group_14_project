@@ -103,6 +103,10 @@ e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
 Expression of 70 randomly selected genes are plotted for comparison of the cell lines. ![](../results/05_key_plot_1.png){fig-align="center" width="100%"}
+
+-   Red indicates that the gene is upregulated
+
+-   Blue indicates that the gene is downregulated
 :::
 :::
 
