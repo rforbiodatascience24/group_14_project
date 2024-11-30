@@ -104,9 +104,9 @@ e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
 ::: {style="font-size:70%;"}
 Expression of 70 randomly selected genes are plotted for comparison of the cell lines. ![](../results/05_key_plot_1.png){fig-align="center" width="100%"}
 
--   Red indicates that the gene expression is upregulated
+-   Red indicates that the gene expression is upregulated (positive log2FC)
 
--   Blue indicates that the gene expression is downregulated
+-   Blue indicates that the gene expression is downregulated (negative log2FC)
 :::
 :::
 
