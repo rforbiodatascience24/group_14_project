@@ -35,15 +35,35 @@ author:
 ##### Data
 
 -   HERV-K was knocked out in two ovarian cancer cell lines: SKOV3 and OVCAR3.
-  -   Next-gen mRNA sequencing was done on baseline and KO cells
+-   Next-gen mRNA sequencing was done on baseline and KO cells
 
 ##### Methods
 
-- DEG identification and plotting using R version 4.3.1
+-   DEG identification and plotting using R version 4.3.1
 
-  - with packages: tidyverse (v2.0.0) and patchwork (v1.1.3)
+    -   with packages: tidyverse (v2.0.0) and patchwork (v1.1.3)
 
 -   KEGG enrichment using clusterProfiler (v4.10.1), biomaRt (v2.58.2) and enrichplot (v1.22.0)
+:::
+:::
+
+## Loading data & augment
+
+::: {style="font-size:70%;"}
+::: {style="font-size: 25px; margin-top: 30px;"}
+##### Data load and clean
+
+-   Merging of 4 .txt-files to 1 .tsv-file
+
+-   Genes found in duplicate was removed
+
+##### Augment
+
+-   Log2 fold change (Log2FC) was calculated based on the gene expression
+
+-   A column was added with information about whether the genes are up-regulated, down-regulated or neutral
+
+-   Based on a critera of +/- 2 Log2FC
 :::
 :::
 
