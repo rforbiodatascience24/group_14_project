@@ -67,21 +67,6 @@ author:
 :::
 :::
 
-## Loading data & augment
-
-::: {style="font-size:70%;"}
-::: {style="font-size: 25px; margin-top: 30px;"}
-**Data load and clean**\
-- Merging of 4 .txt-files to 1 .tsv-file\
-- Genes found in duplicate was removed\
-
-**Augment**\
-- Log2 fold change (Log2FC) was calculated based on the gene expression\
-- A column was added with information about whether the genes are up-regulated, down-regulated or neutral\
-- Based on a critera of +/- 2 Log2FC
-:::
-:::
-
 ## Results - Descriptive statistics
 
 ::: {style="font-size: 25px; margin-top: 30px;"}
