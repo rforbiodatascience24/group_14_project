@@ -34,8 +34,8 @@ author:
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ##### Data
 
--   HERV-K was knocked out in two ovarian cancer cell lines: SKOV3 and OVCAR3.
--   Next-gen mRNA sequencing was done on baseline and KO cells
+-   HERV-K was knocked out in two ovarian cancer cell lines: SKOV3 and OVCAR3
+-   Next-geneneration mRNA sequencing was done on baseline and HERV-K gene KO cells
 
 ##### Methods
 
