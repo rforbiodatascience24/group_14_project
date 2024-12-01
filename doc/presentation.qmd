@@ -44,6 +44,8 @@ author:
     -   with packages: tidyverse (v2.0.0) and patchwork (v1.1.3)
 
 -   KEGG enrichment using clusterProfiler (v4.10.1), biomaRt (v2.58.2) and enrichplot (v1.22.0)
+
+![](flow_chart.png){fig-align="center" width="90%"}
 :::
 :::
 
