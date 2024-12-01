@@ -13,3 +13,7 @@ The data can be retrieved from NCBI Gene Expression Omnibus (GEO) website using 
 \
 The data was published in the study: \
 Ko EJ et. Al, "Transcriptome analysis of the effect of HERV-K env gene knockout in ovarian cancer cell lines", Genes Genomics, 2024 Sep 13, doi: 10.1007/s13258-024-01544-4 
+
+## Link to presentation
+To access our project presentation, use the following link:\
+https://raw.githack.com/rforbiodatascience24/group_14_project/main/doc/presentation.html
