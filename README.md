@@ -5,7 +5,7 @@ Julie Bruun Brockhoff (JulieBrockhoff), s204519 \
 Amalie Drud Nielsen (amaliedn), s204560 \
 Cecilie Kejlberg Leth (CecilieLeth), s204564 \
 Chrysillis Polhaus (ChrysillisPolhaus), cjmp/s153664 \
-Lise Lotte Eriksen (Zyanis), 154123
+Lise Lotte Eriksen (Zyanis), s154123
 
 ## Data Retrieval
 The project is based on data from Next-generation mRNA sequencing of ovarian cancer cell lines SKOV3 and OVCAR3 with knock out of HERV-K env. \
@@ -17,3 +17,8 @@ Ko EJ et. Al, "Transcriptome analysis of the effect of HERV-K env gene knockout 
 ## Link to presentation
 To access our project presentation, use the following link:\
 https://raw.githack.com/rforbiodatascience24/group_14_project/main/doc/presentation.html
+
+## Analysis not included in the project
+Two analysis in the R folder: 101_ and 102_, are possible analysis that did not yield useful results:
+- 101_analysis_t_test.qmd
+- 102_analysis_pca.qmd
