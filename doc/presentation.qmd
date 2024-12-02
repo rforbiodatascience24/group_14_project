@@ -39,7 +39,7 @@ author:
 
 ##### Methods
 
--   DEG identification and plotting using R version 4.3.1
+-   DEG identification and plotting using R version 4.3.1[^1]
 
     -   with packages: tidyverse (v2.0.0), here (v1.0.1), readr (v2.1.4), broom (v1.0.5), scales (v1.3.0)
 
@@ -48,6 +48,8 @@ author:
 ![](flow_chart.png){fig-align="center" width="70%"}
 :::
 :::
+
+[^1]: <span style="font-size: 0.8em;">All references can be found in readme.</span>
 
 ## Loading data & augment
 
