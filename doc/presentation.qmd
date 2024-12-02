@@ -196,6 +196,8 @@ Cancer, senescence and PI3K/AKT pathways are down-regulated after HERV-K KO in O
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
 ::: {style="font-size: 25px; margin-top: 30px;"}
+-   More genes were up-regulated in OVCAR3 (15%) than SKOV3 (1%) after HERV-K KO
+-   3% of genes were down-regulated in both cell lines after HERV-K KO
 -   No significant pathways were changed after KO of HERV-K in SKOV3
 -   Cancer associated pathways were down-regulated after KO of HERV-K in OVCAR3
 -   Ovarian cancer gene GDF15 were down-regulated after KO of HERV-K in OVCAR3
