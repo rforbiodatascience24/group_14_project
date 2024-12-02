@@ -15,7 +15,6 @@ editor_options:
 
 ```{r}
 library(tidyverse)
-library(patchwork)
 library(here)
 library(readr)
 library(scales)
