@@ -53,12 +53,14 @@ heatmap_random <- data |>
        fill = "Log2FC") +
   theme_classic() +
   theme(plot.title = element_text(size = 24),
-        axis.title.x = element_text(size = 16),
-        axis.text.x = element_text(size = 12,
+        axis.title.x = element_text(size = 20),
+        axis.text.x = element_text(size = 6,
                                    angle = 45, 
                                    hjust = 1),
-        axis.title.y = element_text(size = 16),
-        axis.text.y = element_text(size = 12)) +
+        axis.title.y = element_text(size = 20),
+        axis.text.y = element_text(size = 16),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 18)) +
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
 
 heatmap_random
@@ -67,7 +69,7 @@ heatmap_random
 Saving the heatmap in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = here("results/05_key_plot_1.png"),
+ggsave(filename = here("results/05_heatmap_random.png"),
        plot = heatmap_random,
        width = 12, 
        height = 8)
@@ -99,12 +101,14 @@ heatmap_overlap <- data |>
        fill = "Log2FC") +
   theme_classic() +
   theme(plot.title = element_text(size = 24),
-        axis.title.x = element_text(size = 16),
-        axis.text.x = element_text(size = 8,
+        axis.title.x = element_text(size = 20),
+        axis.text.x = element_text(size = 6,
                                    angle = 45, 
                                    hjust = 1),
-        axis.title.y = element_text(size = 16),
-        axis.text.y = element_text(size = 12)) +
+        axis.title.y = element_text(size = 20),
+        axis.text.y = element_text(size = 16),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 18)) +
   scale_y_discrete(labels = c("log2FC_SKOV3" = "SKOV3", "log2FC_OVCAR3" = "OVCAR3"))
 
 heatmap_overlap
@@ -113,7 +117,7 @@ heatmap_overlap
 Saving the heatmap in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = here("results/05_key_plot_2.png"),
+ggsave(filename = here("results/05_heatmap_DEGs.png"),
        plot = heatmap_overlap,
        width = 12, 
        height = 8)

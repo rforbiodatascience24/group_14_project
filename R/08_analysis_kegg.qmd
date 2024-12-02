@@ -137,7 +137,7 @@ that regulates cell growth, apoptosis and cellular senescence.
 The KEGG is saved in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = here("results/08_key_plot_1.png"),
+ggsave(filename = here("results/08_KEGG_OVCAR3.png"),
        plot = plot_kegg_OVCAR3,
        width = 10,
        height = 6)
@@ -189,7 +189,7 @@ There are no pathways found for the SKOV3 cell line.
 The KEGG is saved in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = here("results/08_key_plot_2.png"),
+ggsave(filename = here("results/08_KEGG_SKOV3.png"),
        plot = plot_kegg_SKOV3,        
        width = 10,        
        height = 6)

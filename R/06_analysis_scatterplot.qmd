@@ -95,32 +95,32 @@ scatter_plot_OVCAR3 <- data |>
         legend.key.size = unit(1,"cm")) +
   annotate("text",
            x = 150000, y = 80000, 
-           size = 3.5,
+           size = 5,
            label = "y = 0.18x - 5.44",
            color = "red") +
   annotate("text",
            x = 150000, y = 40000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.95",
            color = "red") +
   annotate("text",
            x = 50000, y = 500000, 
-           size = 3.5,
+           size = 5,
            label = "y = 5.03x + 13.83",
            color = "blue") + 
   annotate("text",
            x = 50000, y = 460000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.99",
            color = "blue") +
   annotate("text",
            x = 150000, y = 400000, 
-           size = 3.5,
+           size = 5,
            label = "y = 1.74x - 468",
            color = "forestgreen") + 
   annotate("text",
            x = 150000, y = 360000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.634",
            color = "forestgreen")
 
@@ -134,7 +134,7 @@ HERV-K KO.
 The plot is saved in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = here("results/06_key_plot_1.png"),
+ggsave(filename = here("results/06_scatter_OVCAR3.png"),
        plot = scatter_plot_OVCAR3,
        width = 8, 
        height = 5)
@@ -199,42 +199,43 @@ scatter_plot_SKOV3 <- data |>
   labs(title = "Correlation between DEGs at baseline \nand DEGs HERV-K KO in SKOV3",
        x = "SKOV3 baseline", 
        y = "SKOV3 KO", 
-       color = "Differentially expressed genes") +
+       color = "Differentially\n expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
         axis.text = element_text(size = 12),
-        legend.key.size = unit(1,"cm"))+
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 18))+
   annotate("text",
-           x = 30000, y = 100000,
-           size = 3.5,
+           x = 55000, y = 110000,
+           size = 5,
            label = "y = 5.01x + 4.05",
            color = "blue") +
   annotate("text",
-           x = 30000, y = 90000,
-           size = 3.5,
+           x = 55000, y = 100000,
+           size = 5,
            label = "R^2 = 0.77",
            color = "blue") +
   annotate("text",
            x = 150000, y = 35000,
-           size = 3.5,
+           size = 5,
            label = "y = 0.20x - 1.08",
            color = "red") +
   annotate("text",
            x = 150000, y = 25000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.995",
            color = "red") +
   annotate("text",
            x = 200000, y = 180000, 
-           size = 3.5,
+           size = 5,
            label = "y = 0.66x + 19.38",
            color = "forestgreen") + 
   annotate("text",
            x = 200000, y = 170000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.97",
            color = "forestgreen")
 
@@ -247,7 +248,7 @@ in SKOV3.
 The plot is saved in a png-file in the results folder:
 
 ```{r}
-ggsave(filename = here("results/06_key_plot_2.png"),
+ggsave(filename = here("results/06_scatter_SKOV3.png"),
        plot = scatter_plot_SKOV3,
        width = 8, 
        height = 5)
@@ -274,34 +275,35 @@ scatter_plot_SKOV3_fixed <- data |>
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
         axis.text = element_text(size = 12),
-        legend.key.size = unit(1,"cm"),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 18),
         legend.key = element_rect(color = "white"))+
-  labs(title = "Snippet of correlation between DEGs at \nbaseline nd DEGs HERV-K KO in SKOV3",
+  labs(title = "Snippet of correlation between DEGs at \nbaseline and DEGs HERV-K KO in SKOV3",
        x = "SKOV3 baseline", 
        y = "SKOV3 KO", 
-       color = "Differentially expressed genes") +
+       color = "Differentially\n expressed genes") +
   scale_x_continuous(labels = scientific) +
   scale_y_continuous(labels = scientific) +  
   xlim(0, 100) +
   ylim(0, 100) +
   annotate("text",
-           x = 12, y = 65, 
-           size = 3.5,
+           x = 17, y = 65, 
+           size = 5,
            label = "y = 5.01x + 4.05",
            color = "blue") +
   annotate("text",
-           x = 12, y = 60, 
-           size = 3.5,
+           x = 17, y = 60, 
+           size = 5,
            label = "R^2 = 0.77",
            color = "blue") +
   annotate("text",
-           x = 90, y = 23, 
-           size = 3.5,
+           x = 85, y = 23, 
+           size = 5,
            label = "y = 0.20x - 1.08",
            color = "red") +
   annotate("text",
-           x = 90, y = 18, 
-           size = 3.5,
+           x = 85, y = 18, 
+           size = 5,
            label = "R^2 = 0.995",
            color = "red")
 
@@ -315,7 +317,7 @@ baseline and after HERV-K KO.
 The plot is saved in a png-file in the results folder:
 
 ```{r, include=FALSE}
-ggsave(filename = here("results/06_key_plot_3.png"),
+ggsave(filename = here("results/06_scatter_zoom_SKOV3.png"),
        plot = scatter_plot_SKOV3_fixed,
        width = 8, 
        height = 5)

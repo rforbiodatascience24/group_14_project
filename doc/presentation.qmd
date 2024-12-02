@@ -77,11 +77,11 @@ author:
 ::: {style="font-size:70%;"}
 28.040 observations (genes)
 
-|               | OVCAR3 | SKOV3 |
-|---------------|--------|-------|
-| Upregulated   | 412    | 270   |
-| Neutral       | 23062  | 26850 |
-| Downregulated | 766    | 920   |
+|                | OVCAR3 | SKOV3 |
+|----------------|--------|-------|
+| Up-regulated   | 4212   | 270   |
+| Neutral        | 23062  | 26850 |
+| Down-regulated | 766    | 920   |
 
 **Common genes:**\
 **Upregulated:** 59\
@@ -93,7 +93,7 @@ e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
 :::
 
 ::: {.column width="65%"}
-![](../results/04_key_plot_1.png){fig-align="center" width="100%"}
+![](../results/04_gene_counts.png){fig-align="center" width="100%"}
 :::
 :::
 :::
@@ -104,7 +104,7 @@ e.g. RBAKDN and CDH2 -\> associated with cell division and adhesion
 ::: columns
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
-Expression of 70 randomly selected genes are plotted for comparison of the cell lines. ![](../results/05_key_plot_1.png){fig-align="center" width="100%"}
+Expression of 70 randomly selected genes are plotted for comparison of the cell lines. ![](../results/05_heatmap_random.png){fig-align="center" width="100%"}
 
 -   Red indicates that the gene expression is upregulated
 
@@ -114,7 +114,7 @@ Expression of 70 randomly selected genes are plotted for comparison of the cell 
 
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
-Expression of up- or down-regulated DEGs are plotted for comparison of the two cell lines. ![](../results/05_key_plot_2.png){fig-align="center" width="100%"}
+Expression of up- or down-regulated DEGs are plotted for comparison of the two cell lines. ![](../results/05_heatmap_DEGs.png){fig-align="center" width="100%"}
 :::
 :::
 :::
@@ -125,7 +125,7 @@ Expression of up- or down-regulated DEGs are plotted for comparison of the two c
 ::: {style="font-size: 25px; margin-top: 30px;"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
-![](../results/06_key_plot_1.png){fig-align="center" width="60%"}
+![](../results/06_scatter_OVCAR3.png){fig-align="center" width="80%"}
 :::
 :::
 
@@ -135,15 +135,15 @@ Scatter plot of correlation between gene expresseion for KO and baseline genes f
 ::: columns
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
-Scatter plot of correlation between gene expresseion for KO and baseline genes for OVCAR3\
-![](../results/06_key_plot_2.png){fig-align="center" width="100%"}
+Scatter plot of correlation between gene expresseion for KO and baseline genes for SKOV3\
+![](../results/06_scatter_SKOV3.png){fig-align="center" width="100%"}
 :::
 :::
 
 ::: {.column width="50%"}
 ::: {style="font-size:70%;"}
 Scatter plot of correlation between gene expresseion for KO and baseline of SKOV3\
-![](../results/06_key_plot_3.png){fig-align="center" width="100%"}
+![](../results/06_scatter_zoom_SKOV3.png){fig-align="center" width="100%"}
 :::
 :::
 :::
@@ -151,11 +151,29 @@ Scatter plot of correlation between gene expresseion for KO and baseline of SKOV
 
 ## Results - t-test
 
-::: {style="font-size: 25px;margin-top: 30px;"}
+::: {style="font-size: 25px; margin-top: 30px;"}
+::: columns
+::: {.column width="30%"}
 ::: {style="font-size:70%;"}
-![](../results/07_key_plot_1.png){fig-align="center" width="80%"}
+-   Positive correlation between KO and baseline for each cell line
 
-Noget med p-værdier
+-   t-test for DEGs for each cell line: not significant (OVCAR3: 0.796 & SKOV3: 0.069)
+
+-   Looking at genes specific for cancer: GDF15
+
+    -   Fisher test: p-value = 2.2\*10\^-16
+
+    -   Log2FC OVCAR3: -4.417
+
+    -   Log2FC SKOV3: -0.33
+:::
+:::
+
+::: {.column width="70%"}
+::: {style="font-size:70%;"}
+![](../results/07_scatter_MOCK_KO.png){fig-align="center" width="80%"}
+:::
+:::
 :::
 :::
 
@@ -165,19 +183,9 @@ Noget med p-værdier
 ::: {style="font-size:70%;"}
 KEGG plots displaying enriched pathways\
 
-::: columns
-::: {.column width="50%"}
-![](../results/08_key_plot_1.png){fig-align="center" width="100%"}
-:::
+![](../results/08_KEGG_OVCAR3.png){fig-align="center" width="70%"}
 
-::: {.column width="50%"}
-::: {style="font-size:70%;"}
-![](../results/08_key_plot_2.png){fig-align="center" width="100%"}
-:::
-:::
-:::
-
-Cancer, senescence and PI3K/AKT pathways are downregulated after HERV-K KO in OVCAR3 (ovarian cancer cells)
+Cancer, senescence and PI3K/AKT pathways are down-regulated after HERV-K KO in OVCAR3 (ovarian cancer cells)
 :::
 :::
 
@@ -185,6 +193,16 @@ Cancer, senescence and PI3K/AKT pathways are downregulated after HERV-K KO in OV
 
 ::: {style="font-size: 25px;margin-top: 30px;"}
 ::: {style="font-size:70%;"}
-Noget der giver mening
+::: {style="font-size: 25px; margin-top: 30px;"}
+-   No significant pathways were changed after KO of HERV-K in SKOV3
+-   Cancer associated pathways were down-regulated after KO of HERV-K in OVCAR3
+-   Ovarian cancer gene GDF15 were down-regulated after KO of HERV-K in OVCAR3
+:::
+
+\
+
+::: {style="font-size: 40px; text-align: center;"}
+**Collectively this suggest that HERV-K might play a role in development of ovarian cancer in atleast one ovarian cancer cell line. More reseach should be done to identify HERV-K as a new therapeutic target for ovarian cancer treatment**
+:::
 :::
 :::

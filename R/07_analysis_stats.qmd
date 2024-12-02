@@ -110,27 +110,29 @@ scatterplot_mock_ko <- mock_or_ko |>
   theme_minimal() + 
   theme(plot.title = element_text(size = 24),
         axis.title = element_text(size = 18),
-        axis.text = element_text(size = 12)) +
+        axis.text = element_text(size = 12),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 18)) +
   scale_x_continuous(limits = c(0,730000)) +
   scale_y_continuous(limits = c(0,400000)) +
   annotate("text", 
            x = 590000, y = 220000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.64", 
            color = "firebrick1") +
   annotate("text", 
            x = 590000, y = 250000, 
-           size = 3.5,
+           size = 5,
            label = "y = 0.29x + 372.26", 
            color = "firebrick1") +
   annotate("text", 
            x = 80000, y = 260000, 
-           size = 3.5,
+           size = 5,
            label = "R^2 = 0.89", 
            color = "cyan4") +
   annotate("text", 
            x = 80000, y = 290000, 
-           size = 3.5,
+           size = 5,
            label = "y = 1.21x + 83.48", 
            color = "cyan4")
 
@@ -146,7 +148,7 @@ more when we look at the KO cell lines.
 Save the plot as png-file in results folder
 
 ```{r}
-ggsave(filename = here("results/07_key_plot_1.png"),
+ggsave(filename = here("results/07_scatter_MOCK_KO.png"),
        plot = scatterplot_mock_ko,
        width = 10, 
        height = 6)

@@ -390,12 +390,10 @@ symbols.</p>
 <h3>Number of up-regulated and down-regulated genes</h3>
 <p>The number of up- and down-regulated genes are counted.</p>
 <pre class="r"><code>data |&gt; 
-  count(DEG_OVCAR3) |&gt; 
-  print()
+  count(DEG_OVCAR3)
 
 data |&gt; 
-  count(DEG_SKOV3) |&gt; 
-  print()</code></pre>
+  count(DEG_SKOV3)</code></pre>
 <p>After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated
 genes, 4.212 up-regulated genes and 23.062 neutral genes.</p>
 <p>After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated
@@ -433,7 +431,7 @@ down-regulated, up-regulated and neutral genes.</p>
   scale_x_discrete(limits = c(&quot;Downregulated&quot;, &quot;Upregulated&quot;, &quot;Neutral&quot;), 
                    labels = c(&quot;Downregulated&quot; = &quot;Down-regulated&quot;, &quot;Upregulated&quot; = &quot;Up-regulated&quot;))</code></pre>
 <p>The barplot is saved in a png-file in the results folder::</p>
-<pre class="r"><code>ggsave(filename = here(&quot;results/04_key_plot_1.png&quot;),
+<pre class="r"><code>ggsave(filename = here(&quot;results/04_gene_counts.png&quot;),
        plot = barplot,
        width = 10, 
        height = 6)</code></pre>
