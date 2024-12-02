@@ -56,7 +56,7 @@ data_with_ID <- data |>
 
 ```
 
-### The cell lines are seperated into two different datasets with up- and downregulated DEGs. The DEGs are also ranjed 
+### The cell lines are seperated into two different datasets with up- and downregulated DEGs. The DEGs are also ranjed
 
 ```{r}
 #Separate data into the two cell lines DEGs with geneIDs
@@ -183,6 +183,7 @@ plot_kegg_SKOV3 <- kegg_analysis_SKOV3 |>
 plot_kegg_SKOV3
 
 ```
+
 There are no pathways found for the SKOV3 cell line.
 
 The KEGG is saved in a png-file in the results folder:
@@ -211,4 +212,3 @@ These results indicate that the KO OVCAR3 cell line and the baseline
 OVCAR3 cell is a better model for cancer compared to SKOV3 as this cell
 line doesn't show any significant differences between the two set of
 DEGs in the baseline compared to the KO cell line.
-
