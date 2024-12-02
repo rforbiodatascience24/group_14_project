@@ -95,7 +95,7 @@ barplot <- data |>
 The barplot is saved in a png-file in the results folder::
 
 ```{r}
-ggsave(filename = here("results/04_key_plot_1.png"),
+ggsave(filename = here("results/04_gene_counts.png"),
        plot = barplot,
        width = 10, 
        height = 6)
