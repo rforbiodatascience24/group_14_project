@@ -390,10 +390,12 @@ symbols.</p>
 <h3>Number of up-regulated and down-regulated genes</h3>
 <p>The number of up- and down-regulated genes are counted.</p>
 <pre class="r"><code>data |&gt; 
-  count(DEG_OVCAR3)
+  count(DEG_OVCAR3) |&gt; 
+  print()
 
 data |&gt; 
-  count(DEG_SKOV3)</code></pre>
+  count(DEG_SKOV3) |&gt; 
+  print()</code></pre>
 <p>After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated
 genes, 4.212 up-regulated genes and 23.062 neutral genes.</p>
 <p>After HERV-K KO in the SKOV3 cell line, there are 920 down-regulated

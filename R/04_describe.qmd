@@ -43,12 +43,10 @@ The number of up- and down-regulated genes are counted.
 
 ```{r}
 data |> 
-  count(DEG_OVCAR3) |> 
-  print()
+  count(DEG_OVCAR3)
 
 data |> 
-  count(DEG_SKOV3) |> 
-  print()
+  count(DEG_SKOV3)
 ```
 
 After HERV-K KO in the OVCAR3 cell line, there are 766 down-regulated
